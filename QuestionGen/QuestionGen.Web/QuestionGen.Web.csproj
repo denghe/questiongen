@@ -55,8 +55,7 @@
   <ItemGroup>
     <Content Include="ClientBin\QuestionGen.xap" />
     <Content Include="Default.aspx" />
-    <Content Include="QuestionGenTestPage.aspx" />
-    <Content Include="QuestionGenTestPage.html" />
+    <Content Include="Default.html" />
     <Content Include="Service\题.svc" />
     <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
@@ -68,13 +67,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\题.svc.cs">
       <DependentUpon>题.svc</DependentUpon>
