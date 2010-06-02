@@ -11,6 +11,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using QuestionGen.Windows;
+
 namespace QuestionGen.Views
 {
     public partial class 题管理 : Page
@@ -34,7 +36,7 @@ namespace QuestionGen.Views
 
         private void _Insert_Button_Click(object sender, RoutedEventArgs e)
         {
-            var fw = new 题Row { ParentLayoutRoot = this.LayoutRoot };
+            var fw = new 题编辑 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
         }
     }
