@@ -4,11 +4,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 
-namespace QuestionGen.Web
+namespace QuestionGen.Web.Service
 {
     [ServiceContract(Namespace = "")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class Service1
+    public class 题
     {
         [OperationContract]
         public void DoWork()
