@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <customBinding>
+                <binding name="CustomBinding_题">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:3471/Service/%E9%A2%98.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_题"
+                contract="服务.题" name="CustomBinding_题" />
+        </client>
+    </system.serviceModel>
+</configuration>
