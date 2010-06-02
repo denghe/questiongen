@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
+using db = DAL.Database.Tables;
 
 namespace QuestionGen.Web.Service
 {
@@ -22,9 +23,11 @@ namespace QuestionGen.Web.Service
         [OperationContract]
         public int 插入_题(byte[] buff)
         {
-            
-            return -1;
+            var row = new db.题.题(buff);
+            db.题.题.Insert(row);
+            return row.题编号;
         }
+
 
     }
 }
