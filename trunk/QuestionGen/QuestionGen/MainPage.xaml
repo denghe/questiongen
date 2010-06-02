@@ -12,7 +12,7 @@
         <Border x:Name="ContentBorder" Style="{StaticResource ContentBorderStyle}">
 
             <navigation:Frame x:Name="ContentFrame" Style="{StaticResource ContentFrameStyle}" 
-                              Source="/Home" Navigated="ContentFrame_Navigated" NavigationFailed="ContentFrame_NavigationFailed">
+                              Source="/题管理" Navigated="ContentFrame_Navigated" NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
                   <uriMapper:UriMapper>
                     <uriMapper:UriMapping Uri="" MappedUri="/Views/Home.xaml"/>
@@ -39,14 +39,9 @@
 
                     <HyperlinkButton x:Name="Link3" Style="{StaticResource LinkStyle}" 
                                      NavigateUri="/题管理" TargetName="ContentFrame" Content="题管理"/>
-
-                    <HyperlinkButton x:Name="Link1" Style="{StaticResource LinkStyle}" 
-                                     NavigateUri="/Home" TargetName="ContentFrame" Content="home"/>
 									 
-                    <Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>
+                    <!--<Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>-->
 					
-                    <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
-                                     NavigateUri="/About" TargetName="ContentFrame" Content="about"/>
 
                 </StackPanel>
             </Border>
