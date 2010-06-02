@@ -10,11 +10,11 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace QuestionGen.Views
+namespace QuestionGen.Windows
 {
-    public partial class 题Row : FloatableWindow
+    public partial class 题编辑 : FloatableWindow
     {
-        public 题Row()
+        public 题编辑()
         {
             InitializeComponent();
         }
