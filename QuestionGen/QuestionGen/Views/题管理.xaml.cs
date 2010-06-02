@@ -36,7 +36,7 @@ namespace QuestionGen.Views
 
         private void _Insert_Button_Click(object sender, RoutedEventArgs e)
         {
-            var fw = new 题编辑 { ParentLayoutRoot = this.LayoutRoot };
+            var fw = new Editor_题 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
         }
     }
