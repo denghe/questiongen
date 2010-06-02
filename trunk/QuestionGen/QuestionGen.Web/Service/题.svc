@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="QuestionGen.Web.Service.题" CodeBehind="题.svc.cs" %>

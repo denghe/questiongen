@@ -56,7 +56,7 @@
     <Content Include="ClientBin\QuestionGen.xap" />
     <Content Include="QuestionGenTestPage.aspx" />
     <Content Include="QuestionGenTestPage.html" />
-    <Content Include="Service1.svc" />
+    <Content Include="Service\题.svc" />
     <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Service\题.svc.cs">
+      <DependentUpon>题.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
