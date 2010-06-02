@@ -12,9 +12,9 @@ using System.Windows.Shapes;
 
 namespace QuestionGen.Views
 {
-    public partial class FloatableWindow1 : FloatableWindow
+    public partial class 题Row : FloatableWindow
     {
-        public FloatableWindow1()
+        public 题Row()
         {
             InitializeComponent();
         }
