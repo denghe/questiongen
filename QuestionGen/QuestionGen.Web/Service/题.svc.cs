@@ -18,5 +18,13 @@ namespace QuestionGen.Web.Service
         }
 
         // Add more operations here and mark them with [OperationContract]
+
+        [OperationContract]
+        public int 插入_题(byte[] buff)
+        {
+            
+            return -1;
+        }
+
     }
 }
