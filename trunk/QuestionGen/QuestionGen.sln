@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionGen", "QuestionGen\QuestionGen.csproj", "{3FA29308-630F-4428-8067-A45E8A490238}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE4C1623-2B26-43CF-951F-7C84A5A56534} = {AE4C1623-2B26-43CF-951F-7C84A5A56534}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionGen.Web", "QuestionGen.Web\QuestionGen.Web.csproj", "{AE4C1623-2B26-43CF-951F-7C84A5A56534}"
 EndProject
