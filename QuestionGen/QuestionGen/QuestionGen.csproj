@@ -235,6 +235,9 @@
     <Compile Include="Views\FloatableWindow1.xaml.cs">
       <DependentUpon>FloatableWindow1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\首页.xaml.cs">
+      <DependentUpon>首页.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\题管理.xaml.cs">
       <DependentUpon>题管理.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
     <Page Include="Views\FloatableWindow1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\首页.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\题管理.xaml">
       <Generator>MSBuild:Compile</Generator>

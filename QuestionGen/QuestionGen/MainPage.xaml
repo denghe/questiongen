@@ -15,7 +15,7 @@
                               Source="/题管理" Navigated="ContentFrame_Navigated" NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
                   <uriMapper:UriMapper>
-                    <uriMapper:UriMapping Uri="" MappedUri="/Views/Home.xaml"/>
+                    <uriMapper:UriMapping Uri="" MappedUri="/Views/首页.xaml"/>
                     <uriMapper:UriMapping Uri="/{pageName}" MappedUri="/Views/{pageName}.xaml"/>
                   </uriMapper:UriMapper>
                 </navigation:Frame.UriMapper>
@@ -37,10 +37,14 @@
             <Border x:Name="LinksBorder" Style="{StaticResource LinksBorderStyle}">
                 <StackPanel x:Name="LinksStackPanel" Style="{StaticResource LinksStackPanelStyle}">
 
-                    <HyperlinkButton x:Name="Link3" Style="{StaticResource LinkStyle}" 
+                    <HyperlinkButton x:Name="Link1" Style="{StaticResource LinkStyle}" 
+                                     NavigateUri="/首页" TargetName="ContentFrame" Content="首页"/>
+
+                    <Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>
+                    
+                    <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
                                      NavigateUri="/题管理" TargetName="ContentFrame" Content="题管理"/>
 									 
-                    <!--<Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>-->
 					
 
                 </StackPanel>
