@@ -34,7 +34,7 @@ namespace QuestionGen.Views
 
         private void _Insert_Button_Click(object sender, RoutedEventArgs e)
         {
-            var fw = new FloatableWindow1 { ParentLayoutRoot = this.LayoutRoot };
+            var fw = new 题Row { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
         }
     }
