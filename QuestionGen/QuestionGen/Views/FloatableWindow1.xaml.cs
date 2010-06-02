@@ -8,21 +8,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuestionGen
+namespace QuestionGen.Views
 {
-    public partial class Home : Page
+    public partial class FloatableWindow1 : FloatableWindow
     {
-        public Home()
+        public FloatableWindow1()
         {
             InitializeComponent();
         }
 
-        // Executes when the user navigates to this page.
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }
+

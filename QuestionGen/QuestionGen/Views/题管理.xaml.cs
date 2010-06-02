@@ -11,10 +11,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuestionGen
+namespace QuestionGen.Views
 {
     public partial class 题管理 : Page
     {
+        服务.题Client _s = new 服务.题Client();
+
         public 题管理()
         {
             InitializeComponent();
@@ -23,6 +25,17 @@ namespace QuestionGen
         // Executes when the user navigates to this page.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void _Select_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //_s.
+        }
+
+        private void _Insert_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var fw = new FloatableWindow1 { ParentLayoutRoot = this.LayoutRoot };
+            fw.ShowDialog();
         }
     }
 }
