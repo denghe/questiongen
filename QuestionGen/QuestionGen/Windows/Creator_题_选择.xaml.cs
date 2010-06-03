@@ -12,9 +12,9 @@ using System.Windows.Shapes;
 
 namespace QuestionGen.Windows
 {
-    public partial class Editor_题 : FloatableWindow
+    public partial class Creator_题_选择 : FloatableWindow
     {
-        public Editor_题()
+        public Creator_题_选择()
         {
             InitializeComponent();
         }
