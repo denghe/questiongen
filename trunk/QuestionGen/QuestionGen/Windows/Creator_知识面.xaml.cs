@@ -14,6 +14,8 @@ namespace QuestionGen.Windows
 {
     public partial class Creator_知识面 : FloatableWindow
     {
+        服务.题Client _s = new 服务.题Client();
+
         public Creator_知识面()
         {
             InitializeComponent();
