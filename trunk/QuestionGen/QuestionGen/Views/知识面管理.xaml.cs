@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using QuestionGen.Windows;
+using SqlLib;
+using db = DAL.Database.Tables;
 
 namespace QuestionGen.Views
 {
@@ -22,6 +24,15 @@ namespace QuestionGen.Views
         public 知识面管理()
         {
             InitializeComponent();
+
+            _s.知识面_获取Completed += new EventHandler<服务.知识面_获取CompletedEventArgs>(_s_知识面_获取Completed);
+        }
+
+        void _s_知识面_获取Completed(object sender, 服务.知识面_获取CompletedEventArgs e)
+        {
+            var rows = e.Result.ToList<db.题.知识面>();
+            _DataGrid.ItemsSource = rows;
+            _Select_Button.IsEnabled = true;
         }
 
         // Executes when the user navigates to this page.
@@ -31,7 +42,8 @@ namespace QuestionGen.Views
 
         private void _Select_Button_Click(object sender, RoutedEventArgs e)
         {
-            //_s.
+            _Select_Button.IsEnabled = false;
+            _s.知识面_获取Async();
         }
 
         private void _Insert_Button_Click(object sender, RoutedEventArgs e)
