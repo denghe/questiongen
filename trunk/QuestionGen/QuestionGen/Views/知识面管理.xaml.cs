@@ -40,7 +40,7 @@ namespace QuestionGen.Views
         {
         }
 
-        private void _刷新_Button_Click(object sender, RoutedEventArgs e)
+        private void _刷新_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             _刷新_Button.IsEnabled = false;
             _s.知识面_获取Async();
@@ -50,6 +50,12 @@ namespace QuestionGen.Views
         {
             var fw = new Creator_知识面 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
+            fw.Closed += new EventHandler(fw_Closed);
+        }
+
+        void fw_Closed(object sender, EventArgs e)
+        {
+            _刷新_Button_Click();
         }
     }
 }
