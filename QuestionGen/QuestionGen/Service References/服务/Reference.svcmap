@@ -23,6 +23,7 @@
     <MetadataSource Address="http://localhost:3471/Service/题.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="题1.xsd" MetadataType="Schema" ID="a3204ee3-78bc-4489-aa73-c3705c8866bf" SourceId="1" SourceUrl="http://localhost:3471/Service/题.svc?xsd=xsd1" />
     <MetadataFile FileName="题.wsdl" MetadataType="Wsdl" ID="255565cb-59fe-456d-b27b-1255b3e02d9a" SourceId="1" SourceUrl="http://localhost:3471/Service/题.svc?wsdl=wsdl0" />
     <MetadataFile FileName="题.xsd" MetadataType="Schema" ID="aea98896-5f29-4896-81af-6a5bd3c7a32b" SourceId="1" SourceUrl="http://localhost:3471/Service/题.svc?xsd=xsd0" />
     <MetadataFile FileName="题1.wsdl" MetadataType="Wsdl" ID="cf248015-a211-4e70-9d67-1add5403f469" SourceId="1" SourceUrl="http://localhost:3471/Service/题.svc?wsdl" />

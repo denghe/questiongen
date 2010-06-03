@@ -32,14 +32,14 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="名称:" HorizontalAlignment="Right" Margin="0,4,6,0" VerticalAlignment="Top" />
-        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Name="textBox1" VerticalAlignment="Top" Width="466" />
+        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Name="_名称_TextBox" VerticalAlignment="Top" Width="466" />
 
         <TextBlock HorizontalAlignment="Right" Margin="0,29,6,0" Text="相似条目:" VerticalAlignment="Top" />
         <ListBox Grid.Column="1" Height="119" HorizontalAlignment="Left" Margin="0,29,0,0" Name="listBox1" VerticalAlignment="Top" Width="465" >
             <ListBoxItem Content="此处将 自动列出 与 正在输入 的 名称 相似 的 条目" />
         </ListBox>
         
-        <Button x:Name="CancelButton" Content="取消" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,13,3" Grid.Row="1" Grid.Column="1" />
-        <Button x:Name="OKButton" Content="提交" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="1"  Grid.Column="1" />
+        <Button x:Name="_Cancel_Button" Content="取消" Click="_Cancel_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,13,3" Grid.Row="1" Grid.Column="1" />
+        <Button x:Name="_Submit_Button" Content="提交" Click="_Submit_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="1"  Grid.Column="1" />
     </Grid>
 </controls:FloatableWindow>

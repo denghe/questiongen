@@ -19,14 +19,28 @@ namespace QuestionGen.Windows
         public Creator_知识面()
         {
             InitializeComponent();
+
+            _s.知识面_插入Completed += new EventHandler<服务.知识面_插入CompletedEventArgs>(_s_知识面_插入Completed);
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        void _s_知识面_插入Completed(object sender, 服务.知识面_插入CompletedEventArgs e)
         {
-            this.DialogResult = true;
+            if (e.Result < 0)
+            {
+                MessageBox.Show("知识面 名称 已存在, 插入失败");
+                this._Submit_Button.IsEnabled = true;
+                _名称_TextBox.Focus();
+            }
+            else this.DialogResult = true;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void _Submit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this._Submit_Button.IsEnabled = false;
+            _s.知识面_插入Async(_名称_TextBox.Text.Trim());
+        }
+
+        private void _Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }

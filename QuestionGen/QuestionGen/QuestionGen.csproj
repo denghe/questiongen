@@ -308,6 +308,9 @@
     </None>
     <None Include="Service References\服务\题1.wsdl" />
     <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\服务\题1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
