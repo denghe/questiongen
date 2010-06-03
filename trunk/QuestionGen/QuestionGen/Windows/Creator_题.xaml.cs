@@ -21,7 +21,9 @@ namespace QuestionGen.Windows
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            var f = new Creator_题_选择 { ParentLayoutRoot = this.LayoutRoot };
+            f.ShowDialog();
+            //this.DialogResult = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
