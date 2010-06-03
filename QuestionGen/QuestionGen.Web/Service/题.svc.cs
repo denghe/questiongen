@@ -3,6 +3,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
+
+using SqlLib;
 using db = DAL.Database.Tables;
 
 namespace QuestionGen.Web.Service
@@ -42,6 +44,13 @@ namespace QuestionGen.Web.Service
                 return -1;
             }
         }
+
+        [OperationContract]
+        public byte[] 知识面_获取()
+        {
+            return db.题.知识面.Select().GetBytes();
+        }
+
 
     }
 }
