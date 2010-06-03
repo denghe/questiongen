@@ -32,7 +32,7 @@ namespace QuestionGen.Views
         {
             var rows = e.Result.ToList<db.题.知识面>();
             _DataGrid.ItemsSource = rows;
-            _Select_Button.IsEnabled = true;
+            _刷新_Button.IsEnabled = true;
         }
 
         // Executes when the user navigates to this page.
@@ -40,13 +40,13 @@ namespace QuestionGen.Views
         {
         }
 
-        private void _Select_Button_Click(object sender, RoutedEventArgs e)
+        private void _刷新_Button_Click(object sender, RoutedEventArgs e)
         {
-            _Select_Button.IsEnabled = false;
+            _刷新_Button.IsEnabled = false;
             _s.知识面_获取Async();
         }
 
-        private void _Insert_Button_Click(object sender, RoutedEventArgs e)
+        private void _创建_Button_Click(object sender, RoutedEventArgs e)
         {
             var fw = new Creator_知识面 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
