@@ -21,13 +21,20 @@ namespace QuestionGen.Web.Service
         // Add more operations here and mark them with [OperationContract]
 
         [OperationContract]
-        public int 插入_题(byte[] buff)
+        public int 题_插入(byte[] buff)
         {
             var row = new db.题.题(buff);
             db.题.题.Insert(row);
             return row.题编号;
         }
 
+        [OperationContract]
+        public int 知识面_插入(byte[] buff)
+        {
+            var row = new db.题.题(buff);
+            db.题.题.Insert(row);
+            return row.题编号;
+        }
 
     }
 }
