@@ -14,6 +14,8 @@ namespace QuestionGen.Web.Service
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class 题
     {
+        // 潜规则：通常返回 int 是指 受影响行数, 返回 byte[] 是指 List<数据库对象> 序列化后的结果
+
         #region 知识面
 
         [OperationContract]
