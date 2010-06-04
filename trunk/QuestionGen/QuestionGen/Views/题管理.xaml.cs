@@ -29,12 +29,12 @@ namespace QuestionGen.Views
         {
         }
 
-        private void _Select_Button_Click(object sender, RoutedEventArgs e)
+        private void _刷新_Button_Click(object sender, RoutedEventArgs e)
         {
             //_s.
         }
 
-        private void _Insert_Button_Click(object sender, RoutedEventArgs e)
+        private void _创建_Button_Click(object sender, RoutedEventArgs e)
         {
             var fw = new Creator_题 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();

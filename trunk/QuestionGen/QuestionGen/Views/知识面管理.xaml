@@ -16,10 +16,10 @@
 
         <Button Content="刷新" Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="_刷新_Button" VerticalAlignment="Top" Width="75" Click="_刷新_Button_Click" />
         <Button Content="创建" Height="23" HorizontalAlignment="Left" Margin="115,12,0,0" Name="_创建_Button" VerticalAlignment="Top" Width="75" Click="_创建_Button_Click" />
-        <Button Content="修改" Height="23" HorizontalAlignment="Left" Margin="196,12,0,0" Name="_修改_Button" VerticalAlignment="Top" Width="75" />
-        <Button Content="删除" Height="23" HorizontalAlignment="Left" Margin="277,12,0,0" Name="_删除_Button" VerticalAlignment="Top" Width="75" />
+        <Button Content="修改" Height="23" HorizontalAlignment="Left" Margin="196,12,0,0" Name="_修改_Button" VerticalAlignment="Top" Width="75" Click="_修改_Button_Click" IsEnabled="False" />
+        <Button Content="删除" Height="23" HorizontalAlignment="Left" Margin="277,12,0,0" Name="_删除_Button" VerticalAlignment="Top" Width="75" Click="_删除_Button_Click" IsEnabled="False" />
 
-        <sdk:DataGrid x:Name="_DataGrid" Margin="0,42,0,0" />
+        <sdk:DataGrid x:Name="_DataGrid" Margin="0,42,0,0" SelectionChanged="_DataGrid_SelectionChanged" IsReadOnly="True" FontSize="12" FontFamily="Arial, SimSun" SelectionMode="Single" />
     </Grid>
 
 </navigation:Page>
