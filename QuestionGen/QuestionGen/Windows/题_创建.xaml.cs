@@ -10,23 +10,37 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
+using 题 = DAL.Database.Tables.题;
+
 namespace QuestionGen.Windows
 {
     public partial class 题_创建 : FloatableWindow
     {
+        题.题 _original_题 = null;
+
         public 题_创建()
         {
             InitializeComponent();
+
+            _original_题 = new 题.题();
+
+            this.DataContext = _original_题;
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+
+        private void _下一步_Button_Click(object sender, RoutedEventArgs e)
         {
-            var f = new 题_选择_创建 { ParentLayoutRoot = this.LayoutRoot };
+            // 将数据上下文传到弹出窗口
+
+            var f = new 题_选择_创建(_original_题) { ParentLayoutRoot = this.LayoutRoot };
             f.ShowDialog();
-            //this.DialogResult = true;
+            f.Closed += (sender1, ea1) =>
+            {
+                if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+            };
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void _取消_Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }
