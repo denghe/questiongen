@@ -32,19 +32,19 @@ namespace QuestionGen.Windows
             if (e.Result < 0)
             {
                 MessageBox.Show("知识面 名称 已存在, 插入失败");
-                this._Submit_Button.IsEnabled = true;
+                this._提交_Button.IsEnabled = true;
                 _名称_TextBox.Focus();
             }
             else this.DialogResult = true;
         }
 
-        private void _Submit_Button_Click(object sender, RoutedEventArgs e)
+        private void _提交_Button_Click(object sender, RoutedEventArgs e)
         {
-            this._Submit_Button.IsEnabled = false;
+            this._提交_Button.IsEnabled = false;
             _s.知识面_插入Async(_original_row.GetBytes());
         }
 
-        private void _Cancel_Button_Click(object sender, RoutedEventArgs e)
+        private void _取消_Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }

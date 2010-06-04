@@ -6,17 +6,17 @@
            Title="删除: 知识面">
     <controls:FloatableWindow.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="SimSun" />
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="Height" Value="16" />
         </Style>
         <Style TargetType="ListBoxItem">
-            <Setter Property="FontFamily" Value="SimSun" />
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="Height" Value="18" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="SimSun" />
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="Height" Value="23" />
         </Style>
