@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using QuestionGen.Windows;
 using SqlLib;
 using db = DAL.Database.Tables;
+using query = DAL.Queries.Tables;
 
 namespace QuestionGen.Views
 {
@@ -43,7 +44,7 @@ namespace QuestionGen.Views
         private void _刷新_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             _刷新_Button.IsEnabled = false;
-            _s.知识面_获取Async();
+            _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
 
         private void _创建_Button_Click(object sender, RoutedEventArgs e)
