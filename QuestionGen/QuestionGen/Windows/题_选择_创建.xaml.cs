@@ -22,30 +22,35 @@ namespace QuestionGen.Windows
         {
             InitializeComponent();
 
-            /*
-<StackPanel Orientation="Horizontal">
-    <TextBlock  Text="1"/>
-    <TextBox VerticalScrollBarVisibility="Visible" />
-</StackPanel>
-             */
-
             _选项_StackPanel.Children.Clear();
-            _选项_StackPanel_Children_Add(1);
+            添加选项(1);
+
+            _答案格子_StackPanel.Children.Clear();
+            添加答案格子组(1);
+            添加答案格子组(2);
         }
 
 
-        private void _选项_StackPanel_Children_Add(int i)
+        private void 添加选项(int i)
         {
+
+            /*
+<StackPanel Orientation="Horizontal">
+<TextBlock  Text="1"/>
+<TextBox VerticalScrollBarVisibility="Visible" />
+</StackPanel>
+            */
+
             var sp = new StackPanel { Orientation = Orientation.Horizontal };
             var tbl = new TextBlock { Text = i.ToString() };
             var tb = new TextBox { Tag = i, VerticalScrollBarVisibility = ScrollBarVisibility.Visible };
-            tb.TextChanged += new TextChangedEventHandler(tb_TextChanged);
+            tb.TextChanged += new TextChangedEventHandler(选项_TextChanged);
             sp.Children.Add(tbl);
             sp.Children.Add(tb);
             _选项_StackPanel.Children.Add(sp);
         }
 
-        void tb_TextChanged(object sender, TextChangedEventArgs e)
+        void 选项_TextChanged(object sender, TextChangedEventArgs e)
         {
             var o = sender as TextBox;
             var idx = (int)o.Tag;
@@ -54,7 +59,7 @@ namespace QuestionGen.Windows
             {
                 if (idx == count)
                 {
-                    _选项_StackPanel_Children_Add(count + 1);
+                    添加选项(count + 1);
                 }
             }
             else
@@ -66,6 +71,61 @@ namespace QuestionGen.Windows
                     if (tb.Text.Length == 0)
                     {
                         _选项_StackPanel.Children.RemoveAt(idx);
+                    }
+                }
+            }
+        }
+
+        private void 添加答案格子组(int i)
+        {
+            /*
+<StackPanel Orientation="Horizontal">
+    <TextBlock Text="1" />
+    <StackPanel Orientation="Horizontal">
+        <TextBox/>
+        <TextBox/>
+        <TextBox/>
+    </StackPanel>
+</StackPanel>
+             */
+
+            var sp = new StackPanel { Orientation = Orientation.Horizontal };
+            var tbl = new TextBlock { Text = i.ToString() };
+            var sp_1 = new StackPanel { Orientation = Orientation.Horizontal };
+            sp.Children.Add(tbl);
+            sp.Children.Add(sp_1);
+            添加答案格子(sp_1, 1);
+            _答案格子_StackPanel.Children.Add(sp);
+        }
+
+        private void 添加答案格子(StackPanel parent, int i)
+        {
+            var tb = new TextBox { Tag = i };
+            tb.TextChanged += new TextChangedEventHandler(答案格子_TextChanged);
+            parent.Children.Add(tb);
+        }
+
+        void 答案格子_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var o = sender as TextBox;
+            var idx = (int)o.Tag;
+            var parent = (StackPanel)o.Parent;
+            var count = parent.Children.Count;
+            if (o.Text.Length > 0)
+            {
+                if (idx == count)
+                {
+                    添加答案格子(parent, count + 1);
+                }
+            }
+            else
+            {
+                if (idx == count - 1)
+                {
+                    var tb = (TextBox)parent.Children[1];
+                    if (tb.Text.Length == 0)
+                    {
+                        parent.Children.RemoveAt(idx);
                     }
                 }
             }

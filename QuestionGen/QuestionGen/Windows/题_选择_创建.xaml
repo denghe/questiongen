@@ -111,7 +111,7 @@
                     <Setter Property="Foreground" Value="Blue" />
                 </Style>
             </ScrollViewer.Resources>
-            <StackPanel Orientation="Horizontal" Margin="-10,0,0,0">
+            <StackPanel x:Name="_答案格子_StackPanel" Orientation="Horizontal" Margin="-10,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="1" />
                     <StackPanel Orientation="Horizontal">
