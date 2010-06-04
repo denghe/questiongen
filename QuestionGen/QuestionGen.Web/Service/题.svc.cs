@@ -15,14 +15,20 @@ namespace QuestionGen.Web.Service
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class 题
     {
-        // 潜规则：通常返回 int 是指 受影响行数, 返回 byte[] 是指 List<数据库对象> 序列化后的结果
+        /**
+            潜规则：通常情况下, 
+            插入操作 成功返回 主键值, 失败 返回 负数
+            更新 删除 操作, 成功返回 受影响行数, 失败返回 负数
+         */
+
+
 
         #region 知识面
 
         [OperationContract]
-        public int 知识面_插入(string 名称)
+        public int 知识面_插入(byte[] 知识面)
         {
-            var row = new db.题.知识面 { 名称 = 名称 };
+            var row = new db.题.知识面(知识面);
             try
             {
                 var count = row.Insert();
@@ -36,16 +42,18 @@ namespace QuestionGen.Web.Service
         }
 
         [OperationContract]
-        public int 知识面_删除(int 知识面编号)
+        public int 知识面_删除(byte[] 知识面)
         {
-            return db.题.知识面.Delete(o => o.知识面编号.Equal(知识面编号));
+            var row = new db.题.知识面(知识面);
+            return row.Delete();
         }
 
 
         [OperationContract]
-        public int 知识面_更新(int 知识面编号, string 名称)
+        public int 知识面_更新(byte[] 知识面)
         {
-            return new db.题.知识面 { 知识面编号 = 知识面编号, 名称 = 名称 }.Update();
+            var row = new db.题.知识面(知识面);
+            return row.Update();
         }
 
         [OperationContract]
@@ -62,8 +70,16 @@ namespace QuestionGen.Web.Service
         public int 题_插入(byte[] 题)
         {
             var row = new db.题.题(题);
-            db.题.题.Insert(row);
-            return row.题编号;
+            try
+            {
+                var count = row.Insert();
+                if (count < 1) return -1;
+                return row.题编号;
+            }
+            catch
+            {
+                return -1;
+            }
         }
 
         #endregion
