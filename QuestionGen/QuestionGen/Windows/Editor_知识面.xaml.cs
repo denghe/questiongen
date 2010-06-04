@@ -29,11 +29,14 @@ namespace QuestionGen.Windows
             _s.知识面_更新Completed += new EventHandler<服务.知识面_更新CompletedEventArgs>(_s_知识面_更新Completed);
         }
 
-        public Editor_知识面(题.知识面 original_row) : this()
+        public Editor_知识面(题.知识面 original_row)
+            : this()
         {
             _original_row = original_row;
-            _current_row = _original_row.复制();
+            _current_row = new 题.知识面 { 知识面编号 = _original_row.知识面编号, 名称 = _original_row.名称 };
+
             this.DataContext = _current_row;
+
             _还原_Button_Click();
         }
 
@@ -51,7 +54,8 @@ namespace QuestionGen.Windows
         private void _提交_Button_Click(object sender, RoutedEventArgs e)
         {
             this._提交_Button.IsEnabled = false;
-            _s.知识面_更新Async(_original_row.知识面编号, _名称_TextBox.Text.Trim());
+
+            _s.知识面_更新Async(_current_row.GetBytes());
         }
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)
@@ -61,7 +65,9 @@ namespace QuestionGen.Windows
 
         private void _还原_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
-            _名称_TextBox.Text = _original_row.名称;
+            _current_row.名称 = _original_row.名称;
+            this.DataContext = null;
+            this.DataContext = _current_row;
         }
     }
 }
