@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
+using DAL.Database.Tables;
 using 题 = DAL.Database.Tables.题;
 
 namespace QuestionGen.Windows
@@ -19,6 +20,7 @@ namespace QuestionGen.Windows
         服务.题Client _s = new 服务.题Client();
 
         题.知识面 _original_row = null;
+        题.知识面 _current_row = null;
 
         public Editor_知识面()
         {
@@ -30,6 +32,8 @@ namespace QuestionGen.Windows
         public Editor_知识面(题.知识面 original_row) : this()
         {
             _original_row = original_row;
+            _current_row = _original_row.复制();
+            this.DataContext = _current_row;
             _还原_Button_Click();
         }
 
