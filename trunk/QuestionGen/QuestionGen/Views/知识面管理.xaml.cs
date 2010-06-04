@@ -53,14 +53,14 @@ namespace QuestionGen.Views
 
         private void _创建_Button_Click(object sender, RoutedEventArgs e)
         {
-            var fw = new Creator_知识面 { ParentLayoutRoot = this.LayoutRoot };
+            var fw = new 知识面_创建 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
             fw.Closed += (sender1, e1) => { _刷新_Button_Click(); };
         }
 
         private void _修改_Button_Click(object sender, RoutedEventArgs e)
         {
-            var fw = new Editor_知识面(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
+            var fw = new 知识面_修改(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
             fw.Closed += (sender1, e1) =>
             {
