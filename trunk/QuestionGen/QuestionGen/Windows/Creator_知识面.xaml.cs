@@ -23,9 +23,7 @@ namespace QuestionGen.Windows
         public Creator_知识面()
         {
             InitializeComponent();
-
             this.DataContext = _original_row;
-
             _s.知识面_插入Completed += new EventHandler<服务.知识面_插入CompletedEventArgs>(_s_知识面_插入Completed);
         }
 
