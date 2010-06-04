@@ -44,7 +44,11 @@
     <Compile Include="DAL_Class_ColumnEnums_UserDefinedFunctions_Table.cs" />
     <Compile Include="DAL_Class_ColumnEnums_UserDefinedTableTypes.cs" />
     <Compile Include="DAL_Class_ColumnEnums_Views.cs" />
+    <Compile Include="DAL_Class_Database_StoredProcedures.cs" />
     <Compile Include="DAL_Class_Database_Tables.cs" />
+    <Compile Include="DAL_Class_Database_UserDefinedFunctions_Scalar.cs" />
+    <Compile Include="DAL_Class_Database_UserDefinedFunctions_Table.cs" />
+    <Compile Include="DAL_Class_Database_UserDefinedTableTypes.cs" />
     <Compile Include="DAL_Class_Database_Views.cs" />
     <Compile Include="DAL_Class_Expressions_Tables.cs" />
     <Compile Include="DAL_Class_Expressions_UserDefinedFunctions_Table.cs" />
@@ -78,6 +82,7 @@
     <Compile Include="DAL_Methods_Serial_Queries_UserDefinedFunctions_Table.cs" />
     <Compile Include="DAL_Methods_Serial_Queries_UserDefinedTableTypes.cs" />
     <Compile Include="DAL_Methods_Serial_Queries_Views.cs" />
+    <Compile Include="DAL_Methods_Sql_Database_StoredProcedures.cs" />
     <Compile Include="DAL_Methods_Sql_Database_Tables.cs" />
     <Compile Include="DAL_Methods_Sql_Database_Views.cs" />
     <Compile Include="DAL_Methods_Sql_Ext_Database_Tables.cs" />

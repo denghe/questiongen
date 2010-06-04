@@ -106,7 +106,7 @@ namespace DAL.Database.Tables.题
 		/// </summary>
         public int        知识面编号 { get; set; }
 		/// <summary>
-		/// 
+		/// 1 - 100
 		/// </summary>
         public int        难度系数  { get; set; }
 		/// <summary>
@@ -194,7 +194,7 @@ namespace DAL.Database.Tables.题
 		/// </summary>
         public int        题编号  { get; set; }
 		/// <summary>
-		/// 
+		/// 由显示模板中 <c/> 的出现顺序而定, 从 1 开始
 		/// </summary>
         public int        格子序号 { get; set; }
 		/// <summary>
