@@ -32,6 +32,11 @@ namespace QuestionGen.服务 {
         System.IAsyncResult Begin知识面_插入(string 名称, System.AsyncCallback callback, object asyncState);
         
         int End知识面_插入(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_获取", ReplyAction="urn:题/知识面_获取Response")]
+        System.IAsyncResult Begin知识面_获取(System.AsyncCallback callback, object asyncState);
+        
+        byte[] End知识面_获取(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -78,6 +83,25 @@ namespace QuestionGen.服务 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 知识面_获取CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 知识面_获取CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class 题Client : System.ServiceModel.ClientBase<QuestionGen.服务.题>, QuestionGen.服务.题 {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -97,6 +121,12 @@ namespace QuestionGen.服务 {
         private EndOperationDelegate onEnd知识面_插入Delegate;
         
         private System.Threading.SendOrPostCallback on知识面_插入CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin知识面_获取Delegate;
+        
+        private EndOperationDelegate onEnd知识面_获取Delegate;
+        
+        private System.Threading.SendOrPostCallback on知识面_获取CompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -156,6 +186,8 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<题_插入CompletedEventArgs> 题_插入Completed;
         
         public event System.EventHandler<知识面_插入CompletedEventArgs> 知识面_插入Completed;
+        
+        public event System.EventHandler<知识面_获取CompletedEventArgs> 知识面_获取Completed;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -296,6 +328,50 @@ namespace QuestionGen.服务 {
                         名称}, this.onEnd知识面_插入Delegate, this.on知识面_插入CompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_获取(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_获取(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] QuestionGen.服务.题.End知识面_获取(System.IAsyncResult result) {
+            return base.Channel.End知识面_获取(result);
+        }
+        
+        private System.IAsyncResult OnBegin知识面_获取(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((QuestionGen.服务.题)(this)).Begin知识面_获取(callback, asyncState);
+        }
+        
+        private object[] OnEnd知识面_获取(System.IAsyncResult result) {
+            byte[] retVal = ((QuestionGen.服务.题)(this)).End知识面_获取(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On知识面_获取Completed(object state) {
+            if ((this.知识面_获取Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.知识面_获取Completed(this, new 知识面_获取CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 知识面_获取Async() {
+            this.知识面_获取Async(null);
+        }
+        
+        public void 知识面_获取Async(object userState) {
+            if ((this.onBegin知识面_获取Delegate == null)) {
+                this.onBegin知识面_获取Delegate = new BeginOperationDelegate(this.OnBegin知识面_获取);
+            }
+            if ((this.onEnd知识面_获取Delegate == null)) {
+                this.onEnd知识面_获取Delegate = new EndOperationDelegate(this.OnEnd知识面_获取);
+            }
+            if ((this.on知识面_获取CompletedDelegate == null)) {
+                this.on知识面_获取CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_获取Completed);
+            }
+            base.InvokeAsync(this.onBegin知识面_获取Delegate, null, this.onEnd知识面_获取Delegate, this.on知识面_获取CompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -406,6 +482,18 @@ namespace QuestionGen.服务 {
             public int End知识面_插入(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 int _result = ((int)(base.EndInvoke("知识面_插入", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin知识面_获取(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("知识面_获取", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] End知识面_获取(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("知识面_获取", _args, result)));
                 return _result;
             }
         }
