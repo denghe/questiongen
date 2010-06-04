@@ -55,17 +55,14 @@ namespace QuestionGen.Views
         {
             var fw = new Creator_知识面 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
-            fw.Closed += new EventHandler(fw_Closed);
-        }
-
-        void fw_Closed(object sender, EventArgs e)
-        {
-            _刷新_Button_Click();
+            fw.Closed += (sender1, e1) => { _刷新_Button_Click(); };
         }
 
         private void _修改_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var fw = new Editor_知识面(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
+            fw.ShowDialog();
+            fw.Closed += (sender1, e1) => { _刷新_Button_Click(); };
         }
 
         private void _删除_Button_Click(object sender, RoutedEventArgs e)
@@ -75,7 +72,9 @@ namespace QuestionGen.Views
 
         private void _DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _selected_row = (db.题.知识面)e.AddedItems[0];
+            if (e.AddedItems.Count > 0)
+                _selected_row = (db.题.知识面)e.AddedItems[0];
+            else _selected_row = null;
             EnableControls();
         }
 
@@ -87,7 +86,7 @@ namespace QuestionGen.Views
             }
             else
             {
-                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = true;
             }
         }
     }
