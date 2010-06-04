@@ -6,23 +6,23 @@
       <xsd:import schemaLocation="http://localhost:3471/Service/题.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="题_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="DoWork" />
-  </wsdl:message>
-  <wsdl:message name="题_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="DoWorkResponse" />
-  </wsdl:message>
-  <wsdl:message name="题_题_插入_InputMessage">
-    <wsdl:part name="parameters" element="题_插入" />
-  </wsdl:message>
-  <wsdl:message name="题_题_插入_OutputMessage">
-    <wsdl:part name="parameters" element="题_插入Response" />
-  </wsdl:message>
   <wsdl:message name="题_知识面_插入_InputMessage">
     <wsdl:part name="parameters" element="知识面_插入" />
   </wsdl:message>
   <wsdl:message name="题_知识面_插入_OutputMessage">
     <wsdl:part name="parameters" element="知识面_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_知识面_删除_InputMessage">
+    <wsdl:part name="parameters" element="知识面_删除" />
+  </wsdl:message>
+  <wsdl:message name="题_知识面_删除_OutputMessage">
+    <wsdl:part name="parameters" element="知识面_删除Response" />
+  </wsdl:message>
+  <wsdl:message name="题_知识面_更新_InputMessage">
+    <wsdl:part name="parameters" element="知识面_更新" />
+  </wsdl:message>
+  <wsdl:message name="题_知识面_更新_OutputMessage">
+    <wsdl:part name="parameters" element="知识面_更新Response" />
   </wsdl:message>
   <wsdl:message name="题_知识面_获取_InputMessage">
     <wsdl:part name="parameters" element="知识面_获取" />
@@ -30,22 +30,32 @@
   <wsdl:message name="题_知识面_获取_OutputMessage">
     <wsdl:part name="parameters" element="知识面_获取Response" />
   </wsdl:message>
+  <wsdl:message name="题_题_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_插入" />
+  </wsdl:message>
+  <wsdl:message name="题_题_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_插入Response" />
+  </wsdl:message>
   <wsdl:portType name="题">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="urn:题/DoWork" message="题_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="urn:题/DoWorkResponse" message="题_DoWork_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="题_插入">
-      <wsdl:input wsaw:Action="urn:题/题_插入" message="题_题_插入_InputMessage" />
-      <wsdl:output wsaw:Action="urn:题/题_插入Response" message="题_题_插入_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="知识面_插入">
       <wsdl:input wsaw:Action="urn:题/知识面_插入" message="题_知识面_插入_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/知识面_插入Response" message="题_知识面_插入_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="知识面_删除">
+      <wsdl:input wsaw:Action="urn:题/知识面_删除" message="题_知识面_删除_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/知识面_删除Response" message="题_知识面_删除_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="知识面_更新">
+      <wsdl:input wsaw:Action="urn:题/知识面_更新" message="题_知识面_更新_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/知识面_更新Response" message="题_知识面_更新_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="知识面_获取">
       <wsdl:input wsaw:Action="urn:题/知识面_获取" message="题_知识面_获取_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/知识面_获取Response" message="题_知识面_获取_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_插入">
+      <wsdl:input wsaw:Action="urn:题/题_插入" message="题_题_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_插入Response" message="题_题_插入_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
