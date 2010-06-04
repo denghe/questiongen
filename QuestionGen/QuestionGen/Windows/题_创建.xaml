@@ -44,34 +44,47 @@
 
 
 
-        <TextBlock x:Name="_题_类型_TextBlock" Text="类型:" HorizontalAlignment="Right" Margin="0,0,6,0" VerticalAlignment="Top" />
-        <RadioButton x:Name="_题_类型_选择_RadioButton" GroupName="题类型" Content="选择" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <RadioButton x:Name="_题_类型_判断_RadioButton" GroupName="题类型" Content="判断" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Top" Grid.Column="1" />
-        <RadioButton x:Name="_题_类型_连线_RadioButton" GroupName="题类型" Content="连线" HorizontalAlignment="Left" Margin="117,0,0,0" VerticalAlignment="Top" Grid.Column="1" />
-        <RadioButton x:Name="_题_类型_填空_RadioButton" GroupName="题类型" Content="填空" HorizontalAlignment="Left" Margin="175,0,0,0" VerticalAlignment="Top" Grid.Column="1" />
-        <RadioButton x:Name="_题_类型_问答_RadioButton" GroupName="题类型" Content="问答" HorizontalAlignment="Left" Margin="235,0,0,0" VerticalAlignment="Top" Grid.Column="1" />
+        <TextBlock x:Name="_类型_TextBlock" Text="类型:" HorizontalAlignment="Right" Margin="0,0,6,0" VerticalAlignment="Top" />
+        <StackPanel x:Name="_类型_StackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="FontFamily" Value="Arial, SimSun" />
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Margin" Value="0,0,15,0" />
+                    <Setter Property="GroupName" Value="题类型" />
+                    <Setter Property="Grid.Column" Value="1" />
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton x:Name="_类型_选择_RadioButton" Content="选择" />
+            <RadioButton x:Name="_类型_填空_RadioButton" Content="填空" />
+            <RadioButton x:Name="_类型_判断_RadioButton" Content="判断" />
+            <RadioButton x:Name="_类型_问答_RadioButton" Content="问答" />
+            <RadioButton x:Name="_类型_连线_RadioButton" Content="连线" />
+        </StackPanel>
 
-        <TextBlock x:Name="_难度系数_TextBlock" HorizontalAlignment="Right" Margin="0,33,6,0" Text="难度系数:" VerticalAlignment="Top" />
-        <TextBlock x:Name="_难度系数_1_TextBlock" HorizontalAlignment="Left" Margin="3,32,0,0" Text="1" VerticalAlignment="Top" Grid.Column="1" />
-        <Slider x:Name="_难度系数_Slider" Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="18,26,0,0" VerticalAlignment="Top" Width="214" Maximum="100" Minimum="1" />
-        <TextBlock x:Name="_难度系数_100_TextBlock" HorizontalAlignment="Left" Margin="238,31,0,0" Text="100" VerticalAlignment="Top" Grid.Column="1" />
+        <TextBlock x:Name="_难度系数_TextBlock" HorizontalAlignment="Right" Margin="0,28,6,0" Text="难度系数:" VerticalAlignment="Top" />
+        <StackPanel x:Name="_难度系数_StackPanel" Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1">
+            <TextBlock x:Name="_难度系数_1_TextBlock" Text="1" />
+            <Slider x:Name="_难度系数_Slider" Height="23" Width="214" Maximum="100" Minimum="1" Margin="5,0,5,0" />
+            <TextBlock x:Name="_难度系数_100_TextBlock" Text="100" />
+        </StackPanel>
 
-        <TextBlock x:Name="_知识面_TextBlock" Text="知识面:" HorizontalAlignment="Right" Margin="0,63,6,0" VerticalAlignment="Top" />
+        <TextBlock x:Name="_知识面_TextBlock" Text="知识面:" HorizontalAlignment="Right" Margin="0,61,6,0" VerticalAlignment="Top" />
         <ComboBox x:Name="_知识面_ComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" />
 
         <TextBlock x:Name="_考核意图_TextBlock" HorizontalAlignment="Right" Margin="0,93,6,0" Text="考核意图:" VerticalAlignment="Top" />
         <TextBox x:Name="_考核意图_TextBox" Grid.Column="1" Margin="0,89,13,115" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+        
         <TextBlock x:Name="_备注_TextBlock" HorizontalAlignment="Right" Margin="0,0,6,89" Text="备注:" VerticalAlignment="Bottom" />
         <TextBox x:Name="_备注_TextBox" AcceptsReturn="True" Height="106" Margin="0,0,13,3" VerticalAlignment="Bottom" VerticalScrollBarVisibility="Visible" Grid.Column="1" />
 
-        <TextBlock x:Name="_是否启用_TextBlock" HorizontalAlignment="Right" Margin="0,464,6,0" Text="是否启用:" VerticalAlignment="Top" />
-        <CheckBox x:Name="_是否启用_CheckBox" Content="" Grid.Column="1" Height="16" HorizontalAlignment="Left" Margin="0,462,0,0" VerticalAlignment="Top" />
+        <TextBlock x:Name="_是否启用_TextBlock" HorizontalAlignment="Right" Margin="0,8,6,6" Text="是否启用:" Grid.Row="1" />
+        <CheckBox x:Name="_是否启用_CheckBox" Content="" Grid.Column="1" Height="16" HorizontalAlignment="Left" Grid.Row="1" Margin="0,0,0,7" VerticalAlignment="Bottom" />
 
 
 
 
         <Button x:Name="_下一步_Button" Content="下一步" Click="_下一步_Button_Click" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="1"  Grid.Column="1" />
         <Button x:Name="_取消_Button" Content="取消" Click="_取消_Button_Click" HorizontalAlignment="Right" Margin="0,3,13,3" Grid.Row="1" Grid.Column="1" />
-
     </Grid>
 </controls:FloatableWindow>
