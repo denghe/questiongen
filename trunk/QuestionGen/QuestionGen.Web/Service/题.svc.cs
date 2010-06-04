@@ -25,7 +25,8 @@ namespace QuestionGen.Web.Service
             var row = new db.题.知识面 { 名称 = 名称 };
             try
             {
-                db.题.知识面.Insert(row);
+                var count = row.Insert();
+                if (count < 1) return -1;
                 return row.知识面编号;
             }
             catch
@@ -50,8 +51,7 @@ namespace QuestionGen.Web.Service
         [OperationContract]
         public byte[] 知识面_获取(byte[] 查询)
         {
-            var q = new query.题.知识面(查询);
-            return db.题.知识面.Select(q).GetBytes();
+            return db.题.知识面.Select(new query.题.知识面(查询)).GetBytes();
         }
 
         #endregion
