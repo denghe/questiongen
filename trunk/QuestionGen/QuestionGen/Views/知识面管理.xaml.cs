@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 
 using QuestionGen.Windows;
 using SqlLib;
-using db = DAL.Database.Tables;
+using 题 = DAL.Database.Tables.题;
 using query = DAL.Queries.Tables;
 
 namespace QuestionGen.Views
@@ -22,7 +22,7 @@ namespace QuestionGen.Views
     {
         服务.题Client _s = new 服务.题Client();
 
-        db.题.知识面 _selected_row = null;
+        题.知识面 _selected_row = null;
 
         public 知识面管理()
         {
@@ -33,7 +33,7 @@ namespace QuestionGen.Views
 
         void _s_知识面_获取Completed(object sender, 服务.知识面_获取CompletedEventArgs e)
         {
-            var rows = e.Result.ToList<db.题.知识面>();
+            var rows = e.Result.ToList<题.知识面>();
             _DataGrid.ItemsSource = rows;
             _刷新_Button.IsEnabled = true;
         }
@@ -62,7 +62,11 @@ namespace QuestionGen.Views
         {
             var fw = new Editor_知识面(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
-            fw.Closed += (sender1, e1) => { _刷新_Button_Click(); };
+            fw.Closed += (sender1, e1) =>
+            {
+                _selected_row_backup = _selected_row;
+                _刷新_Button_Click();
+            };
         }
 
         private void _删除_Button_Click(object sender, RoutedEventArgs e)
@@ -73,7 +77,7 @@ namespace QuestionGen.Views
         private void _DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
-                _selected_row = (db.题.知识面)e.AddedItems[0];
+                _selected_row = (题.知识面)e.AddedItems[0];
             else _selected_row = null;
             EnableControls();
         }
@@ -87,6 +91,20 @@ namespace QuestionGen.Views
             else
             {
                 _修改_Button.IsEnabled = _删除_Button.IsEnabled = true;
+            }
+        }
+
+        题.知识面 _selected_row_backup = null;
+        private void _DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (_selected_row_backup != null)
+            {
+                var row = (题.知识面)e.Row.DataContext;
+                if (row.知识面编号 == _selected_row_backup.知识面编号)
+                {
+                    _selected_row_backup = null;
+                    _DataGrid.SelectedIndex = e.Row.GetIndex();
+                }
             }
         }
     }
