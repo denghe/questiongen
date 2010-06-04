@@ -39,7 +39,7 @@ namespace QuestionGen.Web.Service
                 db.题.知识面.Insert(row);
                 return row.知识面编号;
             }
-            catch 
+            catch
             {
                 return -1;
             }
@@ -51,6 +51,12 @@ namespace QuestionGen.Web.Service
             return db.题.知识面.Select().GetBytes();
         }
 
+        [OperationContract]
+        public int 知识面_更新(int 知识面编号, string 名称)
+        {
+            var o = new db.题.知识面 { 知识面编号 = 知识面编号, 名称 = 名称 };
+            return db.题.知识面.Update(o);
+        }
 
     }
 }
