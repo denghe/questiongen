@@ -260,17 +260,17 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Windows\Editor_知识面.xaml.cs">
-      <DependentUpon>Editor_知识面.xaml</DependentUpon>
+    <Compile Include="Windows\知识面_修改.xaml.cs">
+      <DependentUpon>知识面_修改.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Creator_知识面.xaml.cs">
-      <DependentUpon>Creator_知识面.xaml</DependentUpon>
+    <Compile Include="Windows\知识面_创建.xaml.cs">
+      <DependentUpon>知识面_创建.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Creator_题_选择.xaml.cs">
-      <DependentUpon>Creator_题_选择.xaml</DependentUpon>
+    <Compile Include="Windows\题_选择_创建.xaml.cs">
+      <DependentUpon>题_选择_创建.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Creator_题.xaml.cs">
-      <DependentUpon>Creator_题.xaml</DependentUpon>
+    <Compile Include="Windows\题_创建.xaml.cs">
+      <DependentUpon>题_创建.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -282,19 +282,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Editor_知识面.xaml">
+    <Page Include="Windows\知识面_修改.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Creator_知识面.xaml">
+    <Page Include="Windows\知识面_创建.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Creator_题_选择.xaml">
+    <Page Include="Windows\题_选择_创建.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Creator_题.xaml">
+    <Page Include="Windows\题_创建.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
