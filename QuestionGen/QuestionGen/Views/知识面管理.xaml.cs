@@ -28,7 +28,7 @@ namespace QuestionGen.Views
         {
             InitializeComponent();
 
-            _s.知识面_获取Completed += new EventHandler<服务.知识面_获取CompletedEventArgs>(_s_知识面_获取Completed);
+            _s.知识面_获取Completed += _s_知识面_获取Completed;
         }
 
         void _s_知识面_获取Completed(object sender, 服务.知识面_获取CompletedEventArgs e)
@@ -43,6 +43,13 @@ namespace QuestionGen.Views
         {
         }
 
+
+
+        /// <summary>
+        /// todo: 没有数据时, 提示 无数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _刷新_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             _刷新_Button.IsEnabled = false;
@@ -59,7 +66,11 @@ namespace QuestionGen.Views
             fw.ShowDialog();
             fw.Closed += (sender1, e1) =>
             {
-                _刷新_Button_Click();
+                if (fw.DialogResult != null && fw.DialogResult.Value)
+                {
+                    _刷新_Button_Click();
+                }
+
             };
         }
 
