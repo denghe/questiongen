@@ -4987,7 +4987,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(知识面 o, Expressions.Tables.题.知识面 eh = null, ColumnEnums.Tables.题.知识面 ucs = null, ColumnEnums.Tables.题.知识面 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(知识面 o, Expressions.Tables.题.知识面 eh, ColumnEnums.Tables.题.知识面 ucs = null, ColumnEnums.Tables.题.知识面 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
