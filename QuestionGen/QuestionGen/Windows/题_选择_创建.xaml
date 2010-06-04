@@ -52,11 +52,11 @@
             <ColumnDefinition Width="522*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Left" Margin="12,2,0,0" Text="题面显示模板:" VerticalAlignment="Top" />
-        <TextBox AcceptsReturn="True" TextWrapping="Wrap"  Margin="12,24,13,0" Name="textBox2" VerticalScrollBarVisibility="Visible" Height="142" VerticalAlignment="Top" />
+        <TextBlock x:Name="_显示模板_TextBlock" HorizontalAlignment="Left" Margin="12,2,0,0" Text="题面显示模板:" VerticalAlignment="Top" />
+        <TextBox x:Name="_显示模板_TextBox" AcceptsReturn="True" TextWrapping="Wrap"  Margin="12,24,13,0" VerticalScrollBarVisibility="Visible" Height="142" VerticalAlignment="Top" />
 
 
-        <TextBlock HorizontalAlignment="Left" Margin="12,173,0,0" Text="选项显示模板:" VerticalAlignment="Top" />
+        <TextBlock x:Name="_选项_TextBlock" HorizontalAlignment="Left" Margin="12,173,0,0" Text="选项显示模板集:" VerticalAlignment="Top" />
         <ScrollViewer Name="scrollViewer1" Margin="12,195,12,0">
             <ScrollViewer.Resources>
                 <Style TargetType="TextBlock">
@@ -75,7 +75,7 @@
                     <Setter Property="TextWrapping" Value="Wrap" />
                 </Style>
             </ScrollViewer.Resources>
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+            <StackPanel x:Name="_选项_StackPanel" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock  Text="1"/>
                     <TextBox VerticalScrollBarVisibility="Visible" />
