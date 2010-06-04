@@ -51,11 +51,16 @@ namespace QuestionGen.Views
             EnableControls();
         }
 
+        题.知识面 _selected_row_backup = null;
+
         private void _创建_Button_Click(object sender, RoutedEventArgs e)
         {
             var fw = new 知识面_创建 { ParentLayoutRoot = this.LayoutRoot };
             fw.ShowDialog();
-            fw.Closed += (sender1, e1) => { _刷新_Button_Click(); };
+            fw.Closed += (sender1, e1) =>
+            {
+                _刷新_Button_Click();
+            };
         }
 
         private void _修改_Button_Click(object sender, RoutedEventArgs e)
@@ -64,14 +69,25 @@ namespace QuestionGen.Views
             fw.ShowDialog();
             fw.Closed += (sender1, e1) =>
             {
-                _selected_row_backup = _selected_row;
-                _刷新_Button_Click();
+                if (fw.DialogResult != null && fw.DialogResult.Value)
+                {
+                    _selected_row_backup = _selected_row;
+                    _刷新_Button_Click();
+                }
             };
         }
 
         private void _删除_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var fw = new 知识面_删除(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
+            fw.ShowDialog();
+            fw.Closed += (sender1, e1) =>
+            {
+                if (fw.DialogResult != null && fw.DialogResult.Value)
+                {
+                    _刷新_Button_Click();
+                }
+            };
         }
 
         private void _DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,19 +98,6 @@ namespace QuestionGen.Views
             EnableControls();
         }
 
-        void EnableControls()
-        {
-            if (_selected_row == null)
-            {
-                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
-            }
-            else
-            {
-                _修改_Button.IsEnabled = _删除_Button.IsEnabled = true;
-            }
-        }
-
-        题.知识面 _selected_row_backup = null;
         private void _DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             if (_selected_row_backup != null)
@@ -105,6 +108,22 @@ namespace QuestionGen.Views
                     _selected_row_backup = null;
                     _DataGrid.SelectedIndex = e.Row.GetIndex();
                 }
+            }
+        }
+
+
+
+
+
+        void EnableControls()
+        {
+            if (_selected_row == null)
+            {
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
+            }
+            else
+            {
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = true;
             }
         }
     }
