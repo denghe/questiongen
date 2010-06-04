@@ -27,9 +27,10 @@ namespace QuestionGen.Windows
             _s.知识面_更新Completed += new EventHandler<服务.知识面_更新CompletedEventArgs>(_s_知识面_更新Completed);
         }
 
-        public Editor_知识面(题.知识面 original_row)
+        public Editor_知识面(题.知识面 original_row) : this()
         {
             _original_row = original_row;
+            _还原_Button_Click();
         }
 
         void _s_知识面_更新Completed(object sender, 服务.知识面_更新CompletedEventArgs e)
@@ -54,7 +55,7 @@ namespace QuestionGen.Windows
             this.DialogResult = false;
         }
 
-        private void _还原_Button_Click(object sender, RoutedEventArgs e)
+        private void _还原_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             _名称_TextBox.Text = _original_row.名称;
         }
