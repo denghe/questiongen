@@ -22,6 +22,8 @@ namespace QuestionGen.Views
     {
         服务.题Client _s = new 服务.题Client();
 
+        db.题.知识面 _selected_row = null;
+
         public 知识面管理()
         {
             InitializeComponent();
@@ -45,6 +47,8 @@ namespace QuestionGen.Views
         {
             _刷新_Button.IsEnabled = false;
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
+            _selected_row = null;
+            EnableControls();
         }
 
         private void _创建_Button_Click(object sender, RoutedEventArgs e)
@@ -57,6 +61,34 @@ namespace QuestionGen.Views
         void fw_Closed(object sender, EventArgs e)
         {
             _刷新_Button_Click();
+        }
+
+        private void _修改_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _删除_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _selected_row = (db.题.知识面)e.AddedItems[0];
+            EnableControls();
+        }
+
+        void EnableControls()
+        {
+            if (_selected_row == null)
+            {
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
+            }
+            else
+            {
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
+            }
         }
     }
 }

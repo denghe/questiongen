@@ -15,11 +15,11 @@
             </StackPanel>
         </ScrollViewer>-->
 
-        <Button Content="Select" Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="_Select_Button" VerticalAlignment="Top" Width="75" Click="_Select_Button_Click" />
-        <Button Content="Insert" Height="23" HorizontalAlignment="Left" Margin="93,12,0,0" Name="_Insert_Button" VerticalAlignment="Top" Width="75" Click="_Insert_Button_Click" />
-        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="174,12,0,0" Name="_Update_Button" VerticalAlignment="Top" Width="75" />
-        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="255,12,0,0" Name="_Delete_Button" VerticalAlignment="Top" Width="75" />
-        
+        <Button Content="刷新" Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="_刷新_Button" VerticalAlignment="Top" Width="75" Click="_刷新_Button_Click" />
+        <Button Content="创建" Height="23" HorizontalAlignment="Left" Margin="115,12,0,0" Name="_创建_Button" VerticalAlignment="Top" Width="75" Click="_创建_Button_Click" />
+        <Button Content="修改" Height="23" HorizontalAlignment="Left" Margin="196,12,0,0" Name="_修改_Button" VerticalAlignment="Top" Width="75" />
+        <Button Content="删除" Height="23" HorizontalAlignment="Left" Margin="277,12,0,0" Name="_删除_Button" VerticalAlignment="Top" Width="75" />
+
         <sdk:DataGrid x:Name="_DataGrid" Margin="0,42,0,0" />
     </Grid>
 
