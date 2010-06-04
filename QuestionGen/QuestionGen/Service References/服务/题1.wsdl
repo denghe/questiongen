@@ -13,24 +13,6 @@
   <wsdl:binding name="CustomBinding_题" type="题">
     <wsp:PolicyReference URI="#CustomBinding_题_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap12:operation soapAction="urn:题/DoWork" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="题_插入">
-      <soap12:operation soapAction="urn:题/题_插入" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="知识面_插入">
       <soap12:operation soapAction="urn:题/知识面_插入" style="document" />
       <wsdl:input>
@@ -40,8 +22,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="知识面_删除">
+      <soap12:operation soapAction="urn:题/知识面_删除" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="知识面_更新">
+      <soap12:operation soapAction="urn:题/知识面_更新" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="知识面_获取">
       <soap12:operation soapAction="urn:题/知识面_获取" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="题_插入">
+      <soap12:operation soapAction="urn:题/题_插入" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
