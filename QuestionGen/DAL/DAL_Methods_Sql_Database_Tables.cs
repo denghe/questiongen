@@ -171,7 +171,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(岗位 o, Expressions.Tables.人.岗位 eh = null, ColumnEnums.Tables.人.岗位 ucs = null, ColumnEnums.Tables.人.岗位 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(岗位 o, Expressions.Tables.人.岗位 eh, ColumnEnums.Tables.人.岗位 ucs = null, ColumnEnums.Tables.人.岗位 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -559,7 +559,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(岗位_知识面 o, Expressions.Tables.人.岗位_知识面 eh = null, ColumnEnums.Tables.人.岗位_知识面 ucs = null, ColumnEnums.Tables.人.岗位_知识面 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(岗位_知识面 o, Expressions.Tables.人.岗位_知识面 eh, ColumnEnums.Tables.人.岗位_知识面 ucs = null, ColumnEnums.Tables.人.岗位_知识面 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -965,7 +965,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(附件 o, Expressions.Tables.题.附件 eh = null, ColumnEnums.Tables.题.附件 ucs = null, ColumnEnums.Tables.题.附件 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(附件 o, Expressions.Tables.题.附件 eh, ColumnEnums.Tables.题.附件 ucs = null, ColumnEnums.Tables.题.附件 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -1353,7 +1353,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(类型 o, Expressions.Tables.题.类型 eh = null, ColumnEnums.Tables.题.类型 ucs = null, ColumnEnums.Tables.题.类型 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(类型 o, Expressions.Tables.题.类型 eh, ColumnEnums.Tables.题.类型 ucs = null, ColumnEnums.Tables.题.类型 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -1863,7 +1863,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题 o, Expressions.Tables.题.题 eh = null, ColumnEnums.Tables.题.题 ucs = null, ColumnEnums.Tables.题.题 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题 o, Expressions.Tables.题.题 eh, ColumnEnums.Tables.题.题 ucs = null, ColumnEnums.Tables.题.题 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -2319,7 +2319,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_连线 o, Expressions.Tables.题.题_连线 eh = null, ColumnEnums.Tables.题.题_连线 ucs = null, ColumnEnums.Tables.题.题_连线 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_连线 o, Expressions.Tables.题.题_连线 eh, ColumnEnums.Tables.题.题_连线 ucs = null, ColumnEnums.Tables.题.题_连线 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -2584,9 +2584,6 @@ DELETE FROM [题].[题_连线]";
             return Select(o => o.题编号.Equal(c0), columns: columns).FirstOrDefault();
         }
 
-        /// <summary>
-        /// o.题编号 == parent.题编号
-        /// </summary>
         public static List<题_连线_答案> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.题编号 == parent.题编号);
             var q = query(new Queries.Tables.题.题_连线_答案());
@@ -2595,9 +2592,6 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        /// <summary>
-        /// o.连线编号A == parent.连线编号
-        /// </summary>
         public static List<题_连线_答案> Select(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.连线编号A == parent.连线编号);
             var q = query(new Queries.Tables.题.题_连线_答案());
@@ -2606,9 +2600,6 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        /// <summary>
-        /// o.连线编号B == parent.连线编号
-        /// </summary>
         public static List<题_连线_答案> Select1(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.连线编号B == parent.连线编号);
             var q = query(new Queries.Tables.题.题_连线_答案());
@@ -2733,7 +2724,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_连线_答案 o, Expressions.Tables.题.题_连线_答案 eh = null, ColumnEnums.Tables.题.题_连线_答案 ucs = null, ColumnEnums.Tables.题.题_连线_答案 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_连线_答案 o, Expressions.Tables.题.题_连线_答案 eh, ColumnEnums.Tables.题.题_连线_答案 ucs = null, ColumnEnums.Tables.题.题_连线_答案 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -3105,7 +3096,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_判断 o, Expressions.Tables.题.题_判断 eh = null, ColumnEnums.Tables.题.题_判断 ucs = null, ColumnEnums.Tables.题.题_判断 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_判断 o, Expressions.Tables.题.题_判断 eh, ColumnEnums.Tables.题.题_判断 ucs = null, ColumnEnums.Tables.题.题_判断 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -3483,7 +3474,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_填空_答案 o, Expressions.Tables.题.题_填空_答案 eh = null, ColumnEnums.Tables.题.题_填空_答案 ucs = null, ColumnEnums.Tables.题.题_填空_答案 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_填空_答案 o, Expressions.Tables.题.题_填空_答案 eh, ColumnEnums.Tables.题.题_填空_答案 ucs = null, ColumnEnums.Tables.题.题_填空_答案 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -3855,7 +3846,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_问答 o, Expressions.Tables.题.题_问答 eh = null, ColumnEnums.Tables.题.题_问答 ucs = null, ColumnEnums.Tables.题.题_问答 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_问答 o, Expressions.Tables.题.题_问答 eh, ColumnEnums.Tables.题.题_问答 ucs = null, ColumnEnums.Tables.题.题_问答 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -4241,7 +4232,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_选择_答案 o, Expressions.Tables.题.题_选择_答案 eh = null, ColumnEnums.Tables.题.题_选择_答案 ucs = null, ColumnEnums.Tables.题.题_选择_答案 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_选择_答案 o, Expressions.Tables.题.题_选择_答案 eh, ColumnEnums.Tables.题.题_选择_答案 ucs = null, ColumnEnums.Tables.题.题_选择_答案 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
@@ -4632,7 +4623,7 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_选择_选项 o, Expressions.Tables.题.题_选择_选项 eh = null, ColumnEnums.Tables.题.题_选择_选项 ucs = null, ColumnEnums.Tables.题.题_选择_选项 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_选择_选项 o, Expressions.Tables.题.题_选择_选项 eh, ColumnEnums.Tables.题.题_选择_选项 ucs = null, ColumnEnums.Tables.题.题_选择_选项 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
