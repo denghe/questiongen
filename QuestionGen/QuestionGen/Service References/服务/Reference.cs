@@ -19,17 +19,17 @@ namespace QuestionGen.服务 {
     public interface 题 {
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_插入", ReplyAction="urn:题/知识面_插入Response")]
-        System.IAsyncResult Begin知识面_插入(string 名称, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult Begin知识面_插入(byte[] 知识面, System.AsyncCallback callback, object asyncState);
         
         int End知识面_插入(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_删除", ReplyAction="urn:题/知识面_删除Response")]
-        System.IAsyncResult Begin知识面_删除(int 知识面编号, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState);
         
         int End知识面_删除(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_更新", ReplyAction="urn:题/知识面_更新Response")]
-        System.IAsyncResult Begin知识面_更新(int 知识面编号, string 名称, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult Begin知识面_更新(byte[] 知识面, System.AsyncCallback callback, object asyncState);
         
         int End知识面_更新(System.IAsyncResult result);
         
@@ -245,8 +245,8 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult QuestionGen.服务.题.Begin知识面_插入(string 名称, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Begin知识面_插入(名称, callback, asyncState);
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_插入(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_插入(知识面, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -255,8 +255,8 @@ namespace QuestionGen.服务 {
         }
         
         private System.IAsyncResult OnBegin知识面_插入(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string 名称 = ((string)(inValues[0]));
-            return ((QuestionGen.服务.题)(this)).Begin知识面_插入(名称, callback, asyncState);
+            byte[] 知识面 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin知识面_插入(知识面, callback, asyncState);
         }
         
         private object[] OnEnd知识面_插入(System.IAsyncResult result) {
@@ -272,11 +272,11 @@ namespace QuestionGen.服务 {
             }
         }
         
-        public void 知识面_插入Async(string 名称) {
-            this.知识面_插入Async(名称, null);
+        public void 知识面_插入Async(byte[] 知识面) {
+            this.知识面_插入Async(知识面, null);
         }
         
-        public void 知识面_插入Async(string 名称, object userState) {
+        public void 知识面_插入Async(byte[] 知识面, object userState) {
             if ((this.onBegin知识面_插入Delegate == null)) {
                 this.onBegin知识面_插入Delegate = new BeginOperationDelegate(this.OnBegin知识面_插入);
             }
@@ -287,12 +287,12 @@ namespace QuestionGen.服务 {
                 this.on知识面_插入CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_插入Completed);
             }
             base.InvokeAsync(this.onBegin知识面_插入Delegate, new object[] {
-                        名称}, this.onEnd知识面_插入Delegate, this.on知识面_插入CompletedDelegate, userState);
+                        知识面}, this.onEnd知识面_插入Delegate, this.on知识面_插入CompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult QuestionGen.服务.题.Begin知识面_删除(int 知识面编号, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Begin知识面_删除(知识面编号, callback, asyncState);
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_删除(知识面, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -301,8 +301,8 @@ namespace QuestionGen.服务 {
         }
         
         private System.IAsyncResult OnBegin知识面_删除(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int 知识面编号 = ((int)(inValues[0]));
-            return ((QuestionGen.服务.题)(this)).Begin知识面_删除(知识面编号, callback, asyncState);
+            byte[] 知识面 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin知识面_删除(知识面, callback, asyncState);
         }
         
         private object[] OnEnd知识面_删除(System.IAsyncResult result) {
@@ -318,11 +318,11 @@ namespace QuestionGen.服务 {
             }
         }
         
-        public void 知识面_删除Async(int 知识面编号) {
-            this.知识面_删除Async(知识面编号, null);
+        public void 知识面_删除Async(byte[] 知识面) {
+            this.知识面_删除Async(知识面, null);
         }
         
-        public void 知识面_删除Async(int 知识面编号, object userState) {
+        public void 知识面_删除Async(byte[] 知识面, object userState) {
             if ((this.onBegin知识面_删除Delegate == null)) {
                 this.onBegin知识面_删除Delegate = new BeginOperationDelegate(this.OnBegin知识面_删除);
             }
@@ -333,12 +333,12 @@ namespace QuestionGen.服务 {
                 this.on知识面_删除CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_删除Completed);
             }
             base.InvokeAsync(this.onBegin知识面_删除Delegate, new object[] {
-                        知识面编号}, this.onEnd知识面_删除Delegate, this.on知识面_删除CompletedDelegate, userState);
+                        知识面}, this.onEnd知识面_删除Delegate, this.on知识面_删除CompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult QuestionGen.服务.题.Begin知识面_更新(int 知识面编号, string 名称, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Begin知识面_更新(知识面编号, 名称, callback, asyncState);
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_更新(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_更新(知识面, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -347,9 +347,8 @@ namespace QuestionGen.服务 {
         }
         
         private System.IAsyncResult OnBegin知识面_更新(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int 知识面编号 = ((int)(inValues[0]));
-            string 名称 = ((string)(inValues[1]));
-            return ((QuestionGen.服务.题)(this)).Begin知识面_更新(知识面编号, 名称, callback, asyncState);
+            byte[] 知识面 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin知识面_更新(知识面, callback, asyncState);
         }
         
         private object[] OnEnd知识面_更新(System.IAsyncResult result) {
@@ -365,11 +364,11 @@ namespace QuestionGen.服务 {
             }
         }
         
-        public void 知识面_更新Async(int 知识面编号, string 名称) {
-            this.知识面_更新Async(知识面编号, 名称, null);
+        public void 知识面_更新Async(byte[] 知识面) {
+            this.知识面_更新Async(知识面, null);
         }
         
-        public void 知识面_更新Async(int 知识面编号, string 名称, object userState) {
+        public void 知识面_更新Async(byte[] 知识面, object userState) {
             if ((this.onBegin知识面_更新Delegate == null)) {
                 this.onBegin知识面_更新Delegate = new BeginOperationDelegate(this.OnBegin知识面_更新);
             }
@@ -380,8 +379,7 @@ namespace QuestionGen.服务 {
                 this.on知识面_更新CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_更新Completed);
             }
             base.InvokeAsync(this.onBegin知识面_更新Delegate, new object[] {
-                        知识面编号,
-                        名称}, this.onEnd知识面_更新Delegate, this.on知识面_更新CompletedDelegate, userState);
+                        知识面}, this.onEnd知识面_更新Delegate, this.on知识面_更新CompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -552,9 +550,9 @@ namespace QuestionGen.服务 {
                     base(client) {
             }
             
-            public System.IAsyncResult Begin知识面_插入(string 名称, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult Begin知识面_插入(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
-                _args[0] = 名称;
+                _args[0] = 知识面;
                 System.IAsyncResult _result = base.BeginInvoke("知识面_插入", _args, callback, asyncState);
                 return _result;
             }
@@ -565,9 +563,9 @@ namespace QuestionGen.服务 {
                 return _result;
             }
             
-            public System.IAsyncResult Begin知识面_删除(int 知识面编号, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
-                _args[0] = 知识面编号;
+                _args[0] = 知识面;
                 System.IAsyncResult _result = base.BeginInvoke("知识面_删除", _args, callback, asyncState);
                 return _result;
             }
@@ -578,10 +576,9 @@ namespace QuestionGen.服务 {
                 return _result;
             }
             
-            public System.IAsyncResult Begin知识面_更新(int 知识面编号, string 名称, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[2];
-                _args[0] = 知识面编号;
-                _args[1] = 名称;
+            public System.IAsyncResult Begin知识面_更新(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 知识面;
                 System.IAsyncResult _result = base.BeginInvoke("知识面_更新", _args, callback, asyncState);
                 return _result;
             }
