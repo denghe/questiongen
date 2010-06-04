@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 
 using SqlLib;
+using DAL.Database.Tables;
 using db = DAL.Database.Tables;
 using query = DAL.Queries.Tables;
 
@@ -43,7 +44,7 @@ namespace QuestionGen.Web.Service
         [OperationContract]
         public int 知识面_更新(int 知识面编号, string 名称)
         {
-            return db.题.知识面.Update(new db.题.知识面 { 知识面编号 = 知识面编号, 名称 = 名称 });
+            return new db.题.知识面 { 知识面编号 = 知识面编号, 名称 = 名称 }.Update();
         }
 
         [OperationContract]
