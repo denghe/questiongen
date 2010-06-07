@@ -53,7 +53,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock x:Name="_显示模板_TextBlock" HorizontalAlignment="Left" Margin="12,2,0,0" Text="题面显示模板:" VerticalAlignment="Top" />
-        <TextBox x:Name="_显示模板_TextBox" AcceptsReturn="True" TextWrapping="Wrap"  Margin="12,24,13,0" VerticalScrollBarVisibility="Visible" Height="142" VerticalAlignment="Top" />
+        <TextBox x:Name="_显示模板_TextBox" AcceptsReturn="True" TextWrapping="Wrap"  Margin="12,24,13,0" VerticalScrollBarVisibility="Visible" Height="142" VerticalAlignment="Top" TextChanged="_显示模板_TextBox_TextChanged" Text="&lt;c/&gt;" />
 
 
         <TextBlock x:Name="_选项_TextBlock" HorizontalAlignment="Left" Margin="12,173,0,0" Text="选项显示模板集:" VerticalAlignment="Top" />
@@ -90,7 +90,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock  Text="4"/>
-                    <TextBox VerticalScrollBarVisibility="Visible" />
+                    <TextBox VerticalScrollBarVisibility="Visible" Text="" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
@@ -132,11 +132,13 @@
         </ScrollViewer>
         
         <TextBlock HorizontalAlignment="Left" Margin="0,90,0,0" Text="输出效果预览:" VerticalAlignment="Top" Grid.Column="1" />
-        <RichTextBox Grid.Column="1" Margin="0,112,13,0" Name="richTextBox1" />
+        <RichTextBox x:Name="_预览_RichTextBox" Grid.Column="1" Margin="0,112,13,0" />
 
 
-        <Button x:Name="OKButton" Content="提交" Click="OKButton_Click" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="1"  Grid.Column="1" />
-        <Button x:Name="CancelButton" Content="取消" Click="CancelButton_Click" HorizontalAlignment="Right" Margin="0,3,13,3" Grid.Row="1" Grid.Column="1" />
-
+        <Button x:Name="_预览_Button" Content="预览" HorizontalAlignment="Right" Margin="0,0,175,3" Grid.Row="1"  Grid.Column="1" Height="23" VerticalAlignment="Bottom" Click="_预览_Button_Click" />
+        <Button x:Name="_提交_Button" Content="提交" HorizontalAlignment="Right" Margin="0,0,94,3" Grid.Row="1"  Grid.Column="1" Click="_提交_Button_Click" Height="23" VerticalAlignment="Bottom" />
+        <Button x:Name="_取消_Button" Content="取消" HorizontalAlignment="Right" Margin="0,0,13,3" Grid.Row="1" Grid.Column="1" Click="_取消_Button_Click" Height="23" VerticalAlignment="Bottom" />
+        <Button x:Name="_帮助_Button" Content="帮助" HorizontalAlignment="Left" Margin="12,0,0,3" VerticalAlignment="Bottom" Grid.Row="1" Click="_帮助_Button_Click" IsEnabled="False" />
+        <Button x:Name="_重置_Button" Content="重置" HorizontalAlignment="Left" Margin="93,0,0,3" VerticalAlignment="Bottom" Grid.Row="1" Click="_重置_Button_Click" IsEnabled="True" />
     </Grid>
 </controls:FloatableWindow>
