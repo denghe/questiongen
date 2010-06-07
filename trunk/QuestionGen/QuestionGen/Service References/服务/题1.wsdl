@@ -40,6 +40,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="题_插入">
+      <soap12:operation soapAction="urn:题/题_插入" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="知识面_获取">
       <soap12:operation soapAction="urn:题/知识面_获取" style="document" />
       <wsdl:input>
@@ -49,8 +58,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="题_插入">
-      <soap12:operation soapAction="urn:题/题_插入" style="document" />
+    <wsdl:operation name="题_获取">
+      <soap12:operation soapAction="urn:题/题_获取" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="题_选择_选项_获取">
+      <soap12:operation soapAction="urn:题/题_选择_选项_获取" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="题_选择_答案_获取">
+      <soap12:operation soapAction="urn:题/题_选择_答案_获取" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
