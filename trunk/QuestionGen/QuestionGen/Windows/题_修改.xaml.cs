@@ -19,14 +19,15 @@ namespace QuestionGen.Windows
 {
     public partial class 题_修改 : FloatableWindow
     {
-        服务.题Client _s = new 服务.题Client();
+        服务.题Client _s = null;
         题.题 _题 = null;
         List<题.知识面> _知识面s = null;
 
         public 题_修改(题.题 row)
         {
             InitializeComponent();
-
+            _s = new 服务.题Client();
+            _题 = row;
             _s.知识面_获取Completed += (sender1, e1) =>
             {
                 _知识面s = e1.Result.ToList<题.知识面>();
@@ -35,11 +36,10 @@ namespace QuestionGen.Windows
                 _知识面_ComboBox.ItemsSource = _知识面s;
                 _知识面_ComboBox.SelectedIndex = 0;
                 _下一步_Button.IsEnabled = true;
+
+                SetValues(_题);
             };
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
-
-            _题 = row;
-            SetValues(_题);
         }
 
         private void SetValues(题.题 o)

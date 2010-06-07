@@ -25,7 +25,7 @@ namespace QuestionGen.Windows
     {
         #region 字段
 
-        题.题 _题 = null;
+        选择题 _选择题 = null;
         服务.题Client _s = null;
         Timer _timer = null;
 
@@ -43,7 +43,12 @@ namespace QuestionGen.Windows
         public 题_选择_修改(题.题 o)
             : this()
         {
-            _题 = o;
+            _选择题 = new 选择题 { 题 = o };
+
+            // todo: 从 WCF 读所有数据
+
+            // 数据读到之后 SetValues
+
             _s = new 服务.题Client();
             _s.题_插入Completed += new EventHandler<服务.题_插入CompletedEventArgs>(_s_题_插入Completed);
         }
@@ -201,6 +206,10 @@ namespace QuestionGen.Windows
         }
 
         #endregion
+
+        private void SetValues()
+        {
+        }
 
         #region GetValues
 
