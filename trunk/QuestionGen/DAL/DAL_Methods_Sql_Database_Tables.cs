@@ -2600,7 +2600,7 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select1(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.连线编号B == parent.连线编号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.连线编号B == parent.连线编号);
@@ -4458,7 +4458,7 @@ DELETE FROM [题].[题_选择_答案]";
                             if(cols.Contains(0)) {row.选项编号 = reader.GetInt32(i); i++; }
                             else if(i < count && cols.Contains(1)) {row.题编号 = reader.GetInt32(i); i++; }
                             else if(i < count && cols.Contains(2)) {row.显示模板 = reader.GetString(i); i++; }
-                            else if(i < count && cols.Contains(3)) {row.排序 = reader.GetDateTime(i); i++; }
+                            else if(i < count && cols.Contains(3)) {row.排序 = reader.GetInt32(i); i++; }
                         }
                         rows.Add(row);
                     }
@@ -4472,7 +4472,7 @@ DELETE FROM [题].[题_选择_答案]";
                             选项编号 = reader.GetInt32(0),
                             题编号 = reader.GetInt32(1),
                             显示模板 = reader.GetString(2),
-                            排序 = reader.GetDateTime(3)
+                            排序 = reader.GetInt32(3)
                         });
                     }
                 }
@@ -4541,7 +4541,7 @@ INSERT INTO [题].[题_选择_选项] (");
 			}
 			if (ics == null || ics.Contains(3))
 			{
-                cmd.Parameters.Add(new SqlParameter("排序", SqlDbType.DateTime, 0, ParameterDirection.Input, 0, 0, "排序", DataRowVersion.Current, false, o.排序, "", "", ""));
+                cmd.Parameters.Add(new SqlParameter("排序", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "排序", DataRowVersion.Current, false, o.排序, "", "", ""));
 				sb.Append((isFirst ? @"
        " : @"
      , ") + "[排序]");
@@ -4590,7 +4590,7 @@ VALUES (");
                         o.选项编号 = reader.GetInt32(0);
                         o.题编号 = reader.GetInt32(1);
                         o.显示模板 = reader.GetString(2);
-                        o.排序 = reader.GetDateTime(3);
+                        o.排序 = reader.GetInt32(3);
                     }
                 }
                 else
@@ -4602,7 +4602,7 @@ VALUES (");
                             if(fcs.Contains(0)) {o.选项编号 = reader.GetInt32(i); i++; }
                             else if(i < fccount && fcs.Contains(1)) {o.题编号 = reader.GetInt32(i); i++; }
                             else if(i < fccount && fcs.Contains(2)) {o.显示模板 = reader.GetString(i); i++; }
-                            else if(i < fccount && fcs.Contains(3)) {o.排序 = reader.GetDateTime(i); i++; }
+                            else if(i < fccount && fcs.Contains(3)) {o.排序 = reader.GetInt32(i); i++; }
                         }
                     }
                 }
@@ -4647,7 +4647,7 @@ UPDATE [题].[题_选择_选项]
 			}
 			if (ucs == null || ucs.Contains(3))
 			{
-                cmd.Parameters.Add(new SqlParameter("排序", SqlDbType.DateTime, 0, ParameterDirection.Input, 0, 0, "排序", DataRowVersion.Current, false, o.排序, "", "", ""));
+                cmd.Parameters.Add(new SqlParameter("排序", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "排序", DataRowVersion.Current, false, o.排序, "", "", ""));
 				sb.Append((isFirst ? @"" : @"
      , ") + "[排序] = @排序");
 				isFirst = false;
@@ -4687,7 +4687,7 @@ OUTPUT ");
                         o.选项编号 = reader.GetInt32(0);
                         o.题编号 = reader.GetInt32(1);
                         o.显示模板 = reader.GetString(2);
-                        o.排序 = reader.GetDateTime(3);
+                        o.排序 = reader.GetInt32(3);
                     }
                 }
                 else
@@ -4699,7 +4699,7 @@ OUTPUT ");
                             if(fcs.Contains(0)) {o.选项编号 = reader.GetInt32(i); i++; }
                             else if(i < fccount && fcs.Contains(1)) {o.题编号 = reader.GetInt32(i); i++; }
                             else if(i < fccount && fcs.Contains(2)) {o.显示模板 = reader.GetString(i); i++; }
-                            else if(i < fccount && fcs.Contains(3)) {o.排序 = reader.GetDateTime(i); i++; }
+                            else if(i < fccount && fcs.Contains(3)) {o.排序 = reader.GetInt32(i); i++; }
                         }
                     }
                 }

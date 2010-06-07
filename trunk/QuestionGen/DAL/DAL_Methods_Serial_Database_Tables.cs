@@ -466,7 +466,7 @@ namespace DAL.Database.Tables.题
             this.选项编号 = buffer.ToInt32(ref startIndex);
             this.题编号 = buffer.ToInt32(ref startIndex);
             this.显示模板 = buffer.ToString(ref startIndex);
-            this.排序 = buffer.ToDateTime(ref startIndex);
+            this.排序 = buffer.ToInt32(ref startIndex);
         }
         #endregion
 

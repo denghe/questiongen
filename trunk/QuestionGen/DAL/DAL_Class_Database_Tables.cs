@@ -254,7 +254,7 @@ namespace DAL.Database.Tables.题
 		/// <summary>
 		/// 
 		/// </summary>
-        public DateTime   排序   { get; set; }
+        public int        排序   { get; set; }
     }
 	/// <summary>
 	/// 
