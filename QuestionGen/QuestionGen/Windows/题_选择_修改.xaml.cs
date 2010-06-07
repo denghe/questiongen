@@ -21,7 +21,7 @@ using QuestionGen.Modules;
 
 namespace QuestionGen.Windows
 {
-    public partial class 题_选择_创建 : FloatableWindow
+    public partial class 题_选择_修改 : FloatableWindow
     {
         #region 字段
 
@@ -33,14 +33,14 @@ namespace QuestionGen.Windows
 
         #region 构造函数
 
-        public 题_选择_创建()
+        public 题_选择_修改()
         {
             InitializeComponent();
 
             _重置_Button_Click();
         }
 
-        public 题_选择_创建(题.题 o)
+        public 题_选择_修改(题.题 o)
             : this()
         {
             _题 = o;
