@@ -240,6 +240,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\选择题.cs" />
     <Compile Include="Service References\服务\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -261,6 +262,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\题_选择_修改.xaml.cs">
+      <DependentUpon>题_选择_修改.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\题_修改.xaml.cs">
       <DependentUpon>题_修改.xaml</DependentUpon>
     </Compile>
@@ -286,6 +290,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\知识面管理.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\题_选择_修改.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
