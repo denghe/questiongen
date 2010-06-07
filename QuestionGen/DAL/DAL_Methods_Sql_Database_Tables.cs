@@ -2600,7 +2600,7 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select1(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.连线编号B == parent.连线编号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.连线编号B == parent.连线编号);

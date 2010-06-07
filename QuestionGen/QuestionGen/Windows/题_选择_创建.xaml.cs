@@ -14,20 +14,32 @@ using System.Xml;
 using System.Xml.Linq;
 
 using 题 = DAL.Database.Tables.题;
+using SqlLib;
+using DAL.Database.Tables;
+using query = DAL.Queries.Tables;
 
 namespace QuestionGen.Windows
 {
+    #region 类:选择题
     public partial class 选择题
     {
         public 题.题 题 { get; set; }
         public List<题.题_选择_选项> 选项 { get; set; }
         public List<题.题_选择_答案> 答案 { get; set; }
     }
+    #endregion
 
     public partial class 题_选择_创建 : FloatableWindow
     {
-        选择题 _选择题 = null;
+        #region 字段
+
+        题.题 _题 = null;
+        服务.题Client _s = null;
         Timer _timer = null;
+
+        #endregion
+
+        #region 构造函数
 
         public 题_选择_创建()
         {
@@ -39,13 +51,12 @@ namespace QuestionGen.Windows
         public 题_选择_创建(题.题 o)
             : this()
         {
-            _选择题 = new 选择题
-            {
-                题 = o,
-                选项 = new List<题.题_选择_选项>(),
-                答案 = new List<题.题_选择_答案>()
-            };
+            _题 = o;
+            _s = new 服务.题Client();
+            _s.题_插入Completed += new EventHandler<服务.题_插入CompletedEventArgs>(_s_题_插入Completed);
         }
+
+        #endregion
 
         #region 实现自动添加选项
 
@@ -199,6 +210,8 @@ namespace QuestionGen.Windows
 
         #endregion
 
+        #region GetValues
+
         /// <summary>
         /// 将控件内容填充到 选择题 容器 并返回
         /// </summary>
@@ -206,14 +219,13 @@ namespace QuestionGen.Windows
         {
             var result = new 选择题
             {
-                题 = new 题.题(),
+                题 = _题,
                 选项 = new List<题.题_选择_选项>(),
                 答案 = new List<题.题_选择_答案>()
             };
 
-            _选择题.题.显示模板 = _显示模板_TextBox.Text.Trim();
-            _选择题.选项.Clear();
-            _选择题.答案.Clear();
+            result.题.更新时间 = DateTime.Now;
+            result.题.显示模板 = _显示模板_TextBox.Text.Trim();
 
             for (int i = 0; i < _选项_StackPanel.Children.Count; i++)
             {
@@ -221,7 +233,7 @@ namespace QuestionGen.Windows
                 var idx = int.Parse(((TextBlock)sp.Children[0]).Text);
                 var txt = ((TextBox)sp.Children[1]).Text;
                 if (i == _选项_StackPanel.Children.Count - 1 && txt.Length == 0) continue;
-                _选择题.选项.Add(new 题.题_选择_选项 { 选项编号 = idx, 显示模板 = txt });
+                result.选项.Add(new 题.题_选择_选项 { 选项编号 = idx, 显示模板 = txt });
             }
 
             for (int i = 0; i < _答案格子_StackPanel.Children.Count; i++)
@@ -233,18 +245,16 @@ namespace QuestionGen.Windows
                 {
                     var txt = ((TextBox)uie).Text;
                     if (txt.Length == 0) continue;
-                    _选择题.答案.Add(new 题.题_选择_答案 { 格子序号 = idx, 选项编号 = int.Parse(txt) });
+                    result.答案.Add(new 题.题_选择_答案 { 格子序号 = idx, 选项编号 = int.Parse(txt) });
                 }
             }
 
             return result;
         }
 
-        private void _帮助_Button_Click(object sender, RoutedEventArgs e)
-        {
-            // todo: 弹出帮助示例窗口
-        }
+        #endregion
 
+        #region 重置控件显示
 
         private void _重置_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
@@ -259,8 +269,9 @@ namespace QuestionGen.Windows
             _答案格子_StackPanel.Children.Clear();
         }
 
+        #endregion
 
-
+        #region 预览
 
         private void _预览_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -393,26 +404,54 @@ namespace QuestionGen.Windows
                         Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[a.选项编号 - 1] + " "
                     });
                 }
-                //"ABCDEFGHIJKLMNOPQRSTUVWXYZ"[c.选项编号 - 1]
             }
-
 
             _预览_RichTextBox.Blocks.Add(p);
         }
 
+        #endregion
+
+        void _s_题_插入Completed(object sender, 服务.题_插入CompletedEventArgs e)
+        {
+            if (e.Result > 0)
+            {
+                this.DialogResult = true;
+            }
+            else
+            {
+                _提交_Button.IsEnabled = true;
+                MessageBox.Show("保存失败!");
+            }
+        }
 
         private void _提交_Button_Click(object sender, RoutedEventArgs e)
         {
-            // todo: 从控件取值
-
-            // todo: 保存
-
-            this.DialogResult = true;
+            选择题 result = null;
+            try
+            {
+                result = GetValues();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (result != null)
+            {
+                _提交_Button.IsEnabled = false;
+                _s.题_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
+            }
         }
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+
+
+        private void _帮助_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // todo: 弹出帮助示例窗口
         }
 
     }
