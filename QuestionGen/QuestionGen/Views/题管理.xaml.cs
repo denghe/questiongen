@@ -68,7 +68,16 @@ namespace QuestionGen.Views
 
         private void _修改_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var fw = new 题_修改(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
+            fw.ShowDialog();
+            fw.Closed += (sender1, e1) =>
+            {
+                if (fw.DialogResult != null && fw.DialogResult.Value)
+                {
+                    _selected_row_backup = _selected_row;
+                    _刷新_Button_Click();
+                }
+            };
         }
 
         private void _删除_Button_Click(object sender, RoutedEventArgs e)
