@@ -87,7 +87,7 @@ namespace DAL.Expressions.Tables.题
         public ExpNode_Int32<题_选择_选项> 选项编号 { get { return this.New_Int32(@"选项编号"); } }
         public ExpNode_Int32<题_选择_选项> 题编号 { get { return this.New_Int32(@"题编号"); } }
         public ExpNode_String<题_选择_选项> 显示模板 { get { return this.New_String(@"显示模板"); } }
-        public ExpNode_DateTime<题_选择_选项> 排序 { get { return this.New_DateTime(@"排序"); } }
+        public ExpNode_Int32<题_选择_选项> 排序 { get { return this.New_Int32(@"排序"); } }
     }
     public partial class 知识面 : LogicalNode<知识面>
     {
