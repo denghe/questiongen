@@ -46,7 +46,7 @@ namespace QuestionGen.Windows
             _选择题 = o;
 
             _s = new 服务.题Client();
-            _s.题_插入Completed += new EventHandler<服务.题_插入CompletedEventArgs>(_s_题_插入Completed);
+            _s.题_修改Completed += new EventHandler<服务.题_修改CompletedEventArgs>(_s_题_修改Completed);
 
             SetValues(o);
         }
@@ -55,7 +55,7 @@ namespace QuestionGen.Windows
 
         #region 实现自动添加选项
 
-        private void 添加选项(int i)
+        private void 添加选项(int i, string text = "")
         {
 
             /*
@@ -67,7 +67,7 @@ namespace QuestionGen.Windows
 
             var sp = new StackPanel { Orientation = Orientation.Horizontal };
             var tbl = new TextBlock { Text = i.ToString() };
-            var tb = new TextBox { Text = "", Tag = i, VerticalScrollBarVisibility = ScrollBarVisibility.Visible };
+            var tb = new TextBox { Text = text, Tag = i, VerticalScrollBarVisibility = ScrollBarVisibility.Visible };
             tb.TextChanged += new TextChangedEventHandler(选项_TextChanged);
             sp.Children.Add(tbl);
             sp.Children.Add(tb);
@@ -123,7 +123,7 @@ namespace QuestionGen.Windows
             }
         }
 
-        private void 添加答案格子组(int i)
+        private StackPanel 添加答案格子组(int i)
         {
             /*
 <StackPanel Orientation="Horizontal">
@@ -143,11 +143,12 @@ namespace QuestionGen.Windows
             sp.Children.Add(sp_1);
             添加答案格子(sp_1, 1);
             _答案格子_StackPanel.Children.Add(sp);
+            return sp_1;
         }
 
-        private void 添加答案格子(StackPanel parent, int i)
+        private void 添加答案格子(StackPanel parent, int i, string text = "")
         {
-            var tb = new TextBox { Tag = i };
+            var tb = new TextBox { Text = text, Tag = i };
             tb.TextChanged += new TextChangedEventHandler(答案格子_TextChanged);
             parent.Children.Add(tb);
         }
@@ -207,7 +208,31 @@ namespace QuestionGen.Windows
 
         private void SetValues(选择题 o)
         {
-            // todo
+            _显示模板_TextBox.Text = o.题.显示模板;
+
+            _选项_StackPanel.Children.Clear();
+            _答案格子_StackPanel.Children.Clear();
+
+            foreach (var c in o.选项)
+            {
+                添加选项(c.选项序号, c.显示模板);
+            }
+            添加选项(o.选项.Last().选项序号 + 1);
+
+            var gs = from answer in o.答案 group answer by answer.格子序号 into g select g;
+            foreach (var g in gs)
+            {
+                var sp = 添加答案格子组(g.Key);
+                sp.Children.Clear();
+                var answers = g.ToList();
+                for (int i = 0; i < answers.Count; i++)
+                {
+                    添加答案格子(sp, i + 1, answers[i].选项序号.ToString());
+                }
+                添加答案格子(sp, answers.Count + 1);
+            }
+
+            _预览_Button_Click();
         }
 
         #region GetValues
@@ -273,7 +298,7 @@ namespace QuestionGen.Windows
 
         #region 预览
 
-        private void _预览_Button_Click(object sender, RoutedEventArgs e)
+        private void _预览_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             var result = GetValues();
 
@@ -411,7 +436,7 @@ namespace QuestionGen.Windows
 
         #endregion
 
-        void _s_题_插入Completed(object sender, 服务.题_插入CompletedEventArgs e)
+        void _s_题_修改Completed(object sender, 服务.题_修改CompletedEventArgs e)
         {
             if (e.Result > 0)
             {
@@ -438,7 +463,7 @@ namespace QuestionGen.Windows
             if (result != null)
             {
                 _提交_Button.IsEnabled = false;
-                _s.题_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
+                _s.题_修改Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
             }
         }
 

@@ -24,12 +24,12 @@ namespace QuestionGen.Windows
         题.题 _题 = null;
         List<题.知识面> _知识面s = null;
 
-        public 题_修改(题.题 row)
+        public 题_修改(题.题 o)
         {
             InitializeComponent();
 
             _s = new 服务.题Client();
-            _题 = row;
+            _题 = o;
 
             _s.知识面_获取Completed += (sender1, e1) =>
             {
@@ -70,11 +70,12 @@ namespace QuestionGen.Windows
                     break;
             }
             _难度系数_Slider.Value = o.难度系数;
+            _知识面_ComboBox.SelectedIndex = 0;
             for (int i = 0; i < _知识面s.Count; i++)
             {
                 if (_知识面s[i].知识面编号 == o.知识面编号)
                 {
-                    _知识面_ComboBox.SelectedIndex = i + 1;
+                    _知识面_ComboBox.SelectedIndex = i;
                     break;
                 }
             }
@@ -90,6 +91,7 @@ namespace QuestionGen.Windows
                 难度系数 = (int)_难度系数_Slider.Value,
                 考核意图 = _考核意图_TextBox.Text.Trim(),
                 知识面编号 = (_知识面_ComboBox.SelectedItem as 题.知识面).知识面编号,
+                备注 = _备注_TextBox.Text.Trim(),
                 是否启用 = _是否启用_CheckBox.IsChecked.Value
             };
             if (_类型_选择_RadioButton.IsChecked.Value)
@@ -119,23 +121,24 @@ namespace QuestionGen.Windows
         private void _下一步_Button_Click(object sender, RoutedEventArgs e)
         {
             var o = GetValues();
-            o.更新时间 = DateTime.Now;
-            o.题编号 = _题.题编号;
-            o.新版题编号 = _题.新版题编号;
-            o.显示模板 = _题.显示模板;
-            _题 = o;
+            _题.难度系数 = o.难度系数;
+            _题.考核意图 = o.考核意图;
+            _题.知识面编号 = o.知识面编号;
+            _题.备注 = o.备注;
+            _题.是否启用 = o.是否启用;
 
-            switch (o.类型编号)
+            switch (_题.类型编号)
             {
                 case 1:
                     {
                         _下一步_Button.IsEnabled = false;
-                        // todo: 设执行标记
+
                         _题_选择_选项 = null;
                         _题_选择_答案 = null;
 
-                        _s.题_选择_选项_获取Async(query.题.题_选择_选项.New(a => a.题编号 == o.题编号).GetBytes());
-                        _s.题_选择_答案_获取Async(query.题.题_选择_答案.New(a => a.题编号 == o.题编号).GetBytes());
+                        _s.题_选择_选项_获取Async(query.题.题_选择_选项.New(a => a.题编号 == _题.题编号).GetBytes());
+                        _s.题_选择_答案_获取Async(query.题.题_选择_答案.New(a => a.题编号 == _题.题编号).GetBytes());
+
                         break;
                     }
                 case 2:

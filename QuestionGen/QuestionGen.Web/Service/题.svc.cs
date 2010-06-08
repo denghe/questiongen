@@ -120,6 +120,77 @@ namespace QuestionGen.Web.Service
             }
         }
 
+
+        [OperationContract]
+        public int 题_修改(byte[] 题, byte[] 选项, byte[] 答案)
+        {
+            var question = new db.题.题(题);
+            var options = 选项.ToList<db.题.题_选择_选项>();
+            var answers = 答案.ToList<db.题.题_选择_答案>();
+
+            // 预处理
+            question.更新时间 = DateTime.Now;
+
+            using (var tran = SqlHelper.NewTransaction())
+            {
+                try
+                {
+                    // 更新 题
+                    var affected = question.Update();
+                    if (affected < 1)
+                    {
+                        tran.Rollback();
+                        return -1;
+                    }
+
+                    // 删除原 选项,答案
+                    affected = db.题.题_选择_选项.Delete(o => o.题编号 == question.题编号);
+                    if (affected < 1)
+                    {
+                        tran.Rollback();
+                        return -1;
+                    }
+                    affected = db.题.题_选择_答案.Delete(o => o.题编号 == question.题编号);
+                    if (affected < 1)
+                    {
+                        tran.Rollback();
+                        return -1;
+                    }
+
+                    // 插入 选项
+                    foreach (var option in options)
+                    {
+                        // 插入选项
+                        affected = option.Insert(isFillAfterInsert: false);
+                        if (affected < 1)
+                        {
+                            tran.Rollback();
+                            return -1;
+                        }
+                    }
+                    // 插入 答案
+                    foreach (var answer in answers)
+                    {
+                        // 插入答案
+                        affected = answer.Insert(isFillAfterInsert: false);
+                        if (affected < 1)
+                        {
+                            tran.Rollback();
+                            return -1;
+                        }
+                    }
+
+                    tran.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    return -1;
+                }
+            }
+        }
+
         #endregion
 
         #region 各种获取
