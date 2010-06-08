@@ -43,8 +43,7 @@ namespace QuestionGen.Web.Service
         [OperationContract]
         public int 知识面_更新(byte[] 知识面)
         {
-            var row = new db.题.知识面(知识面);
-            return row.Update();
+            return new db.题.知识面(知识面).Update();
         }
 
         #endregion
