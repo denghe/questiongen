@@ -236,15 +236,15 @@ namespace DAL.Database.Tables.题
         {
             return new byte[][]
             {
-                this.连线编号.GetBytes(),
                 this.题编号.GetBytes(),
+                this.连线序号.GetBytes(),
                 this.组序号.GetBytes(),
                 this.显示模板.GetBytes(),
             }.Combine();
         }
         public void Fill(byte[] buffer, ref int startIndex) {
-            this.连线编号 = buffer.ToInt32(ref startIndex);
             this.题编号 = buffer.ToInt32(ref startIndex);
+            this.连线序号 = buffer.ToInt32(ref startIndex);
             this.组序号 = buffer.ToInt32(ref startIndex);
             this.显示模板 = buffer.ToString(ref startIndex);
         }
@@ -276,14 +276,14 @@ namespace DAL.Database.Tables.题
             return new byte[][]
             {
                 this.题编号.GetBytes(),
-                this.连线编号A.GetBytes(),
-                this.连线编号B.GetBytes(),
+                this.连线序号A.GetBytes(),
+                this.连线序号B.GetBytes(),
             }.Combine();
         }
         public void Fill(byte[] buffer, ref int startIndex) {
             this.题编号 = buffer.ToInt32(ref startIndex);
-            this.连线编号A = buffer.ToInt32(ref startIndex);
-            this.连线编号B = buffer.ToInt32(ref startIndex);
+            this.连线序号A = buffer.ToInt32(ref startIndex);
+            this.连线序号B = buffer.ToInt32(ref startIndex);
         }
         #endregion
 
@@ -420,13 +420,13 @@ namespace DAL.Database.Tables.题
             return new byte[][]
             {
                 this.题编号.GetBytes(),
-                this.选项编号.GetBytes(),
+                this.选项序号.GetBytes(),
                 this.格子序号.GetBytes(),
             }.Combine();
         }
         public void Fill(byte[] buffer, ref int startIndex) {
             this.题编号 = buffer.ToInt32(ref startIndex);
-            this.选项编号 = buffer.ToInt32(ref startIndex);
+            this.选项序号 = buffer.ToInt32(ref startIndex);
             this.格子序号 = buffer.ToInt32(ref startIndex);
         }
         #endregion
@@ -456,17 +456,15 @@ namespace DAL.Database.Tables.题
         {
             return new byte[][]
             {
-                this.选项编号.GetBytes(),
                 this.题编号.GetBytes(),
+                this.选项序号.GetBytes(),
                 this.显示模板.GetBytes(),
-                this.排序.GetBytes(),
             }.Combine();
         }
         public void Fill(byte[] buffer, ref int startIndex) {
-            this.选项编号 = buffer.ToInt32(ref startIndex);
             this.题编号 = buffer.ToInt32(ref startIndex);
+            this.选项序号 = buffer.ToInt32(ref startIndex);
             this.显示模板 = buffer.ToString(ref startIndex);
-            this.排序 = buffer.ToInt32(ref startIndex);
         }
         #endregion
 

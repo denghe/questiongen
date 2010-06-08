@@ -49,16 +49,16 @@ namespace DAL.Orientations.Tables.题
     }
     public partial class 题_连线 : LogicalNode<题_连线>
     {
-        public ExpNode<题_连线> 连线编号 { get { return this.New_Column(@"连线编号"); } }
         public ExpNode<题_连线> 题编号 { get { return this.New_Column(@"题编号"); } }
+        public ExpNode<题_连线> 连线序号 { get { return this.New_Column(@"连线序号"); } }
         public ExpNode<题_连线> 组序号 { get { return this.New_Column(@"组序号"); } }
         public ExpNode<题_连线> 显示模板 { get { return this.New_Column(@"显示模板"); } }
     }
     public partial class 题_连线_答案 : LogicalNode<题_连线_答案>
     {
         public ExpNode<题_连线_答案> 题编号 { get { return this.New_Column(@"题编号"); } }
-        public ExpNode<题_连线_答案> 连线编号A { get { return this.New_Column(@"连线编号A"); } }
-        public ExpNode<题_连线_答案> 连线编号B { get { return this.New_Column(@"连线编号B"); } }
+        public ExpNode<题_连线_答案> 连线序号A { get { return this.New_Column(@"连线序号A"); } }
+        public ExpNode<题_连线_答案> 连线序号B { get { return this.New_Column(@"连线序号B"); } }
     }
     public partial class 题_判断 : LogicalNode<题_判断>
     {
@@ -79,15 +79,14 @@ namespace DAL.Orientations.Tables.题
     public partial class 题_选择_答案 : LogicalNode<题_选择_答案>
     {
         public ExpNode<题_选择_答案> 题编号 { get { return this.New_Column(@"题编号"); } }
-        public ExpNode<题_选择_答案> 选项编号 { get { return this.New_Column(@"选项编号"); } }
+        public ExpNode<题_选择_答案> 选项序号 { get { return this.New_Column(@"选项序号"); } }
         public ExpNode<题_选择_答案> 格子序号 { get { return this.New_Column(@"格子序号"); } }
     }
     public partial class 题_选择_选项 : LogicalNode<题_选择_选项>
     {
-        public ExpNode<题_选择_选项> 选项编号 { get { return this.New_Column(@"选项编号"); } }
         public ExpNode<题_选择_选项> 题编号 { get { return this.New_Column(@"题编号"); } }
+        public ExpNode<题_选择_选项> 选项序号 { get { return this.New_Column(@"选项序号"); } }
         public ExpNode<题_选择_选项> 显示模板 { get { return this.New_Column(@"显示模板"); } }
-        public ExpNode<题_选择_选项> 排序 { get { return this.New_Column(@"排序"); } }
     }
     public partial class 知识面 : LogicalNode<知识面>
     {

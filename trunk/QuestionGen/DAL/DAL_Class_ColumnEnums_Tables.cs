@@ -102,14 +102,14 @@ namespace DAL.ColumnEnums.Tables.题
     }
     public partial class 题_连线 : ColumnList<题_连线>
     {
-        public 题_连线 连线编号 { get { __columns.Add(0); return this; } }
-        public 题_连线 题编号 { get { __columns.Add(1); return this; } }
+        public 题_连线 题编号 { get { __columns.Add(0); return this; } }
+        public 题_连线 连线序号 { get { __columns.Add(1); return this; } }
         public 题_连线 组序号 { get { __columns.Add(2); return this; } }
         public 题_连线 显示模板 { get { __columns.Add(3); return this; } }
         protected static string[] __cns = new string[]
         {
-            @"连线编号",
             @"题编号",
+            @"连线序号",
             @"组序号",
             @"显示模板"
         };
@@ -120,13 +120,13 @@ namespace DAL.ColumnEnums.Tables.题
     public partial class 题_连线_答案 : ColumnList<题_连线_答案>
     {
         public 题_连线_答案 题编号 { get { __columns.Add(0); return this; } }
-        public 题_连线_答案 连线编号A { get { __columns.Add(1); return this; } }
-        public 题_连线_答案 连线编号B { get { __columns.Add(2); return this; } }
+        public 题_连线_答案 连线序号A { get { __columns.Add(1); return this; } }
+        public 题_连线_答案 连线序号B { get { __columns.Add(2); return this; } }
         protected static string[] __cns = new string[]
         {
             @"题编号",
-            @"连线编号A",
-            @"连线编号B"
+            @"连线序号A",
+            @"连线序号B"
         };
         public override string GetColumnName(int i) {
             return __cns[i];
@@ -176,12 +176,12 @@ namespace DAL.ColumnEnums.Tables.题
     public partial class 题_选择_答案 : ColumnList<题_选择_答案>
     {
         public 题_选择_答案 题编号 { get { __columns.Add(0); return this; } }
-        public 题_选择_答案 选项编号 { get { __columns.Add(1); return this; } }
+        public 题_选择_答案 选项序号 { get { __columns.Add(1); return this; } }
         public 题_选择_答案 格子序号 { get { __columns.Add(2); return this; } }
         protected static string[] __cns = new string[]
         {
             @"题编号",
-            @"选项编号",
+            @"选项序号",
             @"格子序号"
         };
         public override string GetColumnName(int i) {
@@ -190,16 +190,14 @@ namespace DAL.ColumnEnums.Tables.题
     }
     public partial class 题_选择_选项 : ColumnList<题_选择_选项>
     {
-        public 题_选择_选项 选项编号 { get { __columns.Add(0); return this; } }
-        public 题_选择_选项 题编号 { get { __columns.Add(1); return this; } }
+        public 题_选择_选项 题编号 { get { __columns.Add(0); return this; } }
+        public 题_选择_选项 选项序号 { get { __columns.Add(1); return this; } }
         public 题_选择_选项 显示模板 { get { __columns.Add(2); return this; } }
-        public 题_选择_选项 排序 { get { __columns.Add(3); return this; } }
         protected static string[] __cns = new string[]
         {
-            @"选项编号",
             @"题编号",
-            @"显示模板",
-            @"排序"
+            @"选项序号",
+            @"显示模板"
         };
         public override string GetColumnName(int i) {
             return __cns[i];
