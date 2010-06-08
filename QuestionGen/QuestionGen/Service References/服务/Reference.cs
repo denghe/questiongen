@@ -57,6 +57,11 @@ namespace QuestionGen.服务 {
         System.IAsyncResult Begin题_选择_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
         
         byte[] End题_选择_答案_获取(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/类型_获取", ReplyAction="urn:题/类型_获取Response")]
+        System.IAsyncResult Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        byte[] End类型_获取(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -217,6 +222,25 @@ namespace QuestionGen.服务 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 类型_获取CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 类型_获取CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class 题Client : System.ServiceModel.ClientBase<QuestionGen.服务.题>, QuestionGen.服务.题 {
         
         private BeginOperationDelegate onBegin知识面_插入Delegate;
@@ -266,6 +290,12 @@ namespace QuestionGen.服务 {
         private EndOperationDelegate onEnd题_选择_答案_获取Delegate;
         
         private System.Threading.SendOrPostCallback on题_选择_答案_获取CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin类型_获取Delegate;
+        
+        private EndOperationDelegate onEnd类型_获取Delegate;
+        
+        private System.Threading.SendOrPostCallback on类型_获取CompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -335,6 +365,8 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<题_选择_选项_获取CompletedEventArgs> 题_选择_选项_获取Completed;
         
         public event System.EventHandler<题_选择_答案_获取CompletedEventArgs> 题_选择_答案_获取Completed;
+        
+        public event System.EventHandler<类型_获取CompletedEventArgs> 类型_获取Completed;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -712,6 +744,52 @@ namespace QuestionGen.服务 {
                         查询}, this.onEnd题_选择_答案_获取Delegate, this.on题_选择_答案_获取CompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin类型_获取(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] QuestionGen.服务.题.End类型_获取(System.IAsyncResult result) {
+            return base.Channel.End类型_获取(result);
+        }
+        
+        private System.IAsyncResult OnBegin类型_获取(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin类型_获取(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd类型_获取(System.IAsyncResult result) {
+            byte[] retVal = ((QuestionGen.服务.题)(this)).End类型_获取(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On类型_获取Completed(object state) {
+            if ((this.类型_获取Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.类型_获取Completed(this, new 类型_获取CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 类型_获取Async(byte[] 查询) {
+            this.类型_获取Async(查询, null);
+        }
+        
+        public void 类型_获取Async(byte[] 查询, object userState) {
+            if ((this.onBegin类型_获取Delegate == null)) {
+                this.onBegin类型_获取Delegate = new BeginOperationDelegate(this.OnBegin类型_获取);
+            }
+            if ((this.onEnd类型_获取Delegate == null)) {
+                this.onEnd类型_获取Delegate = new EndOperationDelegate(this.OnEnd类型_获取);
+            }
+            if ((this.on类型_获取CompletedDelegate == null)) {
+                this.on类型_获取CompletedDelegate = new System.Threading.SendOrPostCallback(this.On类型_获取Completed);
+            }
+            base.InvokeAsync(this.onBegin类型_获取Delegate, new object[] {
+                        查询}, this.onEnd类型_获取Delegate, this.on类型_获取CompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -891,6 +969,19 @@ namespace QuestionGen.服务 {
             public byte[] End题_选择_答案_获取(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 byte[] _result = ((byte[])(base.EndInvoke("题_选择_答案_获取", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("类型_获取", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] End类型_获取(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("类型_获取", _args, result)));
                 return _result;
             }
         }

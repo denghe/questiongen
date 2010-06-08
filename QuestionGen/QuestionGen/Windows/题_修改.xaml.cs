@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using SqlLib;
 using 题 = DAL.Database.Tables.题;
 using query = DAL.Queries.Tables;
+using QuestionGen.Modules;
 
 
 namespace QuestionGen.Windows
@@ -26,8 +27,10 @@ namespace QuestionGen.Windows
         public 题_修改(题.题 row)
         {
             InitializeComponent();
+
             _s = new 服务.题Client();
             _题 = row;
+
             _s.知识面_获取Completed += (sender1, e1) =>
             {
                 _知识面s = e1.Result.ToList<题.知识面>();
@@ -39,6 +42,10 @@ namespace QuestionGen.Windows
 
                 SetValues(_题);
             };
+
+            _s.题_选择_选项_获取Completed += new EventHandler<服务.题_选择_选项_获取CompletedEventArgs>(_s_题_选择_选项_获取Completed);
+            _s.题_选择_答案_获取Completed += new EventHandler<服务.题_选择_答案_获取CompletedEventArgs>(_s_题_选择_答案_获取Completed);
+
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
 
@@ -116,17 +123,19 @@ namespace QuestionGen.Windows
             o.题编号 = _题.题编号;
             o.新版题编号 = _题.新版题编号;
             o.显示模板 = _题.显示模板;
+            _题 = o;
 
             switch (o.类型编号)
             {
                 case 1:
                     {
-                        var f = new 题_选择_修改(o) { ParentLayoutRoot = this.LayoutRoot };
-                        f.ShowDialog();
-                        f.Closed += (sender1, ea1) =>
-                        {
-                            if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
-                        };
+                        _下一步_Button.IsEnabled = false;
+                        // todo: 设执行标记
+                        _题_选择_选项 = null;
+                        _题_选择_答案 = null;
+
+                        _s.题_选择_选项_获取Async(query.题.题_选择_选项.New(a => a.题编号 == o.题编号).GetBytes());
+                        _s.题_选择_答案_获取Async(query.题.题_选择_答案.New(a => a.题编号 == o.题编号).GetBytes());
                         break;
                     }
                 case 2:
@@ -148,6 +157,40 @@ namespace QuestionGen.Windows
             }
 
         }
+
+        List<题.题_选择_选项> _题_选择_选项 = null;
+        void _s_题_选择_选项_获取Completed(object sender, 服务.题_选择_选项_获取CompletedEventArgs e)
+        {
+            lock (_syncObj)
+            {
+                _题_选择_选项 = e.Result.ToList<题.题_选择_选项>();
+                _s_题_选择_获取Completed();
+            }
+        }
+
+        List<题.题_选择_答案> _题_选择_答案 = null;
+        void _s_题_选择_答案_获取Completed(object sender, 服务.题_选择_答案_获取CompletedEventArgs e)
+        {
+            lock (_syncObj)
+            {
+                _题_选择_答案 = e.Result.ToList<题.题_选择_答案>();
+                _s_题_选择_获取Completed();
+            }
+        }
+
+        object _syncObj = new object();
+        void _s_题_选择_获取Completed()
+        {
+            if (_题_选择_答案 == null || _题_选择_选项 == null) return;
+            var data = new 选择题 { 题 = _题, 选项 = _题_选择_选项, 答案 = _题_选择_答案 };
+            var f = new 题_选择_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.ShowDialog();
+            f.Closed += (sender1, ea1) =>
+            {
+                if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+            };
+        }
+
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)
         {

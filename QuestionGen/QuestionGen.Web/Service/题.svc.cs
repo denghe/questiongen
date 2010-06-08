@@ -80,38 +80,32 @@ namespace QuestionGen.Web.Service
                         return -1;
                     }
 
-                    // 插入 题 选项
+                    // 插入 选项
                     foreach (var option in options)
                     {
                         // 预处理
                         option.题编号 = question.题编号;
-                        option.排序 = option.选项编号;
 
-                        // 插入选项 回填 选项编号
-                        affected = option.Insert(
-                            o => o.排序.题编号.显示模板,
-                            o => o.选项编号
-                        );
+                        // 插入选项
+                        affected = option.Insert(isFillAfterInsert: false);
                         if (affected < 1)
                         {
                             tran.Rollback();
                             return -1;
                         }
+                    }
+                    // 插入 答案
+                    foreach (var answer in answers)
+                    {
+                        // 预处理
+                        answer.题编号 = question.题编号;
 
-                        // 插入 题 答案 (与当前选项相关的)
-                        var option_answers = answers.Where(o => o.选项编号 == option.排序);
-                        foreach (var answer in option_answers)
+                        // 插入答案
+                        affected = answer.Insert(isFillAfterInsert: false);
+                        if (affected < 1)
                         {
-                            // 预处理
-                            answer.题编号 = question.题编号;
-                            answer.选项编号 = option.选项编号;
-
-                            affected = answer.Insert(isFillAfterInsert: false);
-                            if (affected < 1)
-                            {
-                                tran.Rollback();
-                                return -1;
-                            }
+                            tran.Rollback();
+                            return -1;
                         }
                     }
 

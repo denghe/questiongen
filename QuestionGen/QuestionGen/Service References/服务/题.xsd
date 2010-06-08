@@ -114,4 +114,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="类型_获取">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="类型_获取Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="类型_获取Result" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
