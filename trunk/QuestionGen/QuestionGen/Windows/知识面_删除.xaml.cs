@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 
 using DAL.Database.Tables;
 using 题 = DAL.Database.Tables.题;
+using exp = DAL.Expressions.Tables;
 
 namespace QuestionGen.Windows
 {
@@ -48,9 +49,8 @@ namespace QuestionGen.Windows
         private void _确认删除_Button_Click(object sender, RoutedEventArgs e)
         {
             this._确认删除_Button.IsEnabled = false;
-            // 删除操作只用传含有主键的对象就行了
-            var row = new 题.知识面 { 知识面编号 = _original_row.知识面编号 };
-            _s.知识面_删除Async(row.GetBytes());
+            var condation = exp.题.知识面.New(o => o.知识面编号 == _original_row.知识面编号);
+            _s.知识面_删除Async(condation.GetBytes());
         }
 
         void _s_知识面_删除Completed(object sender, 服务.知识面_删除CompletedEventArgs e)

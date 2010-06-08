@@ -55,7 +55,7 @@
                     <Setter Property="Grid.Column" Value="1" />
                 </Style>
             </StackPanel.Resources>
-            <RadioButton x:Name="_类型_选择_RadioButton" Content="选择" />
+            <RadioButton x:Name="_类型_选择_RadioButton" Content="选择" IsChecked="True" />
             <RadioButton x:Name="_类型_填空_RadioButton" Content="填空" />
             <RadioButton x:Name="_类型_判断_RadioButton" Content="判断" />
             <RadioButton x:Name="_类型_问答_RadioButton" Content="问答" />
