@@ -144,13 +144,13 @@ namespace QuestionGen.Web.Service
                     }
 
                     // 删除原 选项,答案
-                    affected = db.题.题_选择_选项.Delete(o => o.题编号 == question.题编号);
+                    affected = db.题.题_选择_答案.Delete(o => o.题编号 == question.题编号);
                     if (affected < 1)
                     {
                         tran.Rollback();
                         return -1;
                     }
-                    affected = db.题.题_选择_答案.Delete(o => o.题编号 == question.题编号);
+                    affected = db.题.题_选择_选项.Delete(o => o.题编号 == question.题编号);
                     if (affected < 1)
                     {
                         tran.Rollback();
