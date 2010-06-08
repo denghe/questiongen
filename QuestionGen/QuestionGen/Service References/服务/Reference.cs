@@ -63,6 +63,31 @@ namespace QuestionGen.服务 {
         
         byte[] End类型_获取(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_获取行数", ReplyAction="urn:题/知识面_获取行数Response")]
+        System.IAsyncResult Begin知识面_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        int End知识面_获取行数(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_获取行数", ReplyAction="urn:题/题_获取行数Response")]
+        System.IAsyncResult Begin题_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        int End题_获取行数(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_选择_选项_获取行数", ReplyAction="urn:题/题_选择_选项_获取行数Response")]
+        System.IAsyncResult Begin题_选择_选项_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        int End题_选择_选项_获取行数(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_选择_答案_获取行数", ReplyAction="urn:题/题_选择_答案_获取行数Response")]
+        System.IAsyncResult Begin题_选择_答案_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        int End题_选择_答案_获取行数(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/类型_获取行数", ReplyAction="urn:题/类型_获取行数Response")]
+        System.IAsyncResult Begin类型_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        int End类型_获取行数(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_删除", ReplyAction="urn:题/知识面_删除Response")]
         System.IAsyncResult Begin知识面_删除(byte[] 条件, System.AsyncCallback callback, object asyncState);
         
@@ -256,6 +281,101 @@ namespace QuestionGen.服务 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 知识面_获取行数CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 知识面_获取行数CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_获取行数CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_获取行数CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_选择_选项_获取行数CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_选择_选项_获取行数CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_选择_答案_获取行数CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_选择_答案_获取行数CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 类型_获取行数CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 类型_获取行数CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class 知识面_删除CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -369,6 +489,36 @@ namespace QuestionGen.服务 {
         
         private System.Threading.SendOrPostCallback on类型_获取CompletedDelegate;
         
+        private BeginOperationDelegate onBegin知识面_获取行数Delegate;
+        
+        private EndOperationDelegate onEnd知识面_获取行数Delegate;
+        
+        private System.Threading.SendOrPostCallback on知识面_获取行数CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_获取行数Delegate;
+        
+        private EndOperationDelegate onEnd题_获取行数Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_获取行数CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_选择_选项_获取行数Delegate;
+        
+        private EndOperationDelegate onEnd题_选择_选项_获取行数Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_选择_选项_获取行数CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_选择_答案_获取行数Delegate;
+        
+        private EndOperationDelegate onEnd题_选择_答案_获取行数Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_选择_答案_获取行数CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin类型_获取行数Delegate;
+        
+        private EndOperationDelegate onEnd类型_获取行数Delegate;
+        
+        private System.Threading.SendOrPostCallback on类型_获取行数CompletedDelegate;
+        
         private BeginOperationDelegate onBegin知识面_删除Delegate;
         
         private EndOperationDelegate onEnd知识面_删除Delegate;
@@ -457,6 +607,16 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<题_选择_答案_获取CompletedEventArgs> 题_选择_答案_获取Completed;
         
         public event System.EventHandler<类型_获取CompletedEventArgs> 类型_获取Completed;
+        
+        public event System.EventHandler<知识面_获取行数CompletedEventArgs> 知识面_获取行数Completed;
+        
+        public event System.EventHandler<题_获取行数CompletedEventArgs> 题_获取行数Completed;
+        
+        public event System.EventHandler<题_选择_选项_获取行数CompletedEventArgs> 题_选择_选项_获取行数Completed;
+        
+        public event System.EventHandler<题_选择_答案_获取行数CompletedEventArgs> 题_选择_答案_获取行数Completed;
+        
+        public event System.EventHandler<类型_获取行数CompletedEventArgs> 类型_获取行数Completed;
         
         public event System.EventHandler<知识面_删除CompletedEventArgs> 知识面_删除Completed;
         
@@ -891,6 +1051,236 @@ namespace QuestionGen.服务 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_获取行数(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End知识面_获取行数(System.IAsyncResult result) {
+            return base.Channel.End知识面_获取行数(result);
+        }
+        
+        private System.IAsyncResult OnBegin知识面_获取行数(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin知识面_获取行数(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd知识面_获取行数(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End知识面_获取行数(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On知识面_获取行数Completed(object state) {
+            if ((this.知识面_获取行数Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.知识面_获取行数Completed(this, new 知识面_获取行数CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 知识面_获取行数Async(byte[] 查询) {
+            this.知识面_获取行数Async(查询, null);
+        }
+        
+        public void 知识面_获取行数Async(byte[] 查询, object userState) {
+            if ((this.onBegin知识面_获取行数Delegate == null)) {
+                this.onBegin知识面_获取行数Delegate = new BeginOperationDelegate(this.OnBegin知识面_获取行数);
+            }
+            if ((this.onEnd知识面_获取行数Delegate == null)) {
+                this.onEnd知识面_获取行数Delegate = new EndOperationDelegate(this.OnEnd知识面_获取行数);
+            }
+            if ((this.on知识面_获取行数CompletedDelegate == null)) {
+                this.on知识面_获取行数CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_获取行数Completed);
+            }
+            base.InvokeAsync(this.onBegin知识面_获取行数Delegate, new object[] {
+                        查询}, this.onEnd知识面_获取行数Delegate, this.on知识面_获取行数CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_获取行数(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End题_获取行数(System.IAsyncResult result) {
+            return base.Channel.End题_获取行数(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_获取行数(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_获取行数(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_获取行数(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End题_获取行数(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_获取行数Completed(object state) {
+            if ((this.题_获取行数Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_获取行数Completed(this, new 题_获取行数CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_获取行数Async(byte[] 查询) {
+            this.题_获取行数Async(查询, null);
+        }
+        
+        public void 题_获取行数Async(byte[] 查询, object userState) {
+            if ((this.onBegin题_获取行数Delegate == null)) {
+                this.onBegin题_获取行数Delegate = new BeginOperationDelegate(this.OnBegin题_获取行数);
+            }
+            if ((this.onEnd题_获取行数Delegate == null)) {
+                this.onEnd题_获取行数Delegate = new EndOperationDelegate(this.OnEnd题_获取行数);
+            }
+            if ((this.on题_获取行数CompletedDelegate == null)) {
+                this.on题_获取行数CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_获取行数Completed);
+            }
+            base.InvokeAsync(this.onBegin题_获取行数Delegate, new object[] {
+                        查询}, this.onEnd题_获取行数Delegate, this.on题_获取行数CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_选择_选项_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_选择_选项_获取行数(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End题_选择_选项_获取行数(System.IAsyncResult result) {
+            return base.Channel.End题_选择_选项_获取行数(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_选择_选项_获取行数(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_选择_选项_获取行数(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_选择_选项_获取行数(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End题_选择_选项_获取行数(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_选择_选项_获取行数Completed(object state) {
+            if ((this.题_选择_选项_获取行数Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_选择_选项_获取行数Completed(this, new 题_选择_选项_获取行数CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_选择_选项_获取行数Async(byte[] 查询) {
+            this.题_选择_选项_获取行数Async(查询, null);
+        }
+        
+        public void 题_选择_选项_获取行数Async(byte[] 查询, object userState) {
+            if ((this.onBegin题_选择_选项_获取行数Delegate == null)) {
+                this.onBegin题_选择_选项_获取行数Delegate = new BeginOperationDelegate(this.OnBegin题_选择_选项_获取行数);
+            }
+            if ((this.onEnd题_选择_选项_获取行数Delegate == null)) {
+                this.onEnd题_选择_选项_获取行数Delegate = new EndOperationDelegate(this.OnEnd题_选择_选项_获取行数);
+            }
+            if ((this.on题_选择_选项_获取行数CompletedDelegate == null)) {
+                this.on题_选择_选项_获取行数CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_选择_选项_获取行数Completed);
+            }
+            base.InvokeAsync(this.onBegin题_选择_选项_获取行数Delegate, new object[] {
+                        查询}, this.onEnd题_选择_选项_获取行数Delegate, this.on题_选择_选项_获取行数CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_选择_答案_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_选择_答案_获取行数(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End题_选择_答案_获取行数(System.IAsyncResult result) {
+            return base.Channel.End题_选择_答案_获取行数(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_选择_答案_获取行数(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_选择_答案_获取行数(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_选择_答案_获取行数(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End题_选择_答案_获取行数(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_选择_答案_获取行数Completed(object state) {
+            if ((this.题_选择_答案_获取行数Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_选择_答案_获取行数Completed(this, new 题_选择_答案_获取行数CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_选择_答案_获取行数Async(byte[] 查询) {
+            this.题_选择_答案_获取行数Async(查询, null);
+        }
+        
+        public void 题_选择_答案_获取行数Async(byte[] 查询, object userState) {
+            if ((this.onBegin题_选择_答案_获取行数Delegate == null)) {
+                this.onBegin题_选择_答案_获取行数Delegate = new BeginOperationDelegate(this.OnBegin题_选择_答案_获取行数);
+            }
+            if ((this.onEnd题_选择_答案_获取行数Delegate == null)) {
+                this.onEnd题_选择_答案_获取行数Delegate = new EndOperationDelegate(this.OnEnd题_选择_答案_获取行数);
+            }
+            if ((this.on题_选择_答案_获取行数CompletedDelegate == null)) {
+                this.on题_选择_答案_获取行数CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_选择_答案_获取行数Completed);
+            }
+            base.InvokeAsync(this.onBegin题_选择_答案_获取行数Delegate, new object[] {
+                        查询}, this.onEnd题_选择_答案_获取行数Delegate, this.on题_选择_答案_获取行数CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin类型_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin类型_获取行数(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End类型_获取行数(System.IAsyncResult result) {
+            return base.Channel.End类型_获取行数(result);
+        }
+        
+        private System.IAsyncResult OnBegin类型_获取行数(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin类型_获取行数(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd类型_获取行数(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End类型_获取行数(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On类型_获取行数Completed(object state) {
+            if ((this.类型_获取行数Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.类型_获取行数Completed(this, new 类型_获取行数CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 类型_获取行数Async(byte[] 查询) {
+            this.类型_获取行数Async(查询, null);
+        }
+        
+        public void 类型_获取行数Async(byte[] 查询, object userState) {
+            if ((this.onBegin类型_获取行数Delegate == null)) {
+                this.onBegin类型_获取行数Delegate = new BeginOperationDelegate(this.OnBegin类型_获取行数);
+            }
+            if ((this.onEnd类型_获取行数Delegate == null)) {
+                this.onEnd类型_获取行数Delegate = new EndOperationDelegate(this.OnEnd类型_获取行数);
+            }
+            if ((this.on类型_获取行数CompletedDelegate == null)) {
+                this.on类型_获取行数CompletedDelegate = new System.Threading.SendOrPostCallback(this.On类型_获取行数Completed);
+            }
+            base.InvokeAsync(this.onBegin类型_获取行数Delegate, new object[] {
+                        查询}, this.onEnd类型_获取行数Delegate, this.on类型_获取行数CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult QuestionGen.服务.题.Begin知识面_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
             return base.Channel.Begin知识面_删除(条件, callback, asyncState);
         }
@@ -1222,6 +1612,71 @@ namespace QuestionGen.服务 {
             public byte[] End类型_获取(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 byte[] _result = ((byte[])(base.EndInvoke("类型_获取", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin知识面_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("知识面_获取行数", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End知识面_获取行数(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("知识面_获取行数", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("题_获取行数", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End题_获取行数(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("题_获取行数", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_选择_选项_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("题_选择_选项_获取行数", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End题_选择_选项_获取行数(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("题_选择_选项_获取行数", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_选择_答案_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("题_选择_答案_获取行数", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End题_选择_答案_获取行数(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("题_选择_答案_获取行数", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin类型_获取行数(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("类型_获取行数", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End类型_获取行数(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("类型_获取行数", _args, result)));
                 return _result;
             }
             

@@ -284,8 +284,8 @@ DELETE FROM [人].[岗位]";
 
         public static int Count(
             Expressions.Tables.人.岗位 where,
-            ColumnEnums.Tables.人.岗位 column,
-            bool isDistinct
+            ColumnEnums.Tables.人.岗位 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -679,8 +679,8 @@ DELETE FROM [人].[岗位_知识面]";
 
         public static int Count(
             Expressions.Tables.人.岗位_知识面 where,
-            ColumnEnums.Tables.人.岗位_知识面 column,
-            bool isDistinct
+            ColumnEnums.Tables.人.岗位_知识面 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -1094,8 +1094,8 @@ DELETE FROM [题].[附件]";
 
         public static int Count(
             Expressions.Tables.题.附件 where,
-            ColumnEnums.Tables.题.附件 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.附件 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -1473,8 +1473,8 @@ DELETE FROM [题].[类型]";
 
         public static int Count(
             Expressions.Tables.题.类型 where,
-            ColumnEnums.Tables.题.类型 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.类型 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -2030,8 +2030,8 @@ DELETE FROM [题].[题]";
 
         public static int Count(
             Expressions.Tables.题.题 where,
-            ColumnEnums.Tables.题.题 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -2441,8 +2441,8 @@ DELETE FROM [题].[题_连线]";
 
         public static int Count(
             Expressions.Tables.题.题_连线 where,
-            ColumnEnums.Tables.题.题_连线 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_连线 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -2844,8 +2844,8 @@ DELETE FROM [题].[题_连线_答案]";
 
         public static int Count(
             Expressions.Tables.题.题_连线_答案 where,
-            ColumnEnums.Tables.题.题_连线_答案 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_连线_答案 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -3207,8 +3207,8 @@ DELETE FROM [题].[题_判断]";
 
         public static int Count(
             Expressions.Tables.题.题_判断 where,
-            ColumnEnums.Tables.题.题_判断 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_判断 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -3594,8 +3594,8 @@ DELETE FROM [题].[题_填空_答案]";
 
         public static int Count(
             Expressions.Tables.题.题_填空_答案 where,
-            ColumnEnums.Tables.题.题_填空_答案 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_填空_答案 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -3957,8 +3957,8 @@ DELETE FROM [题].[题_问答]";
 
         public static int Count(
             Expressions.Tables.题.题_问答 where,
-            ColumnEnums.Tables.题.题_问答 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_问答 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -4352,8 +4352,8 @@ DELETE FROM [题].[题_选择_答案]";
 
         public static int Count(
             Expressions.Tables.题.题_选择_答案 where,
-            ColumnEnums.Tables.题.题_选择_答案 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_选择_答案 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -4739,8 +4739,8 @@ DELETE FROM [题].[题_选择_选项]";
 
         public static int Count(
             Expressions.Tables.题.题_选择_选项 where,
-            ColumnEnums.Tables.题.题_选择_选项 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.题_选择_选项 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
@@ -5076,8 +5076,8 @@ DELETE FROM [题].[知识面]";
 
         public static int Count(
             Expressions.Tables.题.知识面 where,
-            ColumnEnums.Tables.题.知识面 column,
-            bool isDistinct
+            ColumnEnums.Tables.题.知识面 column = null,
+            bool isDistinct = false
         )
         {
             string tsql;
