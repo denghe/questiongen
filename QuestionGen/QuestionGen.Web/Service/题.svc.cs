@@ -160,6 +160,9 @@ namespace QuestionGen.Web.Service
                     // 插入 选项
                     foreach (var option in options)
                     {
+                        // 预处理
+                        option.题编号 = question.题编号;
+
                         // 插入选项
                         affected = option.Insert(isFillAfterInsert: false);
                         if (affected < 1)
@@ -171,6 +174,9 @@ namespace QuestionGen.Web.Service
                     // 插入 答案
                     foreach (var answer in answers)
                     {
+                        // 预处理
+                        answer.题编号 = question.题编号;
+
                         // 插入答案
                         affected = answer.Insert(isFillAfterInsert: false);
                         if (affected < 1)
