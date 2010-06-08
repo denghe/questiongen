@@ -216,7 +216,6 @@ namespace QuestionGen.Windows
                 答案 = new List<题.题_选择_答案>()
             };
 
-            result.题.更新时间 = DateTime.Now;
             result.题.显示模板 = _显示模板_TextBox.Text.Trim();
 
             for (int i = 0; i < _选项_StackPanel.Children.Count; i++)
@@ -431,6 +430,9 @@ namespace QuestionGen.Windows
             if (result != null)
             {
                 _提交_Button.IsEnabled = false;
+
+                result.题.更新时间 = DateTime.Now;   // 修正序列化时的时间合法性问题
+
                 _s.题_选择_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
             }
         }
