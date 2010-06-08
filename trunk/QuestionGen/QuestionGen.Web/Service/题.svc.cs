@@ -192,7 +192,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种 Rows 获取
+        #region 各种 数据行 获取
 
         [OperationContract]
         public byte[] 知识面_获取(byte[] 查询)
@@ -226,7 +226,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种 Count 获取
+        #region 各种 行数 获取
 
         [OperationContract]
         public int 知识面_获取行数(byte[] 查询)
@@ -260,7 +260,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种删除
+        #region 各种 按条件 删除
 
         [OperationContract]
         public int 知识面_删除(byte[] 条件)
