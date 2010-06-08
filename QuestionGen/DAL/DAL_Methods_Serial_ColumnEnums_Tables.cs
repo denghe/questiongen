@@ -94,23 +94,6 @@ namespace DAL.ColumnEnums.Tables.题
 
         #endregion
     }
-    partial class 题_连线
-    {
-        #region Serial
-
-        public 题_连线() { }
-        public 题_连线(byte[] buffer, ref int startIndex)
-            : this() {
-            Fill(buffer, ref startIndex);
-        }
-        public 题_连线(byte[] buffer)
-            : this() {
-            var startIndex = 0;
-            Fill(buffer, ref startIndex);
-        }
-
-        #endregion
-    }
     partial class 题_连线_答案
     {
         #region Serial
@@ -128,16 +111,33 @@ namespace DAL.ColumnEnums.Tables.题
 
         #endregion
     }
-    partial class 题_判断
+    partial class 题_连线_选项
     {
         #region Serial
 
-        public 题_判断() { }
-        public 题_判断(byte[] buffer, ref int startIndex)
+        public 题_连线_选项() { }
+        public 题_连线_选项(byte[] buffer, ref int startIndex)
             : this() {
             Fill(buffer, ref startIndex);
         }
-        public 题_判断(byte[] buffer)
+        public 题_连线_选项(byte[] buffer)
+            : this() {
+            var startIndex = 0;
+            Fill(buffer, ref startIndex);
+        }
+
+        #endregion
+    }
+    partial class 题_判断_答案
+    {
+        #region Serial
+
+        public 题_判断_答案() { }
+        public 题_判断_答案(byte[] buffer, ref int startIndex)
+            : this() {
+            Fill(buffer, ref startIndex);
+        }
+        public 题_判断_答案(byte[] buffer)
             : this() {
             var startIndex = 0;
             Fill(buffer, ref startIndex);
@@ -162,16 +162,16 @@ namespace DAL.ColumnEnums.Tables.题
 
         #endregion
     }
-    partial class 题_问答
+    partial class 题_问答_答案
     {
         #region Serial
 
-        public 题_问答() { }
-        public 题_问答(byte[] buffer, ref int startIndex)
+        public 题_问答_答案() { }
+        public 题_问答_答案(byte[] buffer, ref int startIndex)
             : this() {
             Fill(buffer, ref startIndex);
         }
-        public 题_问答(byte[] buffer)
+        public 题_问答_答案(byte[] buffer)
             : this() {
             var startIndex = 0;
             Fill(buffer, ref startIndex);

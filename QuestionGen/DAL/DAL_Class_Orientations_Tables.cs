@@ -47,23 +47,23 @@ namespace DAL.Orientations.Tables.题
         public ExpNode<题> 更新时间 { get { return this.New_Column(@"更新时间"); } }
         public ExpNode<题> 是否启用 { get { return this.New_Column(@"是否启用"); } }
     }
-    public partial class 题_连线 : LogicalNode<题_连线>
-    {
-        public ExpNode<题_连线> 题编号 { get { return this.New_Column(@"题编号"); } }
-        public ExpNode<题_连线> 连线序号 { get { return this.New_Column(@"连线序号"); } }
-        public ExpNode<题_连线> 组序号 { get { return this.New_Column(@"组序号"); } }
-        public ExpNode<题_连线> 显示模板 { get { return this.New_Column(@"显示模板"); } }
-    }
     public partial class 题_连线_答案 : LogicalNode<题_连线_答案>
     {
         public ExpNode<题_连线_答案> 题编号 { get { return this.New_Column(@"题编号"); } }
         public ExpNode<题_连线_答案> 连线序号A { get { return this.New_Column(@"连线序号A"); } }
         public ExpNode<题_连线_答案> 连线序号B { get { return this.New_Column(@"连线序号B"); } }
     }
-    public partial class 题_判断 : LogicalNode<题_判断>
+    public partial class 题_连线_选项 : LogicalNode<题_连线_选项>
     {
-        public ExpNode<题_判断> 题编号 { get { return this.New_Column(@"题编号"); } }
-        public ExpNode<题_判断> 答案 { get { return this.New_Column(@"答案"); } }
+        public ExpNode<题_连线_选项> 题编号 { get { return this.New_Column(@"题编号"); } }
+        public ExpNode<题_连线_选项> 连线序号 { get { return this.New_Column(@"连线序号"); } }
+        public ExpNode<题_连线_选项> 组序号 { get { return this.New_Column(@"组序号"); } }
+        public ExpNode<题_连线_选项> 显示模板 { get { return this.New_Column(@"显示模板"); } }
+    }
+    public partial class 题_判断_答案 : LogicalNode<题_判断_答案>
+    {
+        public ExpNode<题_判断_答案> 题编号 { get { return this.New_Column(@"题编号"); } }
+        public ExpNode<题_判断_答案> 答案 { get { return this.New_Column(@"答案"); } }
     }
     public partial class 题_填空_答案 : LogicalNode<题_填空_答案>
     {
@@ -71,10 +71,10 @@ namespace DAL.Orientations.Tables.题
         public ExpNode<题_填空_答案> 格子序号 { get { return this.New_Column(@"格子序号"); } }
         public ExpNode<题_填空_答案> 显示模板 { get { return this.New_Column(@"显示模板"); } }
     }
-    public partial class 题_问答 : LogicalNode<题_问答>
+    public partial class 题_问答_答案 : LogicalNode<题_问答_答案>
     {
-        public ExpNode<题_问答> 题编号 { get { return this.New_Column(@"题编号"); } }
-        public ExpNode<题_问答> 参考答案 { get { return this.New_Column(@"参考答案"); } }
+        public ExpNode<题_问答_答案> 题编号 { get { return this.New_Column(@"题编号"); } }
+        public ExpNode<题_问答_答案> 参考答案 { get { return this.New_Column(@"参考答案"); } }
     }
     public partial class 题_选择_答案 : LogicalNode<题_选择_答案>
     {

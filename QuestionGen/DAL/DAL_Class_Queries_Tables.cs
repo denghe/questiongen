@@ -44,13 +44,6 @@ namespace DAL.Queries.Tables.题
             return base.ToSqlString(schema ?? @"题", name ?? @"题", columns);
         }
     }
-    public partial class 题_连线 : Query<题_连线, Expressions.Tables.题.题_连线, Orientations.Tables.题.题_连线, ColumnEnums.Tables.题.题_连线>
-    {
-        public override string ToSqlString(string schema = null, string name = null, List<string> columns = null)
-        {
-            return base.ToSqlString(schema ?? @"题", name ?? @"题_连线", columns);
-        }
-    }
     public partial class 题_连线_答案 : Query<题_连线_答案, Expressions.Tables.题.题_连线_答案, Orientations.Tables.题.题_连线_答案, ColumnEnums.Tables.题.题_连线_答案>
     {
         public override string ToSqlString(string schema = null, string name = null, List<string> columns = null)
@@ -58,11 +51,18 @@ namespace DAL.Queries.Tables.题
             return base.ToSqlString(schema ?? @"题", name ?? @"题_连线_答案", columns);
         }
     }
-    public partial class 题_判断 : Query<题_判断, Expressions.Tables.题.题_判断, Orientations.Tables.题.题_判断, ColumnEnums.Tables.题.题_判断>
+    public partial class 题_连线_选项 : Query<题_连线_选项, Expressions.Tables.题.题_连线_选项, Orientations.Tables.题.题_连线_选项, ColumnEnums.Tables.题.题_连线_选项>
     {
         public override string ToSqlString(string schema = null, string name = null, List<string> columns = null)
         {
-            return base.ToSqlString(schema ?? @"题", name ?? @"题_判断", columns);
+            return base.ToSqlString(schema ?? @"题", name ?? @"题_连线_选项", columns);
+        }
+    }
+    public partial class 题_判断_答案 : Query<题_判断_答案, Expressions.Tables.题.题_判断_答案, Orientations.Tables.题.题_判断_答案, ColumnEnums.Tables.题.题_判断_答案>
+    {
+        public override string ToSqlString(string schema = null, string name = null, List<string> columns = null)
+        {
+            return base.ToSqlString(schema ?? @"题", name ?? @"题_判断_答案", columns);
         }
     }
     public partial class 题_填空_答案 : Query<题_填空_答案, Expressions.Tables.题.题_填空_答案, Orientations.Tables.题.题_填空_答案, ColumnEnums.Tables.题.题_填空_答案>
@@ -72,11 +72,11 @@ namespace DAL.Queries.Tables.题
             return base.ToSqlString(schema ?? @"题", name ?? @"题_填空_答案", columns);
         }
     }
-    public partial class 题_问答 : Query<题_问答, Expressions.Tables.题.题_问答, Orientations.Tables.题.题_问答, ColumnEnums.Tables.题.题_问答>
+    public partial class 题_问答_答案 : Query<题_问答_答案, Expressions.Tables.题.题_问答_答案, Orientations.Tables.题.题_问答_答案, ColumnEnums.Tables.题.题_问答_答案>
     {
         public override string ToSqlString(string schema = null, string name = null, List<string> columns = null)
         {
-            return base.ToSqlString(schema ?? @"题", name ?? @"题_问答", columns);
+            return base.ToSqlString(schema ?? @"题", name ?? @"题_问答_答案", columns);
         }
     }
     public partial class 题_选择_答案 : Query<题_选择_答案, Expressions.Tables.题.题_选择_答案, Orientations.Tables.题.题_选择_答案, ColumnEnums.Tables.题.题_选择_答案>
