@@ -40,10 +40,10 @@ namespace QuestionGen.Windows
             _重置_Button_Click();
         }
 
-        public 题_选择_修改(题.题 o)
+        public 题_选择_修改(选择题 o)
             : this()
         {
-            _选择题 = new 选择题 { 题 = o };
+            _选择题 = o;
 
             // todo: 从 WCF 读所有数据
 
@@ -220,7 +220,7 @@ namespace QuestionGen.Windows
         {
             var result = new 选择题
             {
-                题 = _题,
+                题 = _选择题.题,
                 选项 = new List<题.题_选择_选项>(),
                 答案 = new List<题.题_选择_答案>()
             };
@@ -234,7 +234,7 @@ namespace QuestionGen.Windows
                 var idx = int.Parse(((TextBlock)sp.Children[0]).Text);
                 var txt = ((TextBox)sp.Children[1]).Text;
                 if (i == _选项_StackPanel.Children.Count - 1 && txt.Length == 0) continue;
-                result.选项.Add(new 题.题_选择_选项 { 选项编号 = idx, 显示模板 = txt });
+                result.选项.Add(new 题.题_选择_选项 { 选项序号 = idx, 显示模板 = txt });
             }
 
             for (int i = 0; i < _答案格子_StackPanel.Children.Count; i++)
@@ -246,7 +246,7 @@ namespace QuestionGen.Windows
                 {
                     var txt = ((TextBox)uie).Text;
                     if (txt.Length == 0) continue;
-                    result.答案.Add(new 题.题_选择_答案 { 格子序号 = idx, 选项编号 = int.Parse(txt) });
+                    result.答案.Add(new 题.题_选择_答案 { 格子序号 = idx, 选项序号 = int.Parse(txt) });
                 }
             }
 
@@ -341,7 +341,7 @@ namespace QuestionGen.Windows
                     ,
                     FontWeight = FontWeights.Bold
                     ,
-                    Text = Environment.NewLine + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[c.选项编号 - 1] + ".  "
+                    Text = Environment.NewLine + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[c.选项序号 - 1] + ".  "
                 });
 
                 xe = XElement.Parse("<___root___>" + c.显示模板 + "</___root___>");
@@ -402,7 +402,7 @@ namespace QuestionGen.Windows
                         ,
                         FontWeight = FontWeights.Bold
                         ,
-                        Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[a.选项编号 - 1] + " "
+                        Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[a.选项序号 - 1] + " "
                     });
                 }
             }
