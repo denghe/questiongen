@@ -18,17 +18,65 @@
   <wsdl:message name="题_知识面_更新_OutputMessage">
     <wsdl:part name="parameters" element="知识面_更新Response" />
   </wsdl:message>
-  <wsdl:message name="题_题_插入_InputMessage">
-    <wsdl:part name="parameters" element="题_插入" />
+  <wsdl:message name="题_题_判断_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_判断_插入" />
   </wsdl:message>
-  <wsdl:message name="题_题_插入_OutputMessage">
-    <wsdl:part name="parameters" element="题_插入Response" />
+  <wsdl:message name="题_题_判断_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_判断_插入Response" />
   </wsdl:message>
-  <wsdl:message name="题_题_修改_InputMessage">
-    <wsdl:part name="parameters" element="题_修改" />
+  <wsdl:message name="题_题_判断_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_判断_修改" />
   </wsdl:message>
-  <wsdl:message name="题_题_修改_OutputMessage">
-    <wsdl:part name="parameters" element="题_修改Response" />
+  <wsdl:message name="题_题_判断_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_判断_修改Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_问答_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_问答_插入" />
+  </wsdl:message>
+  <wsdl:message name="题_题_问答_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_问答_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_问答_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_问答_修改" />
+  </wsdl:message>
+  <wsdl:message name="题_题_问答_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_问答_修改Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_填空_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_填空_插入" />
+  </wsdl:message>
+  <wsdl:message name="题_题_填空_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_填空_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_填空_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_填空_修改" />
+  </wsdl:message>
+  <wsdl:message name="题_题_填空_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_填空_修改Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_连线_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_连线_插入" />
+  </wsdl:message>
+  <wsdl:message name="题_题_连线_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_连线_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_连线_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_连线_修改" />
+  </wsdl:message>
+  <wsdl:message name="题_题_连线_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_连线_修改Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_选择_插入_InputMessage">
+    <wsdl:part name="parameters" element="题_选择_插入" />
+  </wsdl:message>
+  <wsdl:message name="题_题_选择_插入_OutputMessage">
+    <wsdl:part name="parameters" element="题_选择_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_选择_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_选择_修改" />
+  </wsdl:message>
+  <wsdl:message name="题_题_选择_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_选择_修改Response" />
   </wsdl:message>
   <wsdl:message name="题_知识面_获取_InputMessage">
     <wsdl:part name="parameters" element="知识面_获取" />
@@ -117,13 +165,45 @@
       <wsdl:input wsaw:Action="urn:题/知识面_更新" message="题_知识面_更新_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/知识面_更新Response" message="题_知识面_更新_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="题_插入">
-      <wsdl:input wsaw:Action="urn:题/题_插入" message="题_题_插入_InputMessage" />
-      <wsdl:output wsaw:Action="urn:题/题_插入Response" message="题_题_插入_OutputMessage" />
+    <wsdl:operation name="题_判断_插入">
+      <wsdl:input wsaw:Action="urn:题/题_判断_插入" message="题_题_判断_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_判断_插入Response" message="题_题_判断_插入_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="题_修改">
-      <wsdl:input wsaw:Action="urn:题/题_修改" message="题_题_修改_InputMessage" />
-      <wsdl:output wsaw:Action="urn:题/题_修改Response" message="题_题_修改_OutputMessage" />
+    <wsdl:operation name="题_判断_修改">
+      <wsdl:input wsaw:Action="urn:题/题_判断_修改" message="题_题_判断_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_判断_修改Response" message="题_题_判断_修改_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_问答_插入">
+      <wsdl:input wsaw:Action="urn:题/题_问答_插入" message="题_题_问答_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_问答_插入Response" message="题_题_问答_插入_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_问答_修改">
+      <wsdl:input wsaw:Action="urn:题/题_问答_修改" message="题_题_问答_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_问答_修改Response" message="题_题_问答_修改_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_填空_插入">
+      <wsdl:input wsaw:Action="urn:题/题_填空_插入" message="题_题_填空_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_填空_插入Response" message="题_题_填空_插入_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_填空_修改">
+      <wsdl:input wsaw:Action="urn:题/题_填空_修改" message="题_题_填空_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_填空_修改Response" message="题_题_填空_修改_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_连线_插入">
+      <wsdl:input wsaw:Action="urn:题/题_连线_插入" message="题_题_连线_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_连线_插入Response" message="题_题_连线_插入_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_连线_修改">
+      <wsdl:input wsaw:Action="urn:题/题_连线_修改" message="题_题_连线_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_连线_修改Response" message="题_题_连线_修改_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_选择_插入">
+      <wsdl:input wsaw:Action="urn:题/题_选择_插入" message="题_题_选择_插入_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_选择_插入Response" message="题_题_选择_插入_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_选择_修改">
+      <wsdl:input wsaw:Action="urn:题/题_选择_修改" message="题_题_选择_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_选择_修改Response" message="题_题_选择_修改_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="知识面_获取">
       <wsdl:input wsaw:Action="urn:题/知识面_获取" message="题_知识面_获取_InputMessage" />
