@@ -1666,17 +1666,6 @@ INSERT INTO [题].[题] (");
 			var sb2 = new StringBuilder();
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
-			if (ics == null || ics.Contains(0))
-			{
-                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
-				sb.Append((isFirst ? @"
-       " : @"
-     , ") + "[题编号]");
-				sb2.Append((isFirst ? @"
-       " : @"
-     , ") + "@题编号");
-				isFirst = false;
-			}
 			if (ics == null || ics.Contains(1))
 			{
                 var p = new SqlParameter("新版题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "新版题编号", DataRowVersion.Current, false, null, "", "", "");
@@ -1871,13 +1860,6 @@ UPDATE [题].[题]
    SET ");
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
-			if (ucs == null || ucs.Contains(0))
-			{
-                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
-				sb.Append((isFirst ? @"" : @"
-     , ") + "[题编号] = @题编号");
-				isFirst = false;
-			}
 			if (ucs == null || ucs.Contains(1))
 			{
                 var p = new SqlParameter("新版题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "新版题编号", DataRowVersion.Current, false, null, "", "", "");
@@ -2618,7 +2600,7 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select1(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
