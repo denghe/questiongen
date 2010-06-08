@@ -51,7 +51,55 @@ namespace QuestionGen.Web.Service
         #region 题
 
         [OperationContract]
-        public int 题_插入(byte[] 题, byte[] 选项, byte[] 答案)
+        public int 题_判断_插入(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_判断_修改(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_问答_插入(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_问答_修改(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_填空_插入(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_填空_修改(byte[] 题, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_连线_插入(byte[] 题, byte[] 选项, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_连线_修改(byte[] 题, byte[] 选项, byte[] 答案)
+        {
+            return 0;
+        }
+
+        [OperationContract]
+        public int 题_选择_插入(byte[] 题, byte[] 选项, byte[] 答案)
         {
             var question = new db.题.题(题);
             var options = 选项.ToList<db.题.题_选择_选项>();
@@ -114,7 +162,7 @@ namespace QuestionGen.Web.Service
 
 
         [OperationContract]
-        public int 题_修改(byte[] 题, byte[] 选项, byte[] 答案)
+        public int 题_选择_修改(byte[] 题, byte[] 选项, byte[] 答案)
         {
             var question = new db.题.题(题);
             var options = 选项.ToList<db.题.题_选择_选项>();
