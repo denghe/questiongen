@@ -224,7 +224,7 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_连线 o, Expressions.Tables.题.题_连线.Handler eh = null, ColumnEnums.Tables.题.题_连线.Handler updateCols = null, ColumnEnums.Tables.题.题_连线.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_连线.Handler(a => a.连线编号 == o.连线编号);
+            if (eh == null) eh = new Expressions.Tables.题.题_连线.Handler(a => a.题编号 == o.题编号 & a.连线序号 == o.连线序号);
             return Database.Tables.题.题_连线.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -234,12 +234,13 @@ namespace DAL.Database.Tables
 		public static int Delete(this Database.Tables.题.题_连线 o, ColumnEnums.Tables.题.题_连线.Handler conditionCols = null)
 		{
             if(conditionCols == null) return Database.Tables.题.题_连线.Delete(t =>
-                t.连线编号 == o.连线编号
+                t.题编号 == o.题编号 &
+                t.连线序号 == o.连线序号
             );
             var cols = conditionCols(new DAL.ColumnEnums.Tables.题.题_连线());
             var exp = new DAL.Expressions.Tables.题.题_连线();
-            if(cols.Contains(0)) exp.And(t => t.连线编号 == o.连线编号);
-            if(cols.Contains(1)) exp.And(t => t.题编号 == o.题编号);
+            if(cols.Contains(0)) exp.And(t => t.题编号 == o.题编号);
+            if(cols.Contains(1)) exp.And(t => t.连线序号 == o.连线序号);
             if(cols.Contains(2)) exp.And(t => t.组序号 == o.组序号);
             if(cols.Contains(3)) exp.And(t => t.显示模板 == o.显示模板);
             return Database.Tables.题.题_连线.Delete(exp);
@@ -263,7 +264,7 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_连线_答案 o, Expressions.Tables.题.题_连线_答案.Handler eh = null, ColumnEnums.Tables.题.题_连线_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_连线_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_连线_答案.Handler(a => a.题编号 == o.题编号);
+            if (eh == null) eh = new Expressions.Tables.题.题_连线_答案.Handler(a => a.题编号 == o.题编号 & a.连线序号A == o.连线序号A & a.连线序号B == o.连线序号B);
             return Database.Tables.题.题_连线_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -273,13 +274,15 @@ namespace DAL.Database.Tables
 		public static int Delete(this Database.Tables.题.题_连线_答案 o, ColumnEnums.Tables.题.题_连线_答案.Handler conditionCols = null)
 		{
             if(conditionCols == null) return Database.Tables.题.题_连线_答案.Delete(t =>
-                t.题编号 == o.题编号
+                t.题编号 == o.题编号 &
+                t.连线序号A == o.连线序号A &
+                t.连线序号B == o.连线序号B
             );
             var cols = conditionCols(new DAL.ColumnEnums.Tables.题.题_连线_答案());
             var exp = new DAL.Expressions.Tables.题.题_连线_答案();
             if(cols.Contains(0)) exp.And(t => t.题编号 == o.题编号);
-            if(cols.Contains(1)) exp.And(t => t.连线编号A == o.连线编号A);
-            if(cols.Contains(2)) exp.And(t => t.连线编号B == o.连线编号B);
+            if(cols.Contains(1)) exp.And(t => t.连线序号A == o.连线序号A);
+            if(cols.Contains(2)) exp.And(t => t.连线序号B == o.连线序号B);
             return Database.Tables.题.题_连线_答案.Delete(exp);
 		}
 
@@ -414,7 +417,7 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_选择_答案 o, Expressions.Tables.题.题_选择_答案.Handler eh = null, ColumnEnums.Tables.题.题_选择_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_选择_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_选择_答案.Handler(a => a.题编号 == o.题编号 & a.选项编号 == o.选项编号 & a.格子序号 == o.格子序号);
+            if (eh == null) eh = new Expressions.Tables.题.题_选择_答案.Handler(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号 & a.格子序号 == o.格子序号);
             return Database.Tables.题.题_选择_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -425,13 +428,13 @@ namespace DAL.Database.Tables
 		{
             if(conditionCols == null) return Database.Tables.题.题_选择_答案.Delete(t =>
                 t.题编号 == o.题编号 &
-                t.选项编号 == o.选项编号 &
+                t.选项序号 == o.选项序号 &
                 t.格子序号 == o.格子序号
             );
             var cols = conditionCols(new DAL.ColumnEnums.Tables.题.题_选择_答案());
             var exp = new DAL.Expressions.Tables.题.题_选择_答案();
             if(cols.Contains(0)) exp.And(t => t.题编号 == o.题编号);
-            if(cols.Contains(1)) exp.And(t => t.选项编号 == o.选项编号);
+            if(cols.Contains(1)) exp.And(t => t.选项序号 == o.选项序号);
             if(cols.Contains(2)) exp.And(t => t.格子序号 == o.格子序号);
             return Database.Tables.题.题_选择_答案.Delete(exp);
 		}
@@ -454,7 +457,7 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_选择_选项 o, Expressions.Tables.题.题_选择_选项.Handler eh = null, ColumnEnums.Tables.题.题_选择_选项.Handler updateCols = null, ColumnEnums.Tables.题.题_选择_选项.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_选择_选项.Handler(a => a.选项编号 == o.选项编号);
+            if (eh == null) eh = new Expressions.Tables.题.题_选择_选项.Handler(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号);
             return Database.Tables.题.题_选择_选项.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -464,14 +467,14 @@ namespace DAL.Database.Tables
 		public static int Delete(this Database.Tables.题.题_选择_选项 o, ColumnEnums.Tables.题.题_选择_选项.Handler conditionCols = null)
 		{
             if(conditionCols == null) return Database.Tables.题.题_选择_选项.Delete(t =>
-                t.选项编号 == o.选项编号
+                t.题编号 == o.题编号 &
+                t.选项序号 == o.选项序号
             );
             var cols = conditionCols(new DAL.ColumnEnums.Tables.题.题_选择_选项());
             var exp = new DAL.Expressions.Tables.题.题_选择_选项();
-            if(cols.Contains(0)) exp.And(t => t.选项编号 == o.选项编号);
-            if(cols.Contains(1)) exp.And(t => t.题编号 == o.题编号);
+            if(cols.Contains(0)) exp.And(t => t.题编号 == o.题编号);
+            if(cols.Contains(1)) exp.And(t => t.选项序号 == o.选项序号);
             if(cols.Contains(2)) exp.And(t => t.显示模板 == o.显示模板);
-            if(cols.Contains(3)) exp.And(t => t.排序 == o.排序);
             return Database.Tables.题.题_选择_选项.Delete(exp);
 		}
 

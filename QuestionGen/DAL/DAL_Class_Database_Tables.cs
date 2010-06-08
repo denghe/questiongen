@@ -138,11 +138,11 @@ namespace DAL.Database.Tables.题
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        连线编号 { get; set; }
+        public int        题编号  { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        题编号  { get; set; }
+        public int        连线序号 { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -164,11 +164,11 @@ namespace DAL.Database.Tables.题
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        连线编号A { get; set; }
+        public int        连线序号A { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        连线编号B { get; set; }
+        public int        连线序号B { get; set; }
     }
 	/// <summary>
 	/// 
@@ -228,7 +228,7 @@ namespace DAL.Database.Tables.题
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        选项编号 { get; set; }
+        public int        选项序号 { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -242,19 +242,15 @@ namespace DAL.Database.Tables.题
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        选项编号 { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
         public int        题编号  { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-        public string     显示模板 { get; set; }
+        public int        选项序号 { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-        public int        排序   { get; set; }
+        public string     显示模板 { get; set; }
     }
 	/// <summary>
 	/// 
