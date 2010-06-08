@@ -28,7 +28,97 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="题_插入">
+  <xs:element name="题_判断_插入">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_判断_插入Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_判断_插入Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_判断_修改">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_判断_修改Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_判断_修改Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_问答_插入">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_问答_插入Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_问答_插入Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_问答_修改">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_问答_修改Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_问答_修改Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_填空_插入">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_填空_插入Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_填空_插入Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_填空_修改">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_填空_修改Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_填空_修改Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_连线_插入">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
@@ -37,14 +127,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="题_插入Response">
+  <xs:element name="题_连线_插入Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="题_插入Result" type="xs:int" />
+        <xs:element minOccurs="0" name="题_连线_插入Result" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="题_修改">
+  <xs:element name="题_连线_修改">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
@@ -53,10 +143,42 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="题_修改Response">
+  <xs:element name="题_连线_修改Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="题_修改Result" type="xs:int" />
+        <xs:element minOccurs="0" name="题_连线_修改Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_选择_插入">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="选项" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_选择_插入Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_选择_插入Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_选择_修改">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="选项" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_选择_修改Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_选择_修改Result" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,7 +255,7 @@
   <xs:element name="知识面_获取行数">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -147,7 +269,7 @@
   <xs:element name="题_获取行数">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -161,7 +283,7 @@
   <xs:element name="题_选择_选项_获取行数">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,7 +297,7 @@
   <xs:element name="题_选择_答案_获取行数">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -189,7 +311,7 @@
   <xs:element name="类型_获取行数">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="查询" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

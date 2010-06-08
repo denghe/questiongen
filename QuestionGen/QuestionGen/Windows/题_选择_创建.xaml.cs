@@ -45,7 +45,7 @@ namespace QuestionGen.Windows
         {
             _题 = o;
             _s = new 服务.题Client();
-            _s.题_插入Completed += new EventHandler<服务.题_插入CompletedEventArgs>(_s_题_插入Completed);
+            _s.题_选择_插入Completed += new EventHandler<服务.题_选择_插入CompletedEventArgs>(_s_题_选择_插入Completed);
         }
 
         #endregion
@@ -403,7 +403,8 @@ namespace QuestionGen.Windows
 
         #endregion
 
-        void _s_题_插入Completed(object sender, 服务.题_插入CompletedEventArgs e)
+
+        void _s_题_选择_插入Completed(object sender, 服务.题_选择_插入CompletedEventArgs e)
         {
             if (e.Result > 0)
             {
@@ -430,7 +431,7 @@ namespace QuestionGen.Windows
             if (result != null)
             {
                 _提交_Button.IsEnabled = false;
-                _s.题_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
+                _s.题_选择_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
             }
         }
 
