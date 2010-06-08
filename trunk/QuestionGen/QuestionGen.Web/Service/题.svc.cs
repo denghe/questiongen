@@ -192,7 +192,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种获取
+        #region 各种 Rows 获取
 
         [OperationContract]
         public byte[] 知识面_获取(byte[] 查询)
@@ -222,6 +222,40 @@ namespace QuestionGen.Web.Service
         public byte[] 类型_获取(byte[] 查询)
         {
             return db.题.类型.Select(new query.题.类型(查询)).GetBytes();
+        }
+
+        #endregion
+
+        #region 各种 Count 获取
+
+        [OperationContract]
+        public int 知识面_获取行数(byte[] 查询)
+        {
+            return db.题.知识面.Count(new exp.题.知识面(查询));
+        }
+
+        [OperationContract]
+        public int 题_获取行数(byte[] 查询)
+        {
+            return db.题.题.Count(new exp.题.题(查询));
+        }
+
+        [OperationContract]
+        public int 题_选择_选项_获取行数(byte[] 查询)
+        {
+            return db.题.题_选择_选项.Count(new exp.题.题_选择_选项(查询));
+        }
+
+        [OperationContract]
+        public int 题_选择_答案_获取行数(byte[] 查询)
+        {
+            return db.题.题_选择_答案.Count(new exp.题.题_选择_答案(查询));
+        }
+
+        [OperationContract]
+        public int 类型_获取行数(byte[] 查询)
+        {
+            return db.题.类型.Count(new exp.题.类型(查询));
         }
 
         #endregion
