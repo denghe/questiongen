@@ -133,7 +133,25 @@ namespace DAL.Database.Tables.题
 	/// <summary>
 	/// 
 	/// </summary>
-    public partial class 题_连线
+    public partial class 题_连线_答案
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+        public int        题编号   { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+        public int        连线序号A { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+        public int        连线序号B { get; set; }
+    }
+	/// <summary>
+	/// 
+	/// </summary>
+    public partial class 题_连线_选项
     {
 		/// <summary>
 		/// 
@@ -155,25 +173,7 @@ namespace DAL.Database.Tables.题
 	/// <summary>
 	/// 
 	/// </summary>
-    public partial class 题_连线_答案
-    {
-		/// <summary>
-		/// 
-		/// </summary>
-        public int        题编号   { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-        public int        连线序号A { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-        public int        连线序号B { get; set; }
-    }
-	/// <summary>
-	/// 
-	/// </summary>
-    public partial class 题_判断
+    public partial class 题_判断_答案
     {
 		/// <summary>
 		/// 
@@ -205,7 +205,7 @@ namespace DAL.Database.Tables.题
 	/// <summary>
 	/// 
 	/// </summary>
-    public partial class 题_问答
+    public partial class 题_问答_答案
     {
 		/// <summary>
 		/// 

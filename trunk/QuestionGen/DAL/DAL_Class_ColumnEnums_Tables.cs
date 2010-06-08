@@ -100,23 +100,6 @@ namespace DAL.ColumnEnums.Tables.题
             return __cns[i];
         }
     }
-    public partial class 题_连线 : ColumnList<题_连线>
-    {
-        public 题_连线 题编号 { get { __columns.Add(0); return this; } }
-        public 题_连线 连线序号 { get { __columns.Add(1); return this; } }
-        public 题_连线 组序号 { get { __columns.Add(2); return this; } }
-        public 题_连线 显示模板 { get { __columns.Add(3); return this; } }
-        protected static string[] __cns = new string[]
-        {
-            @"题编号",
-            @"连线序号",
-            @"组序号",
-            @"显示模板"
-        };
-        public override string GetColumnName(int i) {
-            return __cns[i];
-        }
-    }
     public partial class 题_连线_答案 : ColumnList<题_连线_答案>
     {
         public 题_连线_答案 题编号 { get { __columns.Add(0); return this; } }
@@ -132,10 +115,27 @@ namespace DAL.ColumnEnums.Tables.题
             return __cns[i];
         }
     }
-    public partial class 题_判断 : ColumnList<题_判断>
+    public partial class 题_连线_选项 : ColumnList<题_连线_选项>
     {
-        public 题_判断 题编号 { get { __columns.Add(0); return this; } }
-        public 题_判断 答案 { get { __columns.Add(1); return this; } }
+        public 题_连线_选项 题编号 { get { __columns.Add(0); return this; } }
+        public 题_连线_选项 连线序号 { get { __columns.Add(1); return this; } }
+        public 题_连线_选项 组序号 { get { __columns.Add(2); return this; } }
+        public 题_连线_选项 显示模板 { get { __columns.Add(3); return this; } }
+        protected static string[] __cns = new string[]
+        {
+            @"题编号",
+            @"连线序号",
+            @"组序号",
+            @"显示模板"
+        };
+        public override string GetColumnName(int i) {
+            return __cns[i];
+        }
+    }
+    public partial class 题_判断_答案 : ColumnList<题_判断_答案>
+    {
+        public 题_判断_答案 题编号 { get { __columns.Add(0); return this; } }
+        public 题_判断_答案 答案 { get { __columns.Add(1); return this; } }
         protected static string[] __cns = new string[]
         {
             @"题编号",
@@ -160,10 +160,10 @@ namespace DAL.ColumnEnums.Tables.题
             return __cns[i];
         }
     }
-    public partial class 题_问答 : ColumnList<题_问答>
+    public partial class 题_问答_答案 : ColumnList<题_问答_答案>
     {
-        public 题_问答 题编号 { get { __columns.Add(0); return this; } }
-        public 题_问答 参考答案 { get { __columns.Add(1); return this; } }
+        public 题_问答_答案 题编号 { get { __columns.Add(0); return this; } }
+        public 题_问答_答案 参考答案 { get { __columns.Add(1); return this; } }
         protected static string[] __cns = new string[]
         {
             @"题编号",

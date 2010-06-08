@@ -212,45 +212,6 @@ namespace DAL.Database.Tables.题
         #endregion
 
     }
-    partial class 题_连线 : ISerial
-    {
-
-        #region Constructor
-
-        public 题_连线() {
-        }
-        public 题_连线(byte[] buffer, ref int startIndex)
-            : this() {
-            Fill(buffer, ref startIndex);
-        }
-        public 题_连线(byte[] buffer)
-            : this() {
-            var startIndex = 0;
-            Fill(buffer, ref startIndex);
-        }
-
-        #endregion
-
-        #region Serial
-        public byte[] GetBytes()
-        {
-            return new byte[][]
-            {
-                this.题编号.GetBytes(),
-                this.连线序号.GetBytes(),
-                this.组序号.GetBytes(),
-                this.显示模板.GetBytes(),
-            }.Combine();
-        }
-        public void Fill(byte[] buffer, ref int startIndex) {
-            this.题编号 = buffer.ToInt32(ref startIndex);
-            this.连线序号 = buffer.ToInt32(ref startIndex);
-            this.组序号 = buffer.ToInt32(ref startIndex);
-            this.显示模板 = buffer.ToString(ref startIndex);
-        }
-        #endregion
-
-    }
     partial class 题_连线_答案 : ISerial
     {
 
@@ -288,18 +249,57 @@ namespace DAL.Database.Tables.题
         #endregion
 
     }
-    partial class 题_判断 : ISerial
+    partial class 题_连线_选项 : ISerial
     {
 
         #region Constructor
 
-        public 题_判断() {
+        public 题_连线_选项() {
         }
-        public 题_判断(byte[] buffer, ref int startIndex)
+        public 题_连线_选项(byte[] buffer, ref int startIndex)
             : this() {
             Fill(buffer, ref startIndex);
         }
-        public 题_判断(byte[] buffer)
+        public 题_连线_选项(byte[] buffer)
+            : this() {
+            var startIndex = 0;
+            Fill(buffer, ref startIndex);
+        }
+
+        #endregion
+
+        #region Serial
+        public byte[] GetBytes()
+        {
+            return new byte[][]
+            {
+                this.题编号.GetBytes(),
+                this.连线序号.GetBytes(),
+                this.组序号.GetBytes(),
+                this.显示模板.GetBytes(),
+            }.Combine();
+        }
+        public void Fill(byte[] buffer, ref int startIndex) {
+            this.题编号 = buffer.ToInt32(ref startIndex);
+            this.连线序号 = buffer.ToInt32(ref startIndex);
+            this.组序号 = buffer.ToInt32(ref startIndex);
+            this.显示模板 = buffer.ToString(ref startIndex);
+        }
+        #endregion
+
+    }
+    partial class 题_判断_答案 : ISerial
+    {
+
+        #region Constructor
+
+        public 题_判断_答案() {
+        }
+        public 题_判断_答案(byte[] buffer, ref int startIndex)
+            : this() {
+            Fill(buffer, ref startIndex);
+        }
+        public 题_判断_答案(byte[] buffer)
             : this() {
             var startIndex = 0;
             Fill(buffer, ref startIndex);
@@ -360,18 +360,18 @@ namespace DAL.Database.Tables.题
         #endregion
 
     }
-    partial class 题_问答 : ISerial
+    partial class 题_问答_答案 : ISerial
     {
 
         #region Constructor
 
-        public 题_问答() {
+        public 题_问答_答案() {
         }
-        public 题_问答(byte[] buffer, ref int startIndex)
+        public 题_问答_答案(byte[] buffer, ref int startIndex)
             : this() {
             Fill(buffer, ref startIndex);
         }
-        public 题_问答(byte[] buffer)
+        public 题_问答_答案(byte[] buffer)
             : this() {
             var startIndex = 0;
             Fill(buffer, ref startIndex);

@@ -2116,417 +2116,6 @@ DELETE FROM [题].[题]";
         #endregion
 
     }
-    partial class 题_连线
-    {
-
-        #region Select
-
-        public static List<题_连线> Select(Queries.Tables.题.题_连线 q)
-        {
-            var tsql = q.ToSqlString();
-            var rows = new List<题_连线>();
-            using(var reader = SqlHelper.ExecuteDataReader(tsql))
-            {
-                var count = q.Columns == null ? 0 : q.Columns.Count();
-                if(count > 0) {
-                    while(reader.Read()) {
-                        var row = new 题_连线();
-                        var cols = q.Columns;
-                        for(int i = 0; i < count; i++) {
-                            if(cols.Contains(0)) {row.题编号 = reader.GetInt32(i); i++; }
-                            else if(i < count && cols.Contains(1)) {row.连线序号 = reader.GetInt32(i); i++; }
-                            else if(i < count && cols.Contains(2)) {row.组序号 = reader.GetInt32(i); i++; }
-                            else if(i < count && cols.Contains(3)) {row.显示模板 = reader.GetString(i); i++; }
-                        }
-                        rows.Add(row);
-                    }
-                }
-                else
-                {
-                    while(reader.Read())
-                    {
-                        rows.Add(new 题_连线
-                        {
-                            题编号 = reader.GetInt32(0),
-                            连线序号 = reader.GetInt32(1),
-                            组序号 = reader.GetInt32(2),
-                            显示模板 = reader.GetString(3)
-                        });
-                    }
-                }
-
-            }
-            return rows;
-        }
-
-        public static List<题_连线> Select(
-            Expressions.Tables.题.题_连线.Handler where = null
-            , Orientations.Tables.题.题_连线.Handler orderby = null
-            , int pageSize = 0
-            , int pageIndex = 0
-            , ColumnEnums.Tables.题.题_连线.Handler columns = null
-            )
-        {
-            return Select(Queries.Tables.题.题_连线.New(where, orderby, pageSize, pageIndex, columns));
-        }
-
-        public static 题_连线 Select(int c0, int c1, ColumnEnums.Tables.题.题_连线.Handler columns = null)
-        {
-            return Select(o => o.题编号.Equal(c0) & o.连线序号.Equal(c1), columns: columns).FirstOrDefault();
-        }
-
-        public static List<题_连线> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_连线.Handler query = null) {
-            if(query == null) return 题_连线.Select(where: o => o.题编号 == parent.题编号);
-            var q = query(new Queries.Tables.题.题_连线());
-            if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号);
-            else q.Where.And(o => o.题编号 == parent.题编号);
-            return 题_连线.Select(q);
-        }
-
-        #endregion
-
-        #region Insert
-
-		public static int Insert(题_连线 o, ColumnEnums.Tables.题.题_连线 ics, ColumnEnums.Tables.题.题_连线 fcs = null, bool isFillAfterInsert = true)
-		{
-			var cmd = new SqlCommand();
-			var sb = new StringBuilder(@"
-INSERT INTO [题].[题_连线] (");
-			var sb2 = new StringBuilder();
-			var isFirst = true;
-            var fccount = fcs == null ? 0 : fcs.Count();
-			if (ics == null || ics.Contains(0))
-			{
-                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
-				sb.Append((isFirst ? @"
-       " : @"
-     , ") + "[题编号]");
-				sb2.Append((isFirst ? @"
-       " : @"
-     , ") + "@题编号");
-				isFirst = false;
-			}
-			if (ics == null || ics.Contains(1))
-			{
-                cmd.Parameters.Add(new SqlParameter("连线序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "连线序号", DataRowVersion.Current, false, o.连线序号, "", "", ""));
-				sb.Append((isFirst ? @"
-       " : @"
-     , ") + "[连线序号]");
-				sb2.Append((isFirst ? @"
-       " : @"
-     , ") + "@连线序号");
-				isFirst = false;
-			}
-			if (ics == null || ics.Contains(2))
-			{
-                cmd.Parameters.Add(new SqlParameter("组序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "组序号", DataRowVersion.Current, false, o.组序号, "", "", ""));
-				sb.Append((isFirst ? @"
-       " : @"
-     , ") + "[组序号]");
-				sb2.Append((isFirst ? @"
-       " : @"
-     , ") + "@组序号");
-				isFirst = false;
-			}
-			if (ics == null || ics.Contains(3))
-			{
-                cmd.Parameters.Add(new SqlParameter("显示模板", SqlDbType.NVarChar, 0, ParameterDirection.Input, 0, 0, "显示模板", DataRowVersion.Current, false, o.显示模板, "", "", ""));
-				sb.Append((isFirst ? @"
-       " : @"
-     , ") + "[显示模板]");
-				sb2.Append((isFirst ? @"
-       " : @"
-     , ") + "@显示模板");
-				isFirst = false;
-			}
-            if(isFillAfterInsert)
-            {
-                if(fcs == null)
-                {
-                    sb.Append(@"
-) 
-OUTPUT INSERTED.* VALUES (");
-                }
-                else
-                {
-                    sb.Append(@"
-) 
-OUTPUT ");
-                    for(int i = 0; i < fccount; i++)
-                    {
-                        if(i > 0) sb.Append(@", ");
-                        sb.Append(@"INSERTED.[" + fcs.GetColumnName(i).Replace("]", "]]") + "]");
-                    }
-                    sb.Append(@" VALUES (");
-                }
-            }
-            else sb.Append(@"
-) 
-VALUES (");
-			sb.Append(sb2);
-			sb.Append(@"
-);");
-			cmd.CommandText = sb.ToString();
-            if(!isFillAfterInsert)
-                return SqlHelper.ExecuteNonQuery(cmd);
-
-            using(var reader = SqlHelper.ExecuteDataReader(cmd))
-            {
-                if(fccount == 0)
-                {
-                    while(reader.Read())
-                    {
-                        o.题编号 = reader.GetInt32(0);
-                        o.连线序号 = reader.GetInt32(1);
-                        o.组序号 = reader.GetInt32(2);
-                        o.显示模板 = reader.GetString(3);
-                    }
-                }
-                else
-                {
-                    while(reader.Read())
-                    {
-                        for(int i = 0; i < fccount; i++)
-                        {
-                            if(fcs.Contains(0)) {o.题编号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(1)) {o.连线序号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(2)) {o.组序号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(3)) {o.显示模板 = reader.GetString(i); i++; }
-                        }
-                    }
-                }
-                return reader.RecordsAffected;
-            }
-		}
-
-		public static int Insert(题_连线 o, ColumnEnums.Tables.题.题_连线.Handler insertCols = null, ColumnEnums.Tables.题.题_连线.Handler fillCols = null, bool isFillAfterInsert = true)
-		{
-            return Insert(o,
-                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_连线()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_连线()),
-                isFillAfterInsert
-            );
-        }
-
-        #endregion
-
-        #region Update
-
-		public static int Update(题_连线 o, Expressions.Tables.题.题_连线 eh, ColumnEnums.Tables.题.题_连线 ucs = null, ColumnEnums.Tables.题.题_连线 fcs = null, bool isFillAfterUpdate = true)
-		{
-			var cmd = new SqlCommand();
-			var sb = new StringBuilder(@"
-UPDATE [题].[题_连线]
-   SET ");
-			var isFirst = true;
-            var fccount = fcs == null ? 0 : fcs.Count();
-			if (ucs == null || ucs.Contains(0))
-			{
-                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
-				sb.Append((isFirst ? @"" : @"
-     , ") + "[题编号] = @题编号");
-				isFirst = false;
-			}
-			if (ucs == null || ucs.Contains(1))
-			{
-                cmd.Parameters.Add(new SqlParameter("连线序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "连线序号", DataRowVersion.Current, false, o.连线序号, "", "", ""));
-				sb.Append((isFirst ? @"" : @"
-     , ") + "[连线序号] = @连线序号");
-				isFirst = false;
-			}
-			if (ucs == null || ucs.Contains(2))
-			{
-                cmd.Parameters.Add(new SqlParameter("组序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "组序号", DataRowVersion.Current, false, o.组序号, "", "", ""));
-				sb.Append((isFirst ? @"" : @"
-     , ") + "[组序号] = @组序号");
-				isFirst = false;
-			}
-			if (ucs == null || ucs.Contains(3))
-			{
-                cmd.Parameters.Add(new SqlParameter("显示模板", SqlDbType.NVarChar, 0, ParameterDirection.Input, 0, 0, "显示模板", DataRowVersion.Current, false, o.显示模板, "", "", ""));
-				sb.Append((isFirst ? @"" : @"
-     , ") + "[显示模板] = @显示模板");
-				isFirst = false;
-			}
-            if(isFillAfterUpdate) {
-                if(fcs == null) {
-                    sb.Append(@"
-OUTPUT INSERTED.*");
-                }
-                else {
-                    sb.Append(@"
-OUTPUT ");
-                    for(int i = 0; i < fccount; i++) {
-                        if(i > 0) sb.Append(@", ");
-                        sb.Append(@"INSERTED.[" + fcs.GetColumnName(i).Replace("]", "]]") + "]");
-                    }
-                }
-            }
-
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
- WHERE " + ws);
-            }
-			cmd.CommandText = sb.ToString();
-			if (!isFillAfterUpdate)
-                return SqlHelper.ExecuteNonQuery(cmd);
-
-            using(var reader = SqlHelper.ExecuteDataReader(cmd))
-            {
-                if(fccount == 0)
-                {
-                    while(reader.Read())
-                    {
-                        o.题编号 = reader.GetInt32(0);
-                        o.连线序号 = reader.GetInt32(1);
-                        o.组序号 = reader.GetInt32(2);
-                        o.显示模板 = reader.GetString(3);
-                    }
-                }
-                else
-                {
-                    while(reader.Read())
-                    {
-                        for(int i = 0; i < fccount; i++)
-                        {
-                            if(fcs.Contains(0)) {o.题编号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(1)) {o.连线序号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(2)) {o.组序号 = reader.GetInt32(i); i++; }
-                            else if(i < fccount && fcs.Contains(3)) {o.显示模板 = reader.GetString(i); i++; }
-                        }
-                    }
-                }
-                return reader.RecordsAffected;
-            }
-            
-		}
-        public static int Update(题_连线 o, Expressions.Tables.题.题_连线.Handler eh = null, ColumnEnums.Tables.题.题_连线.Handler updateCols = null, ColumnEnums.Tables.题.题_连线.Handler fillCols = null, bool isFillAfterUpdate = true)
-        {
-            return Update(o,
-                eh == null ? null : eh(new Expressions.Tables.题.题_连线()),
-                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_连线()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_连线()),
-                isFillAfterUpdate
-            );
-        }
-        #endregion
-
-        #region Delete
-
-		public static int Delete(Expressions.Tables.题.题_连线 eh)
-		{
-			var s = @"
-DELETE FROM [题].[题_连线]";
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    s += @"
- WHERE " + ws;
-            }
-			return SqlHelper.ExecuteNonQuery(s);
-		}
-        public static int Delete(Expressions.Tables.题.题_连线.Handler eh)
-        {
-            return Delete(eh(new Expressions.Tables.题.题_连线()));
-        }
-        #endregion
-
-        #region Others
-
-        #region Count
-
-        public static int Count(
-            Expressions.Tables.题.题_连线 where,
-            ColumnEnums.Tables.题.题_连线 column = null,
-            bool isDistinct = false
-        )
-        {
-            string tsql;
-            if (where == null)
-            {
-                if (column == null)
-                {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_连线]";
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_连线]";
-                }
-                else
-                {
-                    var c = column.ToString();
-                    if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_连线]";
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_连线]";
-                }
-            }
-            else
-            {
-                var w = where.ToString();
-                if (w.Length > 0) w = " WHERE " + w;
-                if (column == null)
-                {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_连线]" + w;
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_连线]" + w;
-                }
-                else
-                {
-                    var c = column.ToString();
-                    if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_连线]" + w;
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_连线]" + w;
-                }
-            }
-            return SqlHelper.ExecuteScalar<int>(tsql);
-        }
-
-        public static int Count(
-            Expressions.Tables.题.题_连线.Handler where = null,
-            ColumnEnums.Tables.题.题_连线.Handler column = null,
-            bool isDistinct = false
-        )
-        {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_连线());
-            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_连线());
-            return Count(w, c, isDistinct);
-        }
-
-        #endregion
-
-        #region Exists
-
-        public static bool Exists(
-            Expressions.Tables.题.题_连线 where
-        )
-        {
-            string tsql;
-            if (where == null)
-            {
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_连线]";
-            }
-            else
-            {
-                var w = where.ToString();
-                if (w.Length > 0) w = " WHERE " + w;
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_连线]" + w;
-            }
-            var o = SqlHelper.ExecuteScalar(tsql);
-            return !(o == null || o == DBNull.Value);
-        }
-        public static bool Exists(
-            Expressions.Tables.题.题_连线.Handler where = null
-        )
-        {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_连线());
-            return Exists(w);
-        }
-
-        #endregion
-
-        #endregion
-
-    }
     partial class 题_连线_答案
     {
 
@@ -2592,7 +2181,7 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select(Database.Tables.题.题_连线_选项 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.题编号 == parent.题编号 & o.连线序号A == parent.连线序号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号 & o.连线序号A == parent.连线序号);
@@ -2600,7 +2189,7 @@ DELETE FROM [题].[题_连线]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select1(Database.Tables.题.题_连线 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select(Database.Tables.题.题_连线_选项 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
@@ -2930,21 +2519,432 @@ DELETE FROM [题].[题_连线_答案]";
         #endregion
 
     }
-    partial class 题_判断
+    partial class 题_连线_选项
     {
 
         #region Select
 
-        public static List<题_判断> Select(Queries.Tables.题.题_判断 q)
+        public static List<题_连线_选项> Select(Queries.Tables.题.题_连线_选项 q)
         {
             var tsql = q.ToSqlString();
-            var rows = new List<题_判断>();
+            var rows = new List<题_连线_选项>();
             using(var reader = SqlHelper.ExecuteDataReader(tsql))
             {
                 var count = q.Columns == null ? 0 : q.Columns.Count();
                 if(count > 0) {
                     while(reader.Read()) {
-                        var row = new 题_判断();
+                        var row = new 题_连线_选项();
+                        var cols = q.Columns;
+                        for(int i = 0; i < count; i++) {
+                            if(cols.Contains(0)) {row.题编号 = reader.GetInt32(i); i++; }
+                            else if(i < count && cols.Contains(1)) {row.连线序号 = reader.GetInt32(i); i++; }
+                            else if(i < count && cols.Contains(2)) {row.组序号 = reader.GetInt32(i); i++; }
+                            else if(i < count && cols.Contains(3)) {row.显示模板 = reader.GetString(i); i++; }
+                        }
+                        rows.Add(row);
+                    }
+                }
+                else
+                {
+                    while(reader.Read())
+                    {
+                        rows.Add(new 题_连线_选项
+                        {
+                            题编号 = reader.GetInt32(0),
+                            连线序号 = reader.GetInt32(1),
+                            组序号 = reader.GetInt32(2),
+                            显示模板 = reader.GetString(3)
+                        });
+                    }
+                }
+
+            }
+            return rows;
+        }
+
+        public static List<题_连线_选项> Select(
+            Expressions.Tables.题.题_连线_选项.Handler where = null
+            , Orientations.Tables.题.题_连线_选项.Handler orderby = null
+            , int pageSize = 0
+            , int pageIndex = 0
+            , ColumnEnums.Tables.题.题_连线_选项.Handler columns = null
+            )
+        {
+            return Select(Queries.Tables.题.题_连线_选项.New(where, orderby, pageSize, pageIndex, columns));
+        }
+
+        public static 题_连线_选项 Select(int c0, int c1, ColumnEnums.Tables.题.题_连线_选项.Handler columns = null)
+        {
+            return Select(o => o.题编号.Equal(c0) & o.连线序号.Equal(c1), columns: columns).FirstOrDefault();
+        }
+
+        public static List<题_连线_选项> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_连线_选项.Handler query = null) {
+            if(query == null) return 题_连线_选项.Select(where: o => o.题编号 == parent.题编号);
+            var q = query(new Queries.Tables.题.题_连线_选项());
+            if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号);
+            else q.Where.And(o => o.题编号 == parent.题编号);
+            return 题_连线_选项.Select(q);
+        }
+
+        #endregion
+
+        #region Insert
+
+		public static int Insert(题_连线_选项 o, ColumnEnums.Tables.题.题_连线_选项 ics, ColumnEnums.Tables.题.题_连线_选项 fcs = null, bool isFillAfterInsert = true)
+		{
+			var cmd = new SqlCommand();
+			var sb = new StringBuilder(@"
+INSERT INTO [题].[题_连线_选项] (");
+			var sb2 = new StringBuilder();
+			var isFirst = true;
+            var fccount = fcs == null ? 0 : fcs.Count();
+			if (ics == null || ics.Contains(0))
+			{
+                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
+				sb.Append((isFirst ? @"
+       " : @"
+     , ") + "[题编号]");
+				sb2.Append((isFirst ? @"
+       " : @"
+     , ") + "@题编号");
+				isFirst = false;
+			}
+			if (ics == null || ics.Contains(1))
+			{
+                cmd.Parameters.Add(new SqlParameter("连线序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "连线序号", DataRowVersion.Current, false, o.连线序号, "", "", ""));
+				sb.Append((isFirst ? @"
+       " : @"
+     , ") + "[连线序号]");
+				sb2.Append((isFirst ? @"
+       " : @"
+     , ") + "@连线序号");
+				isFirst = false;
+			}
+			if (ics == null || ics.Contains(2))
+			{
+                cmd.Parameters.Add(new SqlParameter("组序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "组序号", DataRowVersion.Current, false, o.组序号, "", "", ""));
+				sb.Append((isFirst ? @"
+       " : @"
+     , ") + "[组序号]");
+				sb2.Append((isFirst ? @"
+       " : @"
+     , ") + "@组序号");
+				isFirst = false;
+			}
+			if (ics == null || ics.Contains(3))
+			{
+                cmd.Parameters.Add(new SqlParameter("显示模板", SqlDbType.NVarChar, 0, ParameterDirection.Input, 0, 0, "显示模板", DataRowVersion.Current, false, o.显示模板, "", "", ""));
+				sb.Append((isFirst ? @"
+       " : @"
+     , ") + "[显示模板]");
+				sb2.Append((isFirst ? @"
+       " : @"
+     , ") + "@显示模板");
+				isFirst = false;
+			}
+            if(isFillAfterInsert)
+            {
+                if(fcs == null)
+                {
+                    sb.Append(@"
+) 
+OUTPUT INSERTED.* VALUES (");
+                }
+                else
+                {
+                    sb.Append(@"
+) 
+OUTPUT ");
+                    for(int i = 0; i < fccount; i++)
+                    {
+                        if(i > 0) sb.Append(@", ");
+                        sb.Append(@"INSERTED.[" + fcs.GetColumnName(i).Replace("]", "]]") + "]");
+                    }
+                    sb.Append(@" VALUES (");
+                }
+            }
+            else sb.Append(@"
+) 
+VALUES (");
+			sb.Append(sb2);
+			sb.Append(@"
+);");
+			cmd.CommandText = sb.ToString();
+            if(!isFillAfterInsert)
+                return SqlHelper.ExecuteNonQuery(cmd);
+
+            using(var reader = SqlHelper.ExecuteDataReader(cmd))
+            {
+                if(fccount == 0)
+                {
+                    while(reader.Read())
+                    {
+                        o.题编号 = reader.GetInt32(0);
+                        o.连线序号 = reader.GetInt32(1);
+                        o.组序号 = reader.GetInt32(2);
+                        o.显示模板 = reader.GetString(3);
+                    }
+                }
+                else
+                {
+                    while(reader.Read())
+                    {
+                        for(int i = 0; i < fccount; i++)
+                        {
+                            if(fcs.Contains(0)) {o.题编号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(1)) {o.连线序号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(2)) {o.组序号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(3)) {o.显示模板 = reader.GetString(i); i++; }
+                        }
+                    }
+                }
+                return reader.RecordsAffected;
+            }
+		}
+
+		public static int Insert(题_连线_选项 o, ColumnEnums.Tables.题.题_连线_选项.Handler insertCols = null, ColumnEnums.Tables.题.题_连线_选项.Handler fillCols = null, bool isFillAfterInsert = true)
+		{
+            return Insert(o,
+                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_连线_选项()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_连线_选项()),
+                isFillAfterInsert
+            );
+        }
+
+        #endregion
+
+        #region Update
+
+		public static int Update(题_连线_选项 o, Expressions.Tables.题.题_连线_选项 eh, ColumnEnums.Tables.题.题_连线_选项 ucs = null, ColumnEnums.Tables.题.题_连线_选项 fcs = null, bool isFillAfterUpdate = true)
+		{
+			var cmd = new SqlCommand();
+			var sb = new StringBuilder(@"
+UPDATE [题].[题_连线_选项]
+   SET ");
+			var isFirst = true;
+            var fccount = fcs == null ? 0 : fcs.Count();
+			if (ucs == null || ucs.Contains(0))
+			{
+                cmd.Parameters.Add(new SqlParameter("题编号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "题编号", DataRowVersion.Current, false, o.题编号, "", "", ""));
+				sb.Append((isFirst ? @"" : @"
+     , ") + "[题编号] = @题编号");
+				isFirst = false;
+			}
+			if (ucs == null || ucs.Contains(1))
+			{
+                cmd.Parameters.Add(new SqlParameter("连线序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "连线序号", DataRowVersion.Current, false, o.连线序号, "", "", ""));
+				sb.Append((isFirst ? @"" : @"
+     , ") + "[连线序号] = @连线序号");
+				isFirst = false;
+			}
+			if (ucs == null || ucs.Contains(2))
+			{
+                cmd.Parameters.Add(new SqlParameter("组序号", SqlDbType.Int, 0, ParameterDirection.Input, 0, 0, "组序号", DataRowVersion.Current, false, o.组序号, "", "", ""));
+				sb.Append((isFirst ? @"" : @"
+     , ") + "[组序号] = @组序号");
+				isFirst = false;
+			}
+			if (ucs == null || ucs.Contains(3))
+			{
+                cmd.Parameters.Add(new SqlParameter("显示模板", SqlDbType.NVarChar, 0, ParameterDirection.Input, 0, 0, "显示模板", DataRowVersion.Current, false, o.显示模板, "", "", ""));
+				sb.Append((isFirst ? @"" : @"
+     , ") + "[显示模板] = @显示模板");
+				isFirst = false;
+			}
+            if(isFillAfterUpdate) {
+                if(fcs == null) {
+                    sb.Append(@"
+OUTPUT INSERTED.*");
+                }
+                else {
+                    sb.Append(@"
+OUTPUT ");
+                    for(int i = 0; i < fccount; i++) {
+                        if(i > 0) sb.Append(@", ");
+                        sb.Append(@"INSERTED.[" + fcs.GetColumnName(i).Replace("]", "]]") + "]");
+                    }
+                }
+            }
+
+            if (eh != null)
+            {
+                var ws = eh.ToString();
+                if(ws.Length > 0)
+    			    sb.Append(@"
+ WHERE " + ws);
+            }
+			cmd.CommandText = sb.ToString();
+			if (!isFillAfterUpdate)
+                return SqlHelper.ExecuteNonQuery(cmd);
+
+            using(var reader = SqlHelper.ExecuteDataReader(cmd))
+            {
+                if(fccount == 0)
+                {
+                    while(reader.Read())
+                    {
+                        o.题编号 = reader.GetInt32(0);
+                        o.连线序号 = reader.GetInt32(1);
+                        o.组序号 = reader.GetInt32(2);
+                        o.显示模板 = reader.GetString(3);
+                    }
+                }
+                else
+                {
+                    while(reader.Read())
+                    {
+                        for(int i = 0; i < fccount; i++)
+                        {
+                            if(fcs.Contains(0)) {o.题编号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(1)) {o.连线序号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(2)) {o.组序号 = reader.GetInt32(i); i++; }
+                            else if(i < fccount && fcs.Contains(3)) {o.显示模板 = reader.GetString(i); i++; }
+                        }
+                    }
+                }
+                return reader.RecordsAffected;
+            }
+            
+		}
+        public static int Update(题_连线_选项 o, Expressions.Tables.题.题_连线_选项.Handler eh = null, ColumnEnums.Tables.题.题_连线_选项.Handler updateCols = null, ColumnEnums.Tables.题.题_连线_选项.Handler fillCols = null, bool isFillAfterUpdate = true)
+        {
+            return Update(o,
+                eh == null ? null : eh(new Expressions.Tables.题.题_连线_选项()),
+                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_连线_选项()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_连线_选项()),
+                isFillAfterUpdate
+            );
+        }
+        #endregion
+
+        #region Delete
+
+		public static int Delete(Expressions.Tables.题.题_连线_选项 eh)
+		{
+			var s = @"
+DELETE FROM [题].[题_连线_选项]";
+            if (eh != null)
+            {
+                var ws = eh.ToString();
+                if(ws.Length > 0)
+    			    s += @"
+ WHERE " + ws;
+            }
+			return SqlHelper.ExecuteNonQuery(s);
+		}
+        public static int Delete(Expressions.Tables.题.题_连线_选项.Handler eh)
+        {
+            return Delete(eh(new Expressions.Tables.题.题_连线_选项()));
+        }
+        #endregion
+
+        #region Others
+
+        #region Count
+
+        public static int Count(
+            Expressions.Tables.题.题_连线_选项 where,
+            ColumnEnums.Tables.题.题_连线_选项 column = null,
+            bool isDistinct = false
+        )
+        {
+            string tsql;
+            if (where == null)
+            {
+                if (column == null)
+                {
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_连线_选项]";
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_连线_选项]";
+                }
+                else
+                {
+                    var c = column.ToString();
+                    if (c.Length == 0) c = "*";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_连线_选项]";
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_连线_选项]";
+                }
+            }
+            else
+            {
+                var w = where.ToString();
+                if (w.Length > 0) w = " WHERE " + w;
+                if (column == null)
+                {
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_连线_选项]" + w;
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_连线_选项]" + w;
+                }
+                else
+                {
+                    var c = column.ToString();
+                    if (c.Length == 0) c = "*";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_连线_选项]" + w;
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_连线_选项]" + w;
+                }
+            }
+            return SqlHelper.ExecuteScalar<int>(tsql);
+        }
+
+        public static int Count(
+            Expressions.Tables.题.题_连线_选项.Handler where = null,
+            ColumnEnums.Tables.题.题_连线_选项.Handler column = null,
+            bool isDistinct = false
+        )
+        {
+            var w = where == null ? null : where(new Expressions.Tables.题.题_连线_选项());
+            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_连线_选项());
+            return Count(w, c, isDistinct);
+        }
+
+        #endregion
+
+        #region Exists
+
+        public static bool Exists(
+            Expressions.Tables.题.题_连线_选项 where
+        )
+        {
+            string tsql;
+            if (where == null)
+            {
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_连线_选项]";
+            }
+            else
+            {
+                var w = where.ToString();
+                if (w.Length > 0) w = " WHERE " + w;
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_连线_选项]" + w;
+            }
+            var o = SqlHelper.ExecuteScalar(tsql);
+            return !(o == null || o == DBNull.Value);
+        }
+        public static bool Exists(
+            Expressions.Tables.题.题_连线_选项.Handler where = null
+        )
+        {
+            var w = where == null ? null : where(new Expressions.Tables.题.题_连线_选项());
+            return Exists(w);
+        }
+
+        #endregion
+
+        #endregion
+
+    }
+    partial class 题_判断_答案
+    {
+
+        #region Select
+
+        public static List<题_判断_答案> Select(Queries.Tables.题.题_判断_答案 q)
+        {
+            var tsql = q.ToSqlString();
+            var rows = new List<题_判断_答案>();
+            using(var reader = SqlHelper.ExecuteDataReader(tsql))
+            {
+                var count = q.Columns == null ? 0 : q.Columns.Count();
+                if(count > 0) {
+                    while(reader.Read()) {
+                        var row = new 题_判断_答案();
                         var cols = q.Columns;
                         for(int i = 0; i < count; i++) {
                             if(cols.Contains(0)) {row.题编号 = reader.GetInt32(i); i++; }
@@ -2957,7 +2957,7 @@ DELETE FROM [题].[题_连线_答案]";
                 {
                     while(reader.Read())
                     {
-                        rows.Add(new 题_判断
+                        rows.Add(new 题_判断_答案
                         {
                             题编号 = reader.GetInt32(0),
                             答案 = reader.GetBoolean(1)
@@ -2969,39 +2969,39 @@ DELETE FROM [题].[题_连线_答案]";
             return rows;
         }
 
-        public static List<题_判断> Select(
-            Expressions.Tables.题.题_判断.Handler where = null
-            , Orientations.Tables.题.题_判断.Handler orderby = null
+        public static List<题_判断_答案> Select(
+            Expressions.Tables.题.题_判断_答案.Handler where = null
+            , Orientations.Tables.题.题_判断_答案.Handler orderby = null
             , int pageSize = 0
             , int pageIndex = 0
-            , ColumnEnums.Tables.题.题_判断.Handler columns = null
+            , ColumnEnums.Tables.题.题_判断_答案.Handler columns = null
             )
         {
-            return Select(Queries.Tables.题.题_判断.New(where, orderby, pageSize, pageIndex, columns));
+            return Select(Queries.Tables.题.题_判断_答案.New(where, orderby, pageSize, pageIndex, columns));
         }
 
-        public static 题_判断 Select(int c0, ColumnEnums.Tables.题.题_判断.Handler columns = null)
+        public static 题_判断_答案 Select(int c0, ColumnEnums.Tables.题.题_判断_答案.Handler columns = null)
         {
             return Select(o => o.题编号.Equal(c0), columns: columns).FirstOrDefault();
         }
 
-        public static List<题_判断> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_判断.Handler query = null) {
-            if(query == null) return 题_判断.Select(where: o => o.题编号 == parent.题编号);
-            var q = query(new Queries.Tables.题.题_判断());
+        public static List<题_判断_答案> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_判断_答案.Handler query = null) {
+            if(query == null) return 题_判断_答案.Select(where: o => o.题编号 == parent.题编号);
+            var q = query(new Queries.Tables.题.题_判断_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号);
             else q.Where.And(o => o.题编号 == parent.题编号);
-            return 题_判断.Select(q);
+            return 题_判断_答案.Select(q);
         }
 
         #endregion
 
         #region Insert
 
-		public static int Insert(题_判断 o, ColumnEnums.Tables.题.题_判断 ics, ColumnEnums.Tables.题.题_判断 fcs = null, bool isFillAfterInsert = true)
+		public static int Insert(题_判断_答案 o, ColumnEnums.Tables.题.题_判断_答案 ics, ColumnEnums.Tables.题.题_判断_答案 fcs = null, bool isFillAfterInsert = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
-INSERT INTO [题].[题_判断] (");
+INSERT INTO [题].[题_判断_答案] (");
 			var sb2 = new StringBuilder();
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
@@ -3083,11 +3083,11 @@ VALUES (");
             }
 		}
 
-		public static int Insert(题_判断 o, ColumnEnums.Tables.题.题_判断.Handler insertCols = null, ColumnEnums.Tables.题.题_判断.Handler fillCols = null, bool isFillAfterInsert = true)
+		public static int Insert(题_判断_答案 o, ColumnEnums.Tables.题.题_判断_答案.Handler insertCols = null, ColumnEnums.Tables.题.题_判断_答案.Handler fillCols = null, bool isFillAfterInsert = true)
 		{
             return Insert(o,
-                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_判断()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_判断()),
+                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_判断_答案()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_判断_答案()),
                 isFillAfterInsert
             );
         }
@@ -3096,11 +3096,11 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_判断 o, Expressions.Tables.题.题_判断 eh, ColumnEnums.Tables.题.题_判断 ucs = null, ColumnEnums.Tables.题.题_判断 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_判断_答案 o, Expressions.Tables.题.题_判断_答案 eh, ColumnEnums.Tables.题.题_判断_答案 ucs = null, ColumnEnums.Tables.题.题_判断_答案 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
-UPDATE [题].[题_判断]
+UPDATE [题].[题_判断_答案]
    SET ");
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
@@ -3169,12 +3169,12 @@ OUTPUT ");
             }
             
 		}
-        public static int Update(题_判断 o, Expressions.Tables.题.题_判断.Handler eh = null, ColumnEnums.Tables.题.题_判断.Handler updateCols = null, ColumnEnums.Tables.题.题_判断.Handler fillCols = null, bool isFillAfterUpdate = true)
+        public static int Update(题_判断_答案 o, Expressions.Tables.题.题_判断_答案.Handler eh = null, ColumnEnums.Tables.题.题_判断_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_判断_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
         {
             return Update(o,
-                eh == null ? null : eh(new Expressions.Tables.题.题_判断()),
-                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_判断()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_判断()),
+                eh == null ? null : eh(new Expressions.Tables.题.题_判断_答案()),
+                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_判断_答案()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_判断_答案()),
                 isFillAfterUpdate
             );
         }
@@ -3182,10 +3182,10 @@ OUTPUT ");
 
         #region Delete
 
-		public static int Delete(Expressions.Tables.题.题_判断 eh)
+		public static int Delete(Expressions.Tables.题.题_判断_答案 eh)
 		{
 			var s = @"
-DELETE FROM [题].[题_判断]";
+DELETE FROM [题].[题_判断_答案]";
             if (eh != null)
             {
                 var ws = eh.ToString();
@@ -3195,9 +3195,9 @@ DELETE FROM [题].[题_判断]";
             }
 			return SqlHelper.ExecuteNonQuery(s);
 		}
-        public static int Delete(Expressions.Tables.题.题_判断.Handler eh)
+        public static int Delete(Expressions.Tables.题.题_判断_答案.Handler eh)
         {
-            return Delete(eh(new Expressions.Tables.题.题_判断()));
+            return Delete(eh(new Expressions.Tables.题.题_判断_答案()));
         }
         #endregion
 
@@ -3206,8 +3206,8 @@ DELETE FROM [题].[题_判断]";
         #region Count
 
         public static int Count(
-            Expressions.Tables.题.题_判断 where,
-            ColumnEnums.Tables.题.题_判断 column = null,
+            Expressions.Tables.题.题_判断_答案 where,
+            ColumnEnums.Tables.题.题_判断_答案 column = null,
             bool isDistinct = false
         )
         {
@@ -3216,15 +3216,15 @@ DELETE FROM [题].[题_判断]";
             {
                 if (column == null)
                 {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_判断]";
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_判断]";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_判断_答案]";
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_判断_答案]";
                 }
                 else
                 {
                     var c = column.ToString();
                     if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_判断]";
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_判断]";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_判断_答案]";
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_判断_答案]";
                 }
             }
             else
@@ -3233,28 +3233,28 @@ DELETE FROM [题].[题_判断]";
                 if (w.Length > 0) w = " WHERE " + w;
                 if (column == null)
                 {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_判断]" + w;
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_判断]" + w;
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_判断_答案]" + w;
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_判断_答案]" + w;
                 }
                 else
                 {
                     var c = column.ToString();
                     if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_判断]" + w;
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_判断]" + w;
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_判断_答案]" + w;
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_判断_答案]" + w;
                 }
             }
             return SqlHelper.ExecuteScalar<int>(tsql);
         }
 
         public static int Count(
-            Expressions.Tables.题.题_判断.Handler where = null,
-            ColumnEnums.Tables.题.题_判断.Handler column = null,
+            Expressions.Tables.题.题_判断_答案.Handler where = null,
+            ColumnEnums.Tables.题.题_判断_答案.Handler column = null,
             bool isDistinct = false
         )
         {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_判断());
-            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_判断());
+            var w = where == null ? null : where(new Expressions.Tables.题.题_判断_答案());
+            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_判断_答案());
             return Count(w, c, isDistinct);
         }
 
@@ -3263,28 +3263,28 @@ DELETE FROM [题].[题_判断]";
         #region Exists
 
         public static bool Exists(
-            Expressions.Tables.题.题_判断 where
+            Expressions.Tables.题.题_判断_答案 where
         )
         {
             string tsql;
             if (where == null)
             {
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_判断]";
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_判断_答案]";
             }
             else
             {
                 var w = where.ToString();
                 if (w.Length > 0) w = " WHERE " + w;
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_判断]" + w;
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_判断_答案]" + w;
             }
             var o = SqlHelper.ExecuteScalar(tsql);
             return !(o == null || o == DBNull.Value);
         }
         public static bool Exists(
-            Expressions.Tables.题.题_判断.Handler where = null
+            Expressions.Tables.题.题_判断_答案.Handler where = null
         )
         {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_判断());
+            var w = where == null ? null : where(new Expressions.Tables.题.题_判断_答案());
             return Exists(w);
         }
 
@@ -3680,21 +3680,21 @@ DELETE FROM [题].[题_填空_答案]";
         #endregion
 
     }
-    partial class 题_问答
+    partial class 题_问答_答案
     {
 
         #region Select
 
-        public static List<题_问答> Select(Queries.Tables.题.题_问答 q)
+        public static List<题_问答_答案> Select(Queries.Tables.题.题_问答_答案 q)
         {
             var tsql = q.ToSqlString();
-            var rows = new List<题_问答>();
+            var rows = new List<题_问答_答案>();
             using(var reader = SqlHelper.ExecuteDataReader(tsql))
             {
                 var count = q.Columns == null ? 0 : q.Columns.Count();
                 if(count > 0) {
                     while(reader.Read()) {
-                        var row = new 题_问答();
+                        var row = new 题_问答_答案();
                         var cols = q.Columns;
                         for(int i = 0; i < count; i++) {
                             if(cols.Contains(0)) {row.题编号 = reader.GetInt32(i); i++; }
@@ -3707,7 +3707,7 @@ DELETE FROM [题].[题_填空_答案]";
                 {
                     while(reader.Read())
                     {
-                        rows.Add(new 题_问答
+                        rows.Add(new 题_问答_答案
                         {
                             题编号 = reader.GetInt32(0),
                             参考答案 = reader.GetString(1)
@@ -3719,39 +3719,39 @@ DELETE FROM [题].[题_填空_答案]";
             return rows;
         }
 
-        public static List<题_问答> Select(
-            Expressions.Tables.题.题_问答.Handler where = null
-            , Orientations.Tables.题.题_问答.Handler orderby = null
+        public static List<题_问答_答案> Select(
+            Expressions.Tables.题.题_问答_答案.Handler where = null
+            , Orientations.Tables.题.题_问答_答案.Handler orderby = null
             , int pageSize = 0
             , int pageIndex = 0
-            , ColumnEnums.Tables.题.题_问答.Handler columns = null
+            , ColumnEnums.Tables.题.题_问答_答案.Handler columns = null
             )
         {
-            return Select(Queries.Tables.题.题_问答.New(where, orderby, pageSize, pageIndex, columns));
+            return Select(Queries.Tables.题.题_问答_答案.New(where, orderby, pageSize, pageIndex, columns));
         }
 
-        public static 题_问答 Select(int c0, ColumnEnums.Tables.题.题_问答.Handler columns = null)
+        public static 题_问答_答案 Select(int c0, ColumnEnums.Tables.题.题_问答_答案.Handler columns = null)
         {
             return Select(o => o.题编号.Equal(c0), columns: columns).FirstOrDefault();
         }
 
-        public static List<题_问答> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_问答.Handler query = null) {
-            if(query == null) return 题_问答.Select(where: o => o.题编号 == parent.题编号);
-            var q = query(new Queries.Tables.题.题_问答());
+        public static List<题_问答_答案> Select(Database.Tables.题.题 parent, Queries.Tables.题.题_问答_答案.Handler query = null) {
+            if(query == null) return 题_问答_答案.Select(where: o => o.题编号 == parent.题编号);
+            var q = query(new Queries.Tables.题.题_问答_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号);
             else q.Where.And(o => o.题编号 == parent.题编号);
-            return 题_问答.Select(q);
+            return 题_问答_答案.Select(q);
         }
 
         #endregion
 
         #region Insert
 
-		public static int Insert(题_问答 o, ColumnEnums.Tables.题.题_问答 ics, ColumnEnums.Tables.题.题_问答 fcs = null, bool isFillAfterInsert = true)
+		public static int Insert(题_问答_答案 o, ColumnEnums.Tables.题.题_问答_答案 ics, ColumnEnums.Tables.题.题_问答_答案 fcs = null, bool isFillAfterInsert = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
-INSERT INTO [题].[题_问答] (");
+INSERT INTO [题].[题_问答_答案] (");
 			var sb2 = new StringBuilder();
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
@@ -3833,11 +3833,11 @@ VALUES (");
             }
 		}
 
-		public static int Insert(题_问答 o, ColumnEnums.Tables.题.题_问答.Handler insertCols = null, ColumnEnums.Tables.题.题_问答.Handler fillCols = null, bool isFillAfterInsert = true)
+		public static int Insert(题_问答_答案 o, ColumnEnums.Tables.题.题_问答_答案.Handler insertCols = null, ColumnEnums.Tables.题.题_问答_答案.Handler fillCols = null, bool isFillAfterInsert = true)
 		{
             return Insert(o,
-                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_问答()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_问答()),
+                insertCols == null ? null : insertCols(new ColumnEnums.Tables.题.题_问答_答案()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_问答_答案()),
                 isFillAfterInsert
             );
         }
@@ -3846,11 +3846,11 @@ VALUES (");
 
         #region Update
 
-		public static int Update(题_问答 o, Expressions.Tables.题.题_问答 eh, ColumnEnums.Tables.题.题_问答 ucs = null, ColumnEnums.Tables.题.题_问答 fcs = null, bool isFillAfterUpdate = true)
+		public static int Update(题_问答_答案 o, Expressions.Tables.题.题_问答_答案 eh, ColumnEnums.Tables.题.题_问答_答案 ucs = null, ColumnEnums.Tables.题.题_问答_答案 fcs = null, bool isFillAfterUpdate = true)
 		{
 			var cmd = new SqlCommand();
 			var sb = new StringBuilder(@"
-UPDATE [题].[题_问答]
+UPDATE [题].[题_问答_答案]
    SET ");
 			var isFirst = true;
             var fccount = fcs == null ? 0 : fcs.Count();
@@ -3919,12 +3919,12 @@ OUTPUT ");
             }
             
 		}
-        public static int Update(题_问答 o, Expressions.Tables.题.题_问答.Handler eh = null, ColumnEnums.Tables.题.题_问答.Handler updateCols = null, ColumnEnums.Tables.题.题_问答.Handler fillCols = null, bool isFillAfterUpdate = true)
+        public static int Update(题_问答_答案 o, Expressions.Tables.题.题_问答_答案.Handler eh = null, ColumnEnums.Tables.题.题_问答_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_问答_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
         {
             return Update(o,
-                eh == null ? null : eh(new Expressions.Tables.题.题_问答()),
-                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_问答()),
-                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_问答()),
+                eh == null ? null : eh(new Expressions.Tables.题.题_问答_答案()),
+                updateCols == null ? null : updateCols(new ColumnEnums.Tables.题.题_问答_答案()),
+                fillCols == null ? null : fillCols(new ColumnEnums.Tables.题.题_问答_答案()),
                 isFillAfterUpdate
             );
         }
@@ -3932,10 +3932,10 @@ OUTPUT ");
 
         #region Delete
 
-		public static int Delete(Expressions.Tables.题.题_问答 eh)
+		public static int Delete(Expressions.Tables.题.题_问答_答案 eh)
 		{
 			var s = @"
-DELETE FROM [题].[题_问答]";
+DELETE FROM [题].[题_问答_答案]";
             if (eh != null)
             {
                 var ws = eh.ToString();
@@ -3945,9 +3945,9 @@ DELETE FROM [题].[题_问答]";
             }
 			return SqlHelper.ExecuteNonQuery(s);
 		}
-        public static int Delete(Expressions.Tables.题.题_问答.Handler eh)
+        public static int Delete(Expressions.Tables.题.题_问答_答案.Handler eh)
         {
-            return Delete(eh(new Expressions.Tables.题.题_问答()));
+            return Delete(eh(new Expressions.Tables.题.题_问答_答案()));
         }
         #endregion
 
@@ -3956,8 +3956,8 @@ DELETE FROM [题].[题_问答]";
         #region Count
 
         public static int Count(
-            Expressions.Tables.题.题_问答 where,
-            ColumnEnums.Tables.题.题_问答 column = null,
+            Expressions.Tables.题.题_问答_答案 where,
+            ColumnEnums.Tables.题.题_问答_答案 column = null,
             bool isDistinct = false
         )
         {
@@ -3966,15 +3966,15 @@ DELETE FROM [题].[题_问答]";
             {
                 if (column == null)
                 {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_问答]";
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_问答]";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_问答_答案]";
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_问答_答案]";
                 }
                 else
                 {
                     var c = column.ToString();
                     if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_问答]";
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_问答]";
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_问答_答案]";
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_问答_答案]";
                 }
             }
             else
@@ -3983,28 +3983,28 @@ DELETE FROM [题].[题_问答]";
                 if (w.Length > 0) w = " WHERE " + w;
                 if (column == null)
                 {
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_问答]" + w;
-                    else tsql = "SELECT COUNT(*) FROM [题].[题_问答]" + w;
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT *) FROM [题].[题_问答_答案]" + w;
+                    else tsql = "SELECT COUNT(*) FROM [题].[题_问答_答案]" + w;
                 }
                 else
                 {
                     var c = column.ToString();
                     if (c.Length == 0) c = "*";
-                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_问答]" + w;
-                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_问答]" + w;
+                    if (isDistinct) tsql = "SELECT COUNT(DISTINCT " + c + ") FROM [题].[题_问答_答案]" + w;
+                    else tsql = "SELECT COUNT(" + c + ") FROM [题].[题_问答_答案]" + w;
                 }
             }
             return SqlHelper.ExecuteScalar<int>(tsql);
         }
 
         public static int Count(
-            Expressions.Tables.题.题_问答.Handler where = null,
-            ColumnEnums.Tables.题.题_问答.Handler column = null,
+            Expressions.Tables.题.题_问答_答案.Handler where = null,
+            ColumnEnums.Tables.题.题_问答_答案.Handler column = null,
             bool isDistinct = false
         )
         {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_问答());
-            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_问答());
+            var w = where == null ? null : where(new Expressions.Tables.题.题_问答_答案());
+            var c = column == null ? null : column(new ColumnEnums.Tables.题.题_问答_答案());
             return Count(w, c, isDistinct);
         }
 
@@ -4013,28 +4013,28 @@ DELETE FROM [题].[题_问答]";
         #region Exists
 
         public static bool Exists(
-            Expressions.Tables.题.题_问答 where
+            Expressions.Tables.题.题_问答_答案 where
         )
         {
             string tsql;
             if (where == null)
             {
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_问答]";
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_问答_答案]";
             }
             else
             {
                 var w = where.ToString();
                 if (w.Length > 0) w = " WHERE " + w;
-                tsql = "SELECT TOP(1) 1 FROM [题].[题_问答]" + w;
+                tsql = "SELECT TOP(1) 1 FROM [题].[题_问答_答案]" + w;
             }
             var o = SqlHelper.ExecuteScalar(tsql);
             return !(o == null || o == DBNull.Value);
         }
         public static bool Exists(
-            Expressions.Tables.题.题_问答.Handler where = null
+            Expressions.Tables.题.题_问答_答案.Handler where = null
         )
         {
-            var w = where == null ? null : where(new Expressions.Tables.题.题_问答());
+            var w = where == null ? null : where(new Expressions.Tables.题.题_问答_答案());
             return Exists(w);
         }
 
