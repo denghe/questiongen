@@ -14,20 +14,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="知识面_删除">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="知识面" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="知识面_删除Response">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="知识面_删除Result" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="知识面_更新">
     <xs:complexType>
       <xs:sequence>
@@ -55,6 +41,22 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="题_插入Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_修改">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="选项" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="答案" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_修改Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_修改Result" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -125,6 +127,48 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="类型_获取Result" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="知识面_删除">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="知识面_删除Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="知识面_删除Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_删除">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="题_删除Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="题_删除Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="类型_删除">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="条件" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="类型_删除Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="类型_删除Result" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -12,12 +12,6 @@
   <wsdl:message name="题_知识面_插入_OutputMessage">
     <wsdl:part name="parameters" element="知识面_插入Response" />
   </wsdl:message>
-  <wsdl:message name="题_知识面_删除_InputMessage">
-    <wsdl:part name="parameters" element="知识面_删除" />
-  </wsdl:message>
-  <wsdl:message name="题_知识面_删除_OutputMessage">
-    <wsdl:part name="parameters" element="知识面_删除Response" />
-  </wsdl:message>
   <wsdl:message name="题_知识面_更新_InputMessage">
     <wsdl:part name="parameters" element="知识面_更新" />
   </wsdl:message>
@@ -29,6 +23,12 @@
   </wsdl:message>
   <wsdl:message name="题_题_插入_OutputMessage">
     <wsdl:part name="parameters" element="题_插入Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_修改_InputMessage">
+    <wsdl:part name="parameters" element="题_修改" />
+  </wsdl:message>
+  <wsdl:message name="题_题_修改_OutputMessage">
+    <wsdl:part name="parameters" element="题_修改Response" />
   </wsdl:message>
   <wsdl:message name="题_知识面_获取_InputMessage">
     <wsdl:part name="parameters" element="知识面_获取" />
@@ -60,14 +60,28 @@
   <wsdl:message name="题_类型_获取_OutputMessage">
     <wsdl:part name="parameters" element="类型_获取Response" />
   </wsdl:message>
+  <wsdl:message name="题_知识面_删除_InputMessage">
+    <wsdl:part name="parameters" element="知识面_删除" />
+  </wsdl:message>
+  <wsdl:message name="题_知识面_删除_OutputMessage">
+    <wsdl:part name="parameters" element="知识面_删除Response" />
+  </wsdl:message>
+  <wsdl:message name="题_题_删除_InputMessage">
+    <wsdl:part name="parameters" element="题_删除" />
+  </wsdl:message>
+  <wsdl:message name="题_题_删除_OutputMessage">
+    <wsdl:part name="parameters" element="题_删除Response" />
+  </wsdl:message>
+  <wsdl:message name="题_类型_删除_InputMessage">
+    <wsdl:part name="parameters" element="类型_删除" />
+  </wsdl:message>
+  <wsdl:message name="题_类型_删除_OutputMessage">
+    <wsdl:part name="parameters" element="类型_删除Response" />
+  </wsdl:message>
   <wsdl:portType name="题">
     <wsdl:operation name="知识面_插入">
       <wsdl:input wsaw:Action="urn:题/知识面_插入" message="题_知识面_插入_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/知识面_插入Response" message="题_知识面_插入_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="知识面_删除">
-      <wsdl:input wsaw:Action="urn:题/知识面_删除" message="题_知识面_删除_InputMessage" />
-      <wsdl:output wsaw:Action="urn:题/知识面_删除Response" message="题_知识面_删除_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="知识面_更新">
       <wsdl:input wsaw:Action="urn:题/知识面_更新" message="题_知识面_更新_InputMessage" />
@@ -76,6 +90,10 @@
     <wsdl:operation name="题_插入">
       <wsdl:input wsaw:Action="urn:题/题_插入" message="题_题_插入_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/题_插入Response" message="题_题_插入_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_修改">
+      <wsdl:input wsaw:Action="urn:题/题_修改" message="题_题_修改_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_修改Response" message="题_题_修改_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="知识面_获取">
       <wsdl:input wsaw:Action="urn:题/知识面_获取" message="题_知识面_获取_InputMessage" />
@@ -96,6 +114,18 @@
     <wsdl:operation name="类型_获取">
       <wsdl:input wsaw:Action="urn:题/类型_获取" message="题_类型_获取_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/类型_获取Response" message="题_类型_获取_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="知识面_删除">
+      <wsdl:input wsaw:Action="urn:题/知识面_删除" message="题_知识面_删除_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/知识面_删除Response" message="题_知识面_删除_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_删除">
+      <wsdl:input wsaw:Action="urn:题/题_删除" message="题_题_删除_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_删除Response" message="题_题_删除_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="类型_删除">
+      <wsdl:input wsaw:Action="urn:题/类型_删除" message="题_类型_删除_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/类型_删除Response" message="题_类型_删除_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
