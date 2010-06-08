@@ -45,7 +45,7 @@ namespace QuestionGen.Windows
         {
             _题 = o;
             _s = new 服务.题Client();
-            _s.题_判断_插入Completed += new EventHandler<服务.题_判断_插入CompletedEventArgs>(_s_题_插入Completed);
+            _s.题_判断_插入Completed += new EventHandler<服务.题_判断_插入CompletedEventArgs>(_s_题_判断_插入Completed);
         }
 
         #endregion
@@ -156,7 +156,7 @@ namespace QuestionGen.Windows
 
         #endregion
 
-        void _s_题_插入Completed(object sender, 服务.题_判断_插入CompletedEventArgs e)
+        void _s_题_判断_插入Completed(object sender, 服务.题_判断_插入CompletedEventArgs e)
         {
             if (e.Result > 0)
             {
@@ -183,6 +183,9 @@ namespace QuestionGen.Windows
             if (result != null)
             {
                 _提交_Button.IsEnabled = false;
+
+                result.题.更新时间 = DateTime.Now;   // 修正序列化时的时间合法性问题
+
                 _s.题_判断_插入Async(result.题.GetBytes(), result.答案.GetBytes());
             }
         }

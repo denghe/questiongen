@@ -70,13 +70,13 @@ namespace QuestionGen.Windows
             if (_类型_选择_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 1;
-                // 将数据上下文传到弹出窗口
+
                 var f = new 题_选择_创建(o) { ParentLayoutRoot = this.LayoutRoot };
-                f.ShowDialog();
                 f.Closed += (sender1, ea1) =>
                 {
                     if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
                 };
+                f.ShowDialog();
             }
             else if (_类型_填空_RadioButton.IsChecked.Value)
             {
@@ -85,6 +85,13 @@ namespace QuestionGen.Windows
             else if (_类型_判断_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 3;
+
+                var f = new 题_判断_创建(o) { ParentLayoutRoot = this.LayoutRoot };
+                f.Closed += (sender1, ea1) =>
+                {
+                    if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+                };
+                f.ShowDialog();
             }
             else if (_类型_问答_RadioButton.IsChecked.Value)
             {

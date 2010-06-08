@@ -53,7 +53,44 @@ namespace QuestionGen.Web.Service
         [OperationContract]
         public int 题_判断_插入(byte[] 题, byte[] 答案)
         {
-            return 0;
+            var question = new db.题.题(题);
+            var answer = new db.题.题_判断_答案(答案);
+
+            using (var tran = SqlHelper.NewTransaction())
+            {
+                try
+                {
+                    // 预处理
+                    question.更新时间 = DateTime.Now;
+
+                    // 插入 题
+                    var affected = question.Insert(fillCols: o => o.题编号);
+                    if (affected < 1)
+                    {
+                        tran.Rollback();
+                        return -1;
+                    }
+
+                    // 预处理
+                    answer.题编号 = question.题编号;
+
+                    // 插入答案
+                    affected = answer.Insert(isFillAfterInsert: false);
+                    if (affected < 1)
+                    {
+                        tran.Rollback();
+                        return -1;
+                    }
+
+                    tran.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    return -1;
+                }
+            }
         }
 
         [OperationContract]
@@ -105,13 +142,13 @@ namespace QuestionGen.Web.Service
             var options = 选项.ToList<db.题.题_选择_选项>();
             var answers = 答案.ToList<db.题.题_选择_答案>();
 
-            // 预处理
-            question.更新时间 = DateTime.Now;
-
             using (var tran = SqlHelper.NewTransaction())
             {
                 try
                 {
+                    // 预处理
+                    question.更新时间 = DateTime.Now;
+
                     // 插入 题
                     var affected = question.Insert(fillCols: o => o.题编号);
                     if (affected < 1)
