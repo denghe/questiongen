@@ -192,7 +192,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种 数据行 获取
+        #region 各种 按查询 获取 数据行
 
         [OperationContract]
         public byte[] 知识面_获取(byte[] 查询)
@@ -226,36 +226,36 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种 行数 获取
+        #region 各种 按条件 获取 行数
 
         [OperationContract]
-        public int 知识面_获取行数(byte[] 查询)
+        public int 知识面_获取行数(byte[] 条件)
         {
-            return db.题.知识面.Count(new exp.题.知识面(查询));
+            return db.题.知识面.Count(new exp.题.知识面(条件));
         }
 
         [OperationContract]
-        public int 题_获取行数(byte[] 查询)
+        public int 题_获取行数(byte[] 条件)
         {
-            return db.题.题.Count(new exp.题.题(查询));
+            return db.题.题.Count(new exp.题.题(条件));
         }
 
         [OperationContract]
-        public int 题_选择_选项_获取行数(byte[] 查询)
+        public int 题_选择_选项_获取行数(byte[] 条件)
         {
-            return db.题.题_选择_选项.Count(new exp.题.题_选择_选项(查询));
+            return db.题.题_选择_选项.Count(new exp.题.题_选择_选项(条件));
         }
 
         [OperationContract]
-        public int 题_选择_答案_获取行数(byte[] 查询)
+        public int 题_选择_答案_获取行数(byte[] 条件)
         {
-            return db.题.题_选择_答案.Count(new exp.题.题_选择_答案(查询));
+            return db.题.题_选择_答案.Count(new exp.题.题_选择_答案(条件));
         }
 
         [OperationContract]
-        public int 类型_获取行数(byte[] 查询)
+        public int 类型_获取行数(byte[] 条件)
         {
-            return db.题.类型.Count(new exp.题.类型(查询));
+            return db.题.类型.Count(new exp.题.类型(条件));
         }
 
         #endregion
