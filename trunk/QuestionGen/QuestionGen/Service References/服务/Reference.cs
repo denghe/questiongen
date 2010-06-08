@@ -23,11 +23,6 @@ namespace QuestionGen.服务 {
         
         int End知识面_插入(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_删除", ReplyAction="urn:题/知识面_删除Response")]
-        System.IAsyncResult Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState);
-        
-        int End知识面_删除(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_更新", ReplyAction="urn:题/知识面_更新Response")]
         System.IAsyncResult Begin知识面_更新(byte[] 知识面, System.AsyncCallback callback, object asyncState);
         
@@ -37,6 +32,11 @@ namespace QuestionGen.服务 {
         System.IAsyncResult Begin题_插入(byte[] 题, byte[] 选项, byte[] 答案, System.AsyncCallback callback, object asyncState);
         
         int End题_插入(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_修改", ReplyAction="urn:题/题_修改Response")]
+        System.IAsyncResult Begin题_修改(byte[] 题, byte[] 选项, byte[] 答案, System.AsyncCallback callback, object asyncState);
+        
+        int End题_修改(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_获取", ReplyAction="urn:题/知识面_获取Response")]
         System.IAsyncResult Begin知识面_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
@@ -62,6 +62,21 @@ namespace QuestionGen.服务 {
         System.IAsyncResult Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
         
         byte[] End类型_获取(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/知识面_删除", ReplyAction="urn:题/知识面_删除Response")]
+        System.IAsyncResult Begin知识面_删除(byte[] 条件, System.AsyncCallback callback, object asyncState);
+        
+        int End知识面_删除(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_删除", ReplyAction="urn:题/题_删除Response")]
+        System.IAsyncResult Begin题_删除(byte[] 条件, System.AsyncCallback callback, object asyncState);
+        
+        int End题_删除(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/类型_删除", ReplyAction="urn:题/类型_删除Response")]
+        System.IAsyncResult Begin类型_删除(byte[] 条件, System.AsyncCallback callback, object asyncState);
+        
+        int End类型_删除(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,25 +90,6 @@ namespace QuestionGen.服务 {
         private object[] results;
         
         public 知识面_插入CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public int Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class 知识面_删除CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public 知识面_删除CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -132,6 +128,25 @@ namespace QuestionGen.服务 {
         private object[] results;
         
         public 题_插入CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_修改CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_修改CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -241,6 +256,63 @@ namespace QuestionGen.服务 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 知识面_删除CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 知识面_删除CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_删除CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_删除CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 类型_删除CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 类型_删除CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class 题Client : System.ServiceModel.ClientBase<QuestionGen.服务.题>, QuestionGen.服务.题 {
         
         private BeginOperationDelegate onBegin知识面_插入Delegate;
@@ -248,12 +320,6 @@ namespace QuestionGen.服务 {
         private EndOperationDelegate onEnd知识面_插入Delegate;
         
         private System.Threading.SendOrPostCallback on知识面_插入CompletedDelegate;
-        
-        private BeginOperationDelegate onBegin知识面_删除Delegate;
-        
-        private EndOperationDelegate onEnd知识面_删除Delegate;
-        
-        private System.Threading.SendOrPostCallback on知识面_删除CompletedDelegate;
         
         private BeginOperationDelegate onBegin知识面_更新Delegate;
         
@@ -266,6 +332,12 @@ namespace QuestionGen.服务 {
         private EndOperationDelegate onEnd题_插入Delegate;
         
         private System.Threading.SendOrPostCallback on题_插入CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_修改Delegate;
+        
+        private EndOperationDelegate onEnd题_修改Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_修改CompletedDelegate;
         
         private BeginOperationDelegate onBegin知识面_获取Delegate;
         
@@ -296,6 +368,24 @@ namespace QuestionGen.服务 {
         private EndOperationDelegate onEnd类型_获取Delegate;
         
         private System.Threading.SendOrPostCallback on类型_获取CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin知识面_删除Delegate;
+        
+        private EndOperationDelegate onEnd知识面_删除Delegate;
+        
+        private System.Threading.SendOrPostCallback on知识面_删除CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_删除Delegate;
+        
+        private EndOperationDelegate onEnd题_删除Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_删除CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin类型_删除Delegate;
+        
+        private EndOperationDelegate onEnd类型_删除Delegate;
+        
+        private System.Threading.SendOrPostCallback on类型_删除CompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -352,11 +442,11 @@ namespace QuestionGen.服务 {
         
         public event System.EventHandler<知识面_插入CompletedEventArgs> 知识面_插入Completed;
         
-        public event System.EventHandler<知识面_删除CompletedEventArgs> 知识面_删除Completed;
-        
         public event System.EventHandler<知识面_更新CompletedEventArgs> 知识面_更新Completed;
         
         public event System.EventHandler<题_插入CompletedEventArgs> 题_插入Completed;
+        
+        public event System.EventHandler<题_修改CompletedEventArgs> 题_修改Completed;
         
         public event System.EventHandler<知识面_获取CompletedEventArgs> 知识面_获取Completed;
         
@@ -367,6 +457,12 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<题_选择_答案_获取CompletedEventArgs> 题_选择_答案_获取Completed;
         
         public event System.EventHandler<类型_获取CompletedEventArgs> 类型_获取Completed;
+        
+        public event System.EventHandler<知识面_删除CompletedEventArgs> 知识面_删除Completed;
+        
+        public event System.EventHandler<题_删除CompletedEventArgs> 题_删除Completed;
+        
+        public event System.EventHandler<类型_删除CompletedEventArgs> 类型_删除Completed;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -416,52 +512,6 @@ namespace QuestionGen.服务 {
             }
             base.InvokeAsync(this.onBegin知识面_插入Delegate, new object[] {
                         知识面}, this.onEnd知识面_插入Delegate, this.on知识面_插入CompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult QuestionGen.服务.题.Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Begin知识面_删除(知识面, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        int QuestionGen.服务.题.End知识面_删除(System.IAsyncResult result) {
-            return base.Channel.End知识面_删除(result);
-        }
-        
-        private System.IAsyncResult OnBegin知识面_删除(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            byte[] 知识面 = ((byte[])(inValues[0]));
-            return ((QuestionGen.服务.题)(this)).Begin知识面_删除(知识面, callback, asyncState);
-        }
-        
-        private object[] OnEnd知识面_删除(System.IAsyncResult result) {
-            int retVal = ((QuestionGen.服务.题)(this)).End知识面_删除(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void On知识面_删除Completed(object state) {
-            if ((this.知识面_删除Completed != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.知识面_删除Completed(this, new 知识面_删除CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void 知识面_删除Async(byte[] 知识面) {
-            this.知识面_删除Async(知识面, null);
-        }
-        
-        public void 知识面_删除Async(byte[] 知识面, object userState) {
-            if ((this.onBegin知识面_删除Delegate == null)) {
-                this.onBegin知识面_删除Delegate = new BeginOperationDelegate(this.OnBegin知识面_删除);
-            }
-            if ((this.onEnd知识面_删除Delegate == null)) {
-                this.onEnd知识面_删除Delegate = new EndOperationDelegate(this.OnEnd知识面_删除);
-            }
-            if ((this.on知识面_删除CompletedDelegate == null)) {
-                this.on知识面_删除CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_删除Completed);
-            }
-            base.InvokeAsync(this.onBegin知识面_删除Delegate, new object[] {
-                        知识面}, this.onEnd知识面_删除Delegate, this.on知识面_删除CompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -558,6 +608,56 @@ namespace QuestionGen.服务 {
                         题,
                         选项,
                         答案}, this.onEnd题_插入Delegate, this.on题_插入CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_修改(byte[] 题, byte[] 选项, byte[] 答案, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_修改(题, 选项, 答案, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End题_修改(System.IAsyncResult result) {
+            return base.Channel.End题_修改(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_修改(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 题 = ((byte[])(inValues[0]));
+            byte[] 选项 = ((byte[])(inValues[1]));
+            byte[] 答案 = ((byte[])(inValues[2]));
+            return ((QuestionGen.服务.题)(this)).Begin题_修改(题, 选项, 答案, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_修改(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End题_修改(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_修改Completed(object state) {
+            if ((this.题_修改Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_修改Completed(this, new 题_修改CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_修改Async(byte[] 题, byte[] 选项, byte[] 答案) {
+            this.题_修改Async(题, 选项, 答案, null);
+        }
+        
+        public void 题_修改Async(byte[] 题, byte[] 选项, byte[] 答案, object userState) {
+            if ((this.onBegin题_修改Delegate == null)) {
+                this.onBegin题_修改Delegate = new BeginOperationDelegate(this.OnBegin题_修改);
+            }
+            if ((this.onEnd题_修改Delegate == null)) {
+                this.onEnd题_修改Delegate = new EndOperationDelegate(this.OnEnd题_修改);
+            }
+            if ((this.on题_修改CompletedDelegate == null)) {
+                this.on题_修改CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_修改Completed);
+            }
+            base.InvokeAsync(this.onBegin题_修改Delegate, new object[] {
+                        题,
+                        选项,
+                        答案}, this.onEnd题_修改Delegate, this.on题_修改CompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -790,6 +890,144 @@ namespace QuestionGen.服务 {
                         查询}, this.onEnd类型_获取Delegate, this.on类型_获取CompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin知识面_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin知识面_删除(条件, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End知识面_删除(System.IAsyncResult result) {
+            return base.Channel.End知识面_删除(result);
+        }
+        
+        private System.IAsyncResult OnBegin知识面_删除(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 条件 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin知识面_删除(条件, callback, asyncState);
+        }
+        
+        private object[] OnEnd知识面_删除(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End知识面_删除(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On知识面_删除Completed(object state) {
+            if ((this.知识面_删除Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.知识面_删除Completed(this, new 知识面_删除CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 知识面_删除Async(byte[] 条件) {
+            this.知识面_删除Async(条件, null);
+        }
+        
+        public void 知识面_删除Async(byte[] 条件, object userState) {
+            if ((this.onBegin知识面_删除Delegate == null)) {
+                this.onBegin知识面_删除Delegate = new BeginOperationDelegate(this.OnBegin知识面_删除);
+            }
+            if ((this.onEnd知识面_删除Delegate == null)) {
+                this.onEnd知识面_删除Delegate = new EndOperationDelegate(this.OnEnd知识面_删除);
+            }
+            if ((this.on知识面_删除CompletedDelegate == null)) {
+                this.on知识面_删除CompletedDelegate = new System.Threading.SendOrPostCallback(this.On知识面_删除Completed);
+            }
+            base.InvokeAsync(this.onBegin知识面_删除Delegate, new object[] {
+                        条件}, this.onEnd知识面_删除Delegate, this.on知识面_删除CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_删除(条件, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End题_删除(System.IAsyncResult result) {
+            return base.Channel.End题_删除(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_删除(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 条件 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_删除(条件, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_删除(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End题_删除(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_删除Completed(object state) {
+            if ((this.题_删除Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_删除Completed(this, new 题_删除CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_删除Async(byte[] 条件) {
+            this.题_删除Async(条件, null);
+        }
+        
+        public void 题_删除Async(byte[] 条件, object userState) {
+            if ((this.onBegin题_删除Delegate == null)) {
+                this.onBegin题_删除Delegate = new BeginOperationDelegate(this.OnBegin题_删除);
+            }
+            if ((this.onEnd题_删除Delegate == null)) {
+                this.onEnd题_删除Delegate = new EndOperationDelegate(this.OnEnd题_删除);
+            }
+            if ((this.on题_删除CompletedDelegate == null)) {
+                this.on题_删除CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_删除Completed);
+            }
+            base.InvokeAsync(this.onBegin题_删除Delegate, new object[] {
+                        条件}, this.onEnd题_删除Delegate, this.on题_删除CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin类型_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin类型_删除(条件, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int QuestionGen.服务.题.End类型_删除(System.IAsyncResult result) {
+            return base.Channel.End类型_删除(result);
+        }
+        
+        private System.IAsyncResult OnBegin类型_删除(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 条件 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin类型_删除(条件, callback, asyncState);
+        }
+        
+        private object[] OnEnd类型_删除(System.IAsyncResult result) {
+            int retVal = ((QuestionGen.服务.题)(this)).End类型_删除(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On类型_删除Completed(object state) {
+            if ((this.类型_删除Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.类型_删除Completed(this, new 类型_删除CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 类型_删除Async(byte[] 条件) {
+            this.类型_删除Async(条件, null);
+        }
+        
+        public void 类型_删除Async(byte[] 条件, object userState) {
+            if ((this.onBegin类型_删除Delegate == null)) {
+                this.onBegin类型_删除Delegate = new BeginOperationDelegate(this.OnBegin类型_删除);
+            }
+            if ((this.onEnd类型_删除Delegate == null)) {
+                this.onEnd类型_删除Delegate = new EndOperationDelegate(this.OnEnd类型_删除);
+            }
+            if ((this.on类型_删除CompletedDelegate == null)) {
+                this.on类型_删除CompletedDelegate = new System.Threading.SendOrPostCallback(this.On类型_删除Completed);
+            }
+            base.InvokeAsync(this.onBegin类型_删除Delegate, new object[] {
+                        条件}, this.onEnd类型_删除Delegate, this.on类型_删除CompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -879,19 +1117,6 @@ namespace QuestionGen.服务 {
                 return _result;
             }
             
-            public System.IAsyncResult Begin知识面_删除(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = 知识面;
-                System.IAsyncResult _result = base.BeginInvoke("知识面_删除", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public int End知识面_删除(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                int _result = ((int)(base.EndInvoke("知识面_删除", _args, result)));
-                return _result;
-            }
-            
             public System.IAsyncResult Begin知识面_更新(byte[] 知识面, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = 知识面;
@@ -917,6 +1142,21 @@ namespace QuestionGen.服务 {
             public int End题_插入(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 int _result = ((int)(base.EndInvoke("题_插入", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_修改(byte[] 题, byte[] 选项, byte[] 答案, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[3];
+                _args[0] = 题;
+                _args[1] = 选项;
+                _args[2] = 答案;
+                System.IAsyncResult _result = base.BeginInvoke("题_修改", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End题_修改(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("题_修改", _args, result)));
                 return _result;
             }
             
@@ -982,6 +1222,45 @@ namespace QuestionGen.服务 {
             public byte[] End类型_获取(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 byte[] _result = ((byte[])(base.EndInvoke("类型_获取", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin知识面_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 条件;
+                System.IAsyncResult _result = base.BeginInvoke("知识面_删除", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End知识面_删除(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("知识面_删除", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 条件;
+                System.IAsyncResult _result = base.BeginInvoke("题_删除", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End题_删除(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("题_删除", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin类型_删除(byte[] 条件, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 条件;
+                System.IAsyncResult _result = base.BeginInvoke("类型_删除", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int End类型_删除(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("类型_删除", _args, result)));
                 return _result;
             }
         }

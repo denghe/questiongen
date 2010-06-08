@@ -8,6 +8,7 @@ using SqlLib;
 using DAL.Database.Tables;
 using db = DAL.Database.Tables;
 using query = DAL.Queries.Tables;
+using exp = DAL.Expressions.Tables;
 
 namespace QuestionGen.Web.Service
 {
@@ -38,14 +39,6 @@ namespace QuestionGen.Web.Service
                 return -1;
             }
         }
-
-        [OperationContract]
-        public int 知识面_删除(byte[] 知识面)
-        {
-            var row = new db.题.知识面(知识面);
-            return row.Delete();
-        }
-
 
         [OperationContract]
         public int 知识面_更新(byte[] 知识面)
@@ -229,6 +222,28 @@ namespace QuestionGen.Web.Service
         public byte[] 类型_获取(byte[] 查询)
         {
             return db.题.类型.Select(new query.题.类型(查询)).GetBytes();
+        }
+
+        #endregion
+
+        #region 各种删除
+
+        [OperationContract]
+        public int 知识面_删除(byte[] 条件)
+        {
+            return db.题.知识面.Delete(new exp.题.知识面(条件));
+        }
+
+        [OperationContract]
+        public int 题_删除(byte[] 条件)
+        {
+            return db.题.题.Delete(new exp.题.题(条件));
+        }
+
+        [OperationContract]
+        public int 类型_删除(byte[] 条件)
+        {
+            return db.题.类型.Delete(new exp.题.类型(条件));
         }
 
 

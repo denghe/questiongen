@@ -22,15 +22,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="知识面_删除">
-      <soap12:operation soapAction="urn:题/知识面_删除" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="知识面_更新">
       <soap12:operation soapAction="urn:题/知识面_更新" style="document" />
       <wsdl:input>
@@ -42,6 +33,15 @@
     </wsdl:operation>
     <wsdl:operation name="题_插入">
       <soap12:operation soapAction="urn:题/题_插入" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="题_修改">
+      <soap12:operation soapAction="urn:题/题_修改" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -87,6 +87,33 @@
     </wsdl:operation>
     <wsdl:operation name="类型_获取">
       <soap12:operation soapAction="urn:题/类型_获取" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="知识面_删除">
+      <soap12:operation soapAction="urn:题/知识面_删除" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="题_删除">
+      <soap12:operation soapAction="urn:题/题_删除" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="类型_删除">
+      <soap12:operation soapAction="urn:题/类型_删除" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
