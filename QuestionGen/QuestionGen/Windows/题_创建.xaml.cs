@@ -64,6 +64,7 @@ namespace QuestionGen.Windows
                 难度系数 = (int)_难度系数_Slider.Value,
                 考核意图 = _考核意图_TextBox.Text.Trim(),
                 知识面编号 = (_知识面_ComboBox.SelectedItem as 题.知识面).知识面编号,
+                备注 = _备注_TextBox.Text.Trim(),
                 是否启用 = _是否启用_CheckBox.IsChecked.Value
             };
             if (_类型_选择_RadioButton.IsChecked.Value)

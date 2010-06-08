@@ -73,7 +73,7 @@ namespace QuestionGen.Web.Service
                 try
                 {
                     // 插入 题
-                    var affected = question.Insert(isFillAfterInsert: false);
+                    var affected = question.Insert(fillCols: o => o.题编号);
                     if (affected < 1)
                     {
                         tran.Rollback();
@@ -112,7 +112,7 @@ namespace QuestionGen.Web.Service
                     tran.Commit();
                     return 1;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     tran.Rollback();
                     return -1;
