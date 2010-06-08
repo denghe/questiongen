@@ -206,6 +206,8 @@ namespace QuestionGen.Windows
 
         #endregion
 
+        #region SetValues
+
         private void SetValues(选择题 o)
         {
             _显示模板_TextBox.Text = o.题.显示模板;
@@ -213,13 +215,14 @@ namespace QuestionGen.Windows
             _选项_StackPanel.Children.Clear();
             _答案格子_StackPanel.Children.Clear();
 
-            foreach (var c in o.选项)
+            var options = o.选项.OrderBy(a => a.选项序号);
+            foreach (var c in options)
             {
                 添加选项(c.选项序号, c.显示模板);
             }
             添加选项(o.选项.Last().选项序号 + 1);
 
-            var gs = from answer in o.答案 group answer by answer.格子序号 into g select g;
+            var gs = from answer in o.答案 group answer by answer.格子序号 into g orderby g.Key select g;
             foreach (var g in gs)
             {
                 var sp = 添加答案格子组(g.Key);
@@ -234,6 +237,8 @@ namespace QuestionGen.Windows
 
             _预览_Button_Click();
         }
+
+        #endregion
 
         #region GetValues
 
