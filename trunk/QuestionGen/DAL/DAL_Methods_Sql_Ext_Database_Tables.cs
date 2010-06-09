@@ -25,7 +25,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.人.岗位 o, Expressions.Tables.人.岗位.Handler eh = null, ColumnEnums.Tables.人.岗位.Handler updateCols = null, ColumnEnums.Tables.人.岗位.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.人.岗位.Handler(a => a.岗位编号 == o.岗位编号);
             return Database.Tables.人.岗位.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -63,7 +62,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.人.岗位_知识面 o, Expressions.Tables.人.岗位_知识面.Handler eh = null, ColumnEnums.Tables.人.岗位_知识面.Handler updateCols = null, ColumnEnums.Tables.人.岗位_知识面.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.人.岗位_知识面.Handler(a => a.岗位编号 == o.岗位编号 & a.知识面编号 == o.知识面编号);
             return Database.Tables.人.岗位_知识面.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -102,7 +100,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.附件 o, Expressions.Tables.题.附件.Handler eh = null, ColumnEnums.Tables.题.附件.Handler updateCols = null, ColumnEnums.Tables.题.附件.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.附件.Handler(a => a.附件编号 == o.附件编号);
             return Database.Tables.题.附件.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -141,7 +138,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.类型 o, Expressions.Tables.题.类型.Handler eh = null, ColumnEnums.Tables.题.类型.Handler updateCols = null, ColumnEnums.Tables.题.类型.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.类型.Handler(a => a.类型编号 == o.类型编号);
             return Database.Tables.题.类型.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -179,7 +175,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题 o, Expressions.Tables.题.题.Handler eh = null, ColumnEnums.Tables.题.题.Handler updateCols = null, ColumnEnums.Tables.题.题.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题.Handler(a => a.题编号 == o.题编号);
             return Database.Tables.题.题.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -224,7 +219,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_连线_答案 o, Expressions.Tables.题.题_连线_答案.Handler eh = null, ColumnEnums.Tables.题.题_连线_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_连线_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_连线_答案.Handler(a => a.题编号 == o.题编号 & a.连线序号A == o.连线序号A & a.连线序号B == o.连线序号B);
             return Database.Tables.题.题_连线_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -264,7 +258,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_连线_选项 o, Expressions.Tables.题.题_连线_选项.Handler eh = null, ColumnEnums.Tables.题.题_连线_选项.Handler updateCols = null, ColumnEnums.Tables.题.题_连线_选项.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_连线_选项.Handler(a => a.题编号 == o.题编号 & a.连线序号 == o.连线序号);
             return Database.Tables.题.题_连线_选项.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -304,7 +297,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_判断_答案 o, Expressions.Tables.题.题_判断_答案.Handler eh = null, ColumnEnums.Tables.题.题_判断_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_判断_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_判断_答案.Handler(a => a.题编号 == o.题编号);
             return Database.Tables.题.题_判断_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -341,7 +333,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_填空_答案 o, Expressions.Tables.题.题_填空_答案.Handler eh = null, ColumnEnums.Tables.题.题_填空_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_填空_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_填空_答案.Handler(a => a.题编号 == o.题编号 & a.格子序号 == o.格子序号);
             return Database.Tables.题.题_填空_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -380,7 +371,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_问答_答案 o, Expressions.Tables.题.题_问答_答案.Handler eh = null, ColumnEnums.Tables.题.题_问答_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_问答_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_问答_答案.Handler(a => a.题编号 == o.题编号);
             return Database.Tables.题.题_问答_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -417,7 +407,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_选择_答案 o, Expressions.Tables.题.题_选择_答案.Handler eh = null, ColumnEnums.Tables.题.题_选择_答案.Handler updateCols = null, ColumnEnums.Tables.题.题_选择_答案.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_选择_答案.Handler(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号 & a.格子序号 == o.格子序号);
             return Database.Tables.题.题_选择_答案.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -457,7 +446,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.题_选择_选项 o, Expressions.Tables.题.题_选择_选项.Handler eh = null, ColumnEnums.Tables.题.题_选择_选项.Handler updateCols = null, ColumnEnums.Tables.题.题_选择_选项.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.题_选择_选项.Handler(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号);
             return Database.Tables.题.题_选择_选项.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion
@@ -496,7 +484,6 @@ namespace DAL.Database.Tables
 
 		public static int Update(this Database.Tables.题.知识面 o, Expressions.Tables.题.知识面.Handler eh = null, ColumnEnums.Tables.题.知识面.Handler updateCols = null, ColumnEnums.Tables.题.知识面.Handler fillCols = null, bool isFillAfterUpdate = true)
 		{
-            if (eh == null) eh = new Expressions.Tables.题.知识面.Handler(a => a.知识面编号 == o.知识面编号);
             return Database.Tables.题.知识面.Update(o, eh, updateCols, fillCols, isFillAfterUpdate);
 		}
         #endregion

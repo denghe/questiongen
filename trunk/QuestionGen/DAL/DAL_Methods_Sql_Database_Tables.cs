@@ -208,13 +208,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.人.岗位.New(a => a.岗位编号 == o.岗位编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -603,13 +603,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.人.岗位_知识面.New(a => a.岗位编号 == o.岗位编号 & a.知识面编号 == o.知识面编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -1016,13 +1016,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.附件.New(a => a.附件编号 == o.附件编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -1397,13 +1397,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.类型.New(a => a.类型编号 == o.类型编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -1940,13 +1940,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题.New(a => a.题编号 == o.题编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -2189,7 +2189,7 @@ DELETE FROM [题].[题]";
             return 题_连线_答案.Select(q);
         }
 
-        public static List<题_连线_答案> Select1(Database.Tables.题.题_连线_选项 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
+        public static List<题_连线_答案> Select(Database.Tables.题.题_连线_选项 parent, Queries.Tables.题.题_连线_答案.Handler query = null) {
             if(query == null) return 题_连线_答案.Select(where: o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
             var q = query(new Queries.Tables.题.题_连线_答案());
             if(q.Where == null) q.SetWhere(o => o.题编号 == parent.题编号 & o.连线序号B == parent.连线序号);
@@ -2357,13 +2357,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_连线_答案.New(a => a.题编号 == o.题编号 & a.连线序号A == o.连线序号A & a.连线序号B == o.连线序号B);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -2766,13 +2766,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_连线_选项.New(a => a.题编号 == o.题编号 & a.连线序号 == o.连线序号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -3133,13 +3133,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_判断_答案.New(a => a.题编号 == o.题编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -3518,13 +3518,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_填空_答案.New(a => a.题编号 == o.题编号 & a.格子序号 == o.格子序号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -3883,13 +3883,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_问答_答案.New(a => a.题编号 == o.题编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -4276,13 +4276,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_选择_答案.New(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号 & a.格子序号 == o.格子序号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -4663,13 +4663,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.题_选择_选项.New(a => a.题编号 == o.题编号 & a.选项序号 == o.选项序号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
@@ -5002,13 +5002,13 @@ OUTPUT ");
                 }
             }
 
-            if (eh != null)
-            {
-                var ws = eh.ToString();
-                if(ws.Length > 0)
-    			    sb.Append(@"
+            if (eh == null) eh = Expressions.Tables.题.知识面.New(a => a.知识面编号 == o.知识面编号);
+
+            var ws = eh.ToString();
+            if (ws.Length > 0)
+                sb.Append(@"
  WHERE " + ws);
-            }
+
 			cmd.CommandText = sb.ToString();
 			if (!isFillAfterUpdate)
                 return SqlHelper.ExecuteNonQuery(cmd);
