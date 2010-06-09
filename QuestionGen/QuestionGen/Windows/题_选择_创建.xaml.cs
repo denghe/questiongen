@@ -106,9 +106,9 @@ namespace QuestionGen.Windows
             if (count == cc) return;
             else if (count < cc)    // remove
             {
-                for (int i = cc - 1; i < cc - count; i++)
+                for (int i = cc - 1; i >= count; i--)
                 {
-                    _选项_StackPanel.Children.RemoveAt(cc - 1);
+                    _答案格子_StackPanel.Children.RemoveAt(i);
                 }
             }
             else                    // add
