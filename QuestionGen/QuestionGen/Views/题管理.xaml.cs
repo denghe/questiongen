@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using QuestionGen.Windows;
+using QuestionGen.Converters;
 using SqlLib;
 using 题 = DAL.Database.Tables.题;
 using query = DAL.Queries.Tables;
@@ -23,11 +24,30 @@ namespace QuestionGen.Views
         服务.题Client _s = new 服务.题Client();
         题.题 _selected_row = null;
 
+        List<题.知识面> _知识面s = null;
+
         public 题管理()
         {
             InitializeComponent();
 
             _s.题_获取Completed += new EventHandler<服务.题_获取CompletedEventArgs>(_s_题_获取Completed);
+            _s.类型_获取Completed += new EventHandler<服务.类型_获取CompletedEventArgs>(_s_类型_获取Completed);
+            _s.知识面_获取Completed += new EventHandler<服务.知识面_获取CompletedEventArgs>(_s_知识面_获取Completed);
+
+            _刷新_Button.IsEnabled = false;
+            _s.类型_获取Async(query.题.类型.New().GetBytes());
+        }
+
+        void _s_类型_获取Completed(object sender, 服务.类型_获取CompletedEventArgs e)
+        {
+            题_类型编号_类型名._类型s = e.Result.ToList<题.类型>();
+            _刷新_Button.IsEnabled = true;
+        }
+
+        void _s_知识面_获取Completed(object sender, 服务.知识面_获取CompletedEventArgs e)
+        {
+            题_知识面编号_名称._知识面s = e.Result.ToList<题.知识面>();
+            _s.题_获取Async(query.题.题.New().GetBytes());
         }
 
         void _s_题_获取Completed(object sender, 服务.题_获取CompletedEventArgs e)
@@ -37,6 +57,8 @@ namespace QuestionGen.Views
             _刷新_Button.IsEnabled = true;
         }
 
+        // todo: type converter
+
         // Executes when the user navigates to this page.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -45,7 +67,7 @@ namespace QuestionGen.Views
         private void _刷新_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             _刷新_Button.IsEnabled = false;
-            _s.题_获取Async(query.题.题.New().GetBytes());
+            _s.知识面_获取Async(query.题.知识面.New().GetBytes());
             _selected_row = null;
             EnableControls();
         }
