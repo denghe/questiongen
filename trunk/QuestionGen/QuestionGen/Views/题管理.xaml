@@ -3,12 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    xmlns:converters="clr-namespace:QuestionGen.Converters"
     mc:Ignorable="d" d:DesignWidth="595" d:DesignHeight="340"
     Title="题管理"
     Style="{StaticResource PageStyle}">
 
     <Grid x:Name="LayoutRoot">
         <Grid.Resources>
+            <converters:题_类型编号_类型名 x:Key="题_类型编号_类型名"/>
+            <converters:题_知识面编号_名称 x:Key="题_知识面编号_名称"/>
             <Style TargetType="Button">
                 <Setter Property="FontFamily" Value="Arial, SimSun" />
                 <Setter Property="FontSize" Value="12" />
@@ -34,7 +37,20 @@
         <Button Grid.Row="1" Content="修改" Name="_修改_Button" Click="_修改_Button_Click" IsEnabled="False" HorizontalAlignment="Right" Margin="0,0,75,0"  VerticalAlignment="Top" />
         <Button Grid.Row="1" Content="删除" Name="_删除_Button" Click="_删除_Button_Click" IsEnabled="False" HorizontalAlignment="Right" VerticalAlignment="Top" />
 
-        <sdk:DataGrid Grid.Row="2" x:Name="_DataGrid" SelectionChanged="_DataGrid_SelectionChanged" IsReadOnly="True" FontSize="12" FontFamily="Arial, SimSun" SelectionMode="Single" LoadingRow="_DataGrid_LoadingRow" />
+        <sdk:DataGrid Grid.Row="2" x:Name="_DataGrid" SelectionChanged="_DataGrid_SelectionChanged" IsReadOnly="True" FontSize="12" FontFamily="Arial, SimSun" SelectionMode="Single" LoadingRow="_DataGrid_LoadingRow"
+                       AutoGenerateColumns="False">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTextColumn Header="题编号" Binding="{Binding Path=题编号}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="类型" Binding="{Binding Path=类型编号, Converter={StaticResource 题_类型编号_类型名}}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="知识面" Binding="{Binding Path=知识面编号, Converter={StaticResource 题_知识面编号_名称}}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="难度系数" Binding="{Binding Path=难度系数}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="题面" Binding="{Binding Path=显示模板}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="考核意图" Binding="{Binding Path=考核意图}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="备注" Binding="{Binding Path=备注}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridTextColumn Header="更新时间" Binding="{Binding Path=更新时间}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+                <sdk:DataGridCheckBoxColumn Header="是否启用" Binding="{Binding Path=是否启用}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>
     </Grid>
 
 </navigation:Page>
