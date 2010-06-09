@@ -624,6 +624,13 @@ namespace QuestionGen.Web.Service
         }
 
         [OperationContract]
+        public byte[] 题_判断_答案_获取(byte[] 查询)
+        {
+            return db.题.题_判断_答案.Select(new query.题.题_判断_答案(查询)).GetBytes();
+        }
+
+
+        [OperationContract]
         public byte[] 类型_获取(byte[] 查询)
         {
             return db.题.类型.Select(new query.题.类型(查询)).GetBytes();

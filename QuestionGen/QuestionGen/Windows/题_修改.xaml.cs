@@ -45,9 +45,11 @@ namespace QuestionGen.Windows
 
             _s.题_选择_选项_获取Completed += new EventHandler<服务.题_选择_选项_获取CompletedEventArgs>(_s_题_选择_选项_获取Completed);
             _s.题_选择_答案_获取Completed += new EventHandler<服务.题_选择_答案_获取CompletedEventArgs>(_s_题_选择_答案_获取Completed);
+            _s.题_判断_答案_获取Completed += new EventHandler<服务.题_判断_答案_获取CompletedEventArgs>(_s_题_判断_答案_获取Completed);
 
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
+
 
         private void SetValues(题.题 o)
         {
@@ -127,18 +129,17 @@ namespace QuestionGen.Windows
             _题.备注 = o.备注;
             _题.是否启用 = o.是否启用;
 
+            _下一步_Button.IsEnabled = false;
+
             switch (_题.类型编号)
             {
                 case 1:
                     {
-                        _下一步_Button.IsEnabled = false;
-
                         _题_选择_选项 = null;
                         _题_选择_答案 = null;
 
                         _s.题_选择_选项_获取Async(query.题.题_选择_选项.New(a => a.题编号 == _题.题编号).GetBytes());
                         _s.题_选择_答案_获取Async(query.题.题_选择_答案.New(a => a.题编号 == _题.题编号).GetBytes());
-
                         break;
                     }
                 case 2:
@@ -147,6 +148,7 @@ namespace QuestionGen.Windows
                     }
                 case 3:
                     {
+                        _s.题_判断_答案_获取Async(query.题.题_判断_答案.New(a => a.题编号 == _题.题编号).GetBytes());
                         break;
                     }
                 case 4:
@@ -193,6 +195,19 @@ namespace QuestionGen.Windows
                 if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
             };
         }
+
+
+        void _s_题_判断_答案_获取Completed(object sender, 服务.题_判断_答案_获取CompletedEventArgs e)
+        {
+            var data = new 判断题 { 题 = _题, 答案 =  e.Result.ToList<题.题_判断_答案>().FirstOrDefault() };
+            var f = new 题_判断_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.ShowDialog();
+            f.Closed += (sender1, ea1) =>
+            {
+                if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+            };
+        }
+
 
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)

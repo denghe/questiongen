@@ -21,30 +21,47 @@ using QuestionGen.Modules;
 
 namespace QuestionGen.Windows
 {
-    public partial class 题_判断_创建 : FloatableWindow
+    public partial class 题_判断_修改 : FloatableWindow
     {
         #region 字段
 
-        题.题 _题 = null;
+        判断题 _判断题 = null;
         服务.题Client _s = null;
 
         #endregion
 
         #region 构造函数
 
-        public 题_判断_创建()
+        public 题_判断_修改()
         {
             InitializeComponent();
 
             _重置_Button_Click();
         }
 
-        public 题_判断_创建(题.题 o)
+        public 题_判断_修改(判断题 o)
             : this()
         {
-            _题 = o;
+            _判断题 = o;       // todo: backup
+
             _s = new 服务.题Client();
-            _s.题_判断_插入Completed += new EventHandler<服务.题_判断_插入CompletedEventArgs>(_s_题_判断_插入Completed);
+            _s.题_判断_修改Completed += new EventHandler<服务.题_判断_修改CompletedEventArgs>(_s_题_判断_修改Completed);
+
+            SetValues();
+        }
+
+        #endregion
+
+        #region SetValues
+
+        private void SetValues()
+        {
+            _显示模板_TextBox.Text = _判断题.题.显示模板;
+
+            if (_判断题.答案.答案) _答案_正确_RadioButton.IsChecked = true;
+            else _答案_错误_RadioButton.IsChecked = true;
+
+            _预览_Button_Click();
         }
 
         #endregion
@@ -54,16 +71,10 @@ namespace QuestionGen.Windows
         /// <summary>
         /// 将控件内容填充到 判断题 容器 并返回
         /// </summary>
-        private 判断题 GetValues()
+        private void GetValues()
         {
-            var result = new 判断题
-            {
-                题 = _题,
-                答案 = new 题.题_判断_答案 { 题编号 = _题.题编号, 答案 = _答案_正确_RadioButton.IsChecked.Value }
-            };
-            result.题.显示模板 = _显示模板_TextBox.Text.Trim();
-
-            return result;
+            _判断题.题.显示模板 = _显示模板_TextBox.Text.Trim();
+            _判断题.答案 = new 题.题_判断_答案 { 题编号 = _判断题.题.题编号, 答案 = _答案_正确_RadioButton.IsChecked.Value };
         }
 
         #endregion
@@ -72,22 +83,20 @@ namespace QuestionGen.Windows
 
         private void _重置_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
-            _显示模板_TextBox.Text = @"";
-            _预览_RichTextBox.Blocks.Clear();
-            _答案_正确_RadioButton.IsChecked = true;
+            // todo: restore
         }
 
         #endregion
 
         #region 预览
 
-        private void _预览_Button_Click(object sender, RoutedEventArgs e)
+        private void _预览_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
-            var result = GetValues();
+            GetValues();
 
             _预览_RichTextBox.Blocks.Clear();
 
-            var s = "<___root___>" + result.题.显示模板 + "</___root___>";
+            var s = "<___root___>" + _判断题.题.显示模板 + "</___root___>";
             var xe = XElement.Parse(s);
             var xns = xe.Nodes();
             var p = new Paragraph { FontSize = 16 };
@@ -147,7 +156,7 @@ namespace QuestionGen.Windows
                 ,
                 FontWeight = FontWeights.Bold
                 ,
-                Text = result.答案.答案 ? "正确" : "错误"
+                Text = _判断题.答案.答案 ? "正确" : "错误"
             });
 
             _预览_RichTextBox.Blocks.Add(p);
@@ -155,7 +164,7 @@ namespace QuestionGen.Windows
 
         #endregion
 
-        void _s_题_判断_插入Completed(object sender, 服务.题_判断_插入CompletedEventArgs e)
+        void _s_题_判断_修改Completed(object sender, 服务.题_判断_修改CompletedEventArgs e)
         {
             if (e.Result > 0)
             {
@@ -170,22 +179,21 @@ namespace QuestionGen.Windows
 
         private void _提交_Button_Click(object sender, RoutedEventArgs e)
         {
-            判断题 result = null;
+            bool b = false;
             try
             {
-                result = GetValues();
+                GetValues();
+                b = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            if (result != null)
+            if (b)
             {
                 _提交_Button.IsEnabled = false;
 
-                //result.题.更新时间 = DateTime.Now;   // 修正序列化时的时间合法性问题
-
-                _s.题_判断_插入Async(result.题.GetBytes(), result.答案.GetBytes());
+                _s.题_判断_修改Async(_判断题.题.GetBytes(), _判断题.答案.GetBytes());
             }
         }
 
