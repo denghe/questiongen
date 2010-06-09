@@ -431,7 +431,7 @@ namespace QuestionGen.Windows
             {
                 _提交_Button.IsEnabled = false;
 
-                result.题.更新时间 = DateTime.Now;   // 修正序列化时的时间合法性问题
+                //result.题.更新时间 = DateTime.Now;   // 修正序列化时的时间合法性问题
 
                 _s.题_选择_插入Async(result.题.GetBytes(), result.选项.GetBytes(), result.答案.GetBytes());
             }
