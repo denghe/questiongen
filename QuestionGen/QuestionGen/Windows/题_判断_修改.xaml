@@ -80,5 +80,7 @@
         <Button x:Name="_取消_Button" Content="取消" HorizontalAlignment="Right" Margin="0,0,13,3" Grid.Row="1" Grid.Column="1" Click="_取消_Button_Click" Height="23" VerticalAlignment="Bottom" />
         <Button x:Name="_帮助_Button" Content="帮助" HorizontalAlignment="Left" Margin="12,0,0,3" VerticalAlignment="Bottom" Grid.Row="1" Click="_帮助_Button_Click" IsEnabled="False" />
         <Button x:Name="_重置_Button" Content="重置" HorizontalAlignment="Left" Margin="93,0,0,3" VerticalAlignment="Bottom" Grid.Row="1" Click="_重置_Button_Click" IsEnabled="False" />
+
+        <Button Content="模板编辑器" HorizontalAlignment="Right" IsEnabled="True" x:Name="_模板编辑器_Button" VerticalAlignment="Bottom" Grid.Row="1" Width="93" Click="_模板编辑器_Button_Click" Margin="0,0,13,3" />
     </Grid>
 </controls:FloatableWindow>

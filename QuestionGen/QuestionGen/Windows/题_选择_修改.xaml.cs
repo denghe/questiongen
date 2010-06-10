@@ -69,6 +69,7 @@ namespace QuestionGen.Windows
             var tbl = new TextBlock { Text = i.ToString() };
             var tb = new TextBox { Text = text, Tag = i, VerticalScrollBarVisibility = ScrollBarVisibility.Visible };
             tb.TextChanged += new TextChangedEventHandler(选项_TextChanged);
+            tb.GotFocus += new RoutedEventHandler(tb_GotFocus);
             sp.Children.Add(tbl);
             sp.Children.Add(tb);
             _选项_StackPanel.Children.Add(sp);
@@ -483,6 +484,29 @@ namespace QuestionGen.Windows
         {
             // todo: 弹出帮助示例窗口
         }
+
+
+
+        private TextBox _当前焦点文本框 = null;
+
+        private void _模板编辑器_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_当前焦点文本框 == null) return;
+            var f = new 模板编辑器(_当前焦点文本框, _当前焦点文本框 == _显示模板_TextBox) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += new EventHandler(f_Closed);
+            f.ShowDialog();
+        }
+
+        void f_Closed(object sender, EventArgs e)
+        {
+            _当前焦点文本框.Focus();
+        }
+
+        void tb_GotFocus(object sender, RoutedEventArgs e)
+        {
+            _当前焦点文本框 = (TextBox)sender;
+        }
+
 
     }
 }
