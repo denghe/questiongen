@@ -1,0 +1,29 @@
+﻿<controls:FloatableWindow x:Class="QuestionGen.Windows.填空录入"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=FloatableWindow"
+           Width="474" Height="113" 
+           Title="填空录入" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <controls:FloatableWindow.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Height" Value="23" />
+        </Style>
+        <Style TargetType="RichTextBox">
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </controls:FloatableWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="_提交_Button" Content="提交" Click="_提交_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="4" />
+        <Button x:Name="_取消_Button" Content="取消" Click="_取消_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,4,12,3" Grid.Row="1" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,16,0,0" Name="textBlock1" Text="请输入填空内容：" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="123,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="317" />
+    </Grid>
+</controls:FloatableWindow>

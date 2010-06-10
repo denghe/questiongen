@@ -41,12 +41,13 @@ namespace QuestionGen.Windows
 
         TextBox _文本框 = null;
 
-        public 模板编辑器(TextBox tb, bool 是否显示_插入格子 = false)
+        public 模板编辑器(TextBox tb, bool 是否显示_插入格子 = false, bool 是否显示_插入填空 = false)
             : this()
         {
             _文本框 = tb;
             _代码_RichTextBox.Selection.Insert(new Run { Text = tb.Text });
             _插入格子_Button.IsEnabled = 是否显示_插入格子;
+            _插入填空_Button.IsEnabled = 是否显示_插入填空;
         }
 
         private void _插入格子_Button_Click(object sender, RoutedEventArgs e)
@@ -78,6 +79,30 @@ namespace QuestionGen.Windows
             // todo
         }
 
+        private void _插入填空_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_is_模板_focus)
+            {
+                //　取 _模板_RichTextBox　当前光标位置，　插入
+                _模板_RichTextBox.Selection.Insert(new InlineUIContainer
+                {
+                    Child = new TextBox
+                    {
+                        Width = 100,
+                        Height = 23,
+                        Text = ""
+                    }
+                });
+                _模板_RichTextBox.Focus();
+            }
+            else
+            {
+                //　取 _代码_RichTextBox　当前光标位置，　插入
+                _代码_RichTextBox.Selection.Insert(new Run { Text = "<c><c/>" });
+                _代码_RichTextBox.Focus();
+            }
+        }
+
 
         private void _模板_RichTextBox_ContentChanged(object sender, ContentChangedEventArgs e)
         {
@@ -104,6 +129,11 @@ namespace QuestionGen.Windows
                         if (child is TextBlock)
                         {
                             cp.Inlines.Add(new Run { Text = "<c/>" });
+                        }
+                        else if (child is TextBox)
+                        {
+                            var tb1 = child as TextBox;
+                            cp.Inlines.Add(new Run { Text = "<c>" + tb1.Text.ToXml() + "<c/>" });
                         }
                         // todo: is Image ? Movie ?
                     }
@@ -132,7 +162,7 @@ namespace QuestionGen.Windows
                 {
                     xe = XElement.Parse(s);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     return;
@@ -159,15 +189,34 @@ namespace QuestionGen.Windows
                     }
                     else
                     {
-                        tp.Inlines.Add(new InlineUIContainer
+                        var xe1 = xn as XElement;
+                        if (xe1.Name.LocalName == "c")
                         {
-                            Child = new TextBlock
+                            if (string.IsNullOrEmpty(xe1.Value))
                             {
-                                Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)),
-                                FontWeight = FontWeights.Bold,
-                                Text = " ( ____ ) "
+                                tp.Inlines.Add(new InlineUIContainer
+                                {
+                                    Child = new TextBlock
+                                    {
+                                        Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)),
+                                        FontWeight = FontWeights.Bold,
+                                        Text = " ( ____ ) "
+                                    }
+                                });
                             }
-                        });
+                            else
+                            {
+                                tp.Inlines.Add(new InlineUIContainer
+                                {
+                                    Child = new TextBox
+                                    {
+                                        Width = 100,
+                                        Height = 23,
+                                        Text = xe1.Value
+                                    }
+                                });
+                            }
+                        }
                         // todo: 处理图片
                     }
                 }
