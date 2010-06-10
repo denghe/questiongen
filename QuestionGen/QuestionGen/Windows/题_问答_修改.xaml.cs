@@ -57,9 +57,7 @@ namespace QuestionGen.Windows
         private void SetValues()
         {
             _显示模板_TextBox.Text = _问答题.题.显示模板;
-
-            if (_问答题.答案.答案) _答案_正确_RadioButton.IsChecked = true;
-            else _答案_错误_RadioButton.IsChecked = true;
+            _答案_TextBox.Text =_问答题.答案.参考答案;
 
             _预览_Button_Click();
         }
@@ -74,7 +72,7 @@ namespace QuestionGen.Windows
         private void GetValues()
         {
             _问答题.题.显示模板 = _显示模板_TextBox.Text.Trim();
-            _问答题.答案 = new 题.题_问答_答案 { 题编号 = _问答题.题.题编号, 答案 = _答案_正确_RadioButton.IsChecked.Value };
+            _问答题.答案 = new 题.题_问答_答案 { 参考答案 = _答案_TextBox.Text };
         }
 
         #endregion
@@ -125,16 +123,7 @@ namespace QuestionGen.Windows
                 }
                 else
                 {
-                    // todo: 问答是图片 还是 答案格子
-
-                    p.Inlines.Add(new Run
-                    {
-                        Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255))
-                        ,
-                        FontWeight = FontWeights.Bold
-                        ,
-                        Text = "___"
-                    });
+                    // todo: 图片处理
                 }
             }
 
@@ -156,7 +145,7 @@ namespace QuestionGen.Windows
                 ,
                 FontWeight = FontWeights.Bold
                 ,
-                Text = _问答题.答案.答案 ? "正确" : "错误"
+                Text = _问答题.答案.参考答案
             });
 
             _预览_RichTextBox.Blocks.Add(p);
