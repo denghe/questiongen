@@ -597,7 +597,7 @@ namespace QuestionGen.Web.Service
 
         #endregion
 
-        #region 各种 按查询 获取 数据行
+        #region 各种 按查询 获取 数据行（均返回多行）
 
         [OperationContract]
         public byte[] 知识面_获取(byte[] 查询)
@@ -627,6 +627,18 @@ namespace QuestionGen.Web.Service
         public byte[] 题_判断_答案_获取(byte[] 查询)
         {
             return db.题.题_判断_答案.Select(new query.题.题_判断_答案(查询)).GetBytes();
+        }
+
+        [OperationContract]
+        public byte[] 题_填空_答案_获取(byte[] 查询)
+        {
+            return db.题.题_填空_答案.Select(new query.题.题_填空_答案(查询)).GetBytes();
+        }
+
+        [OperationContract]
+        public byte[] 题_问答_答案_获取(byte[] 查询)
+        {
+            return db.题.题_问答_答案.Select(new query.题.题_问答_答案(查询)).GetBytes();
         }
 
 
