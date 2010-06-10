@@ -89,7 +89,7 @@ namespace QuestionGen.Windows
                     Child = new TextBox
                     {
                         Width = 100,
-                        Height = 23,
+                        Height = 20,
                         Text = ""
                     }
                 });
@@ -98,7 +98,7 @@ namespace QuestionGen.Windows
             else
             {
                 //　取 _代码_RichTextBox　当前光标位置，　插入
-                _代码_RichTextBox.Selection.Insert(new Run { Text = "<c><c/>" });
+                _代码_RichTextBox.Selection.Insert(new Run { Text = "<c></c>" });
                 _代码_RichTextBox.Focus();
             }
         }
@@ -133,7 +133,7 @@ namespace QuestionGen.Windows
                         else if (child is TextBox)
                         {
                             var tb1 = child as TextBox;
-                            cp.Inlines.Add(new Run { Text = "<c>" + tb1.Text.ToXml() + "<c/>" });
+                            cp.Inlines.Add(new Run { Text = "<c>" + tb1.Text.ToXml() + "</c>" });
                         }
                         // todo: is Image ? Movie ?
                     }
@@ -211,7 +211,7 @@ namespace QuestionGen.Windows
                                     Child = new TextBox
                                     {
                                         Width = 100,
-                                        Height = 23,
+                                        Height = 20,
                                         Text = xe1.Value
                                     }
                                 });
