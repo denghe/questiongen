@@ -103,6 +103,16 @@ namespace QuestionGen.服务 {
         
         byte[] End题_判断_答案_获取(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_填空_答案_获取", ReplyAction="urn:题/题_填空_答案_获取Response")]
+        System.IAsyncResult Begin题_填空_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        byte[] End题_填空_答案_获取(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/题_问答_答案_获取", ReplyAction="urn:题/题_问答_答案_获取Response")]
+        System.IAsyncResult Begin题_问答_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
+        
+        byte[] End题_问答_答案_获取(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:题/类型_获取", ReplyAction="urn:题/类型_获取Response")]
         System.IAsyncResult Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState);
         
@@ -478,6 +488,44 @@ namespace QuestionGen.服务 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_填空_答案_获取CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_填空_答案_获取CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class 题_问答_答案_获取CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public 题_问答_答案_获取CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class 类型_获取CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -753,6 +801,18 @@ namespace QuestionGen.服务 {
         
         private System.Threading.SendOrPostCallback on题_判断_答案_获取CompletedDelegate;
         
+        private BeginOperationDelegate onBegin题_填空_答案_获取Delegate;
+        
+        private EndOperationDelegate onEnd题_填空_答案_获取Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_填空_答案_获取CompletedDelegate;
+        
+        private BeginOperationDelegate onBegin题_问答_答案_获取Delegate;
+        
+        private EndOperationDelegate onEnd题_问答_答案_获取Delegate;
+        
+        private System.Threading.SendOrPostCallback on题_问答_答案_获取CompletedDelegate;
+        
         private BeginOperationDelegate onBegin类型_获取Delegate;
         
         private EndOperationDelegate onEnd类型_获取Delegate;
@@ -893,6 +953,10 @@ namespace QuestionGen.服务 {
         public event System.EventHandler<题_选择_答案_获取CompletedEventArgs> 题_选择_答案_获取Completed;
         
         public event System.EventHandler<题_判断_答案_获取CompletedEventArgs> 题_判断_答案_获取Completed;
+        
+        public event System.EventHandler<题_填空_答案_获取CompletedEventArgs> 题_填空_答案_获取Completed;
+        
+        public event System.EventHandler<题_问答_答案_获取CompletedEventArgs> 题_问答_答案_获取Completed;
         
         public event System.EventHandler<类型_获取CompletedEventArgs> 类型_获取Completed;
         
@@ -1727,6 +1791,98 @@ namespace QuestionGen.服务 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_填空_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_填空_答案_获取(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] QuestionGen.服务.题.End题_填空_答案_获取(System.IAsyncResult result) {
+            return base.Channel.End题_填空_答案_获取(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_填空_答案_获取(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_填空_答案_获取(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_填空_答案_获取(System.IAsyncResult result) {
+            byte[] retVal = ((QuestionGen.服务.题)(this)).End题_填空_答案_获取(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_填空_答案_获取Completed(object state) {
+            if ((this.题_填空_答案_获取Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_填空_答案_获取Completed(this, new 题_填空_答案_获取CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_填空_答案_获取Async(byte[] 查询) {
+            this.题_填空_答案_获取Async(查询, null);
+        }
+        
+        public void 题_填空_答案_获取Async(byte[] 查询, object userState) {
+            if ((this.onBegin题_填空_答案_获取Delegate == null)) {
+                this.onBegin题_填空_答案_获取Delegate = new BeginOperationDelegate(this.OnBegin题_填空_答案_获取);
+            }
+            if ((this.onEnd题_填空_答案_获取Delegate == null)) {
+                this.onEnd题_填空_答案_获取Delegate = new EndOperationDelegate(this.OnEnd题_填空_答案_获取);
+            }
+            if ((this.on题_填空_答案_获取CompletedDelegate == null)) {
+                this.on题_填空_答案_获取CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_填空_答案_获取Completed);
+            }
+            base.InvokeAsync(this.onBegin题_填空_答案_获取Delegate, new object[] {
+                        查询}, this.onEnd题_填空_答案_获取Delegate, this.on题_填空_答案_获取CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult QuestionGen.服务.题.Begin题_问答_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Begin题_问答_答案_获取(查询, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] QuestionGen.服务.题.End题_问答_答案_获取(System.IAsyncResult result) {
+            return base.Channel.End题_问答_答案_获取(result);
+        }
+        
+        private System.IAsyncResult OnBegin题_问答_答案_获取(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] 查询 = ((byte[])(inValues[0]));
+            return ((QuestionGen.服务.题)(this)).Begin题_问答_答案_获取(查询, callback, asyncState);
+        }
+        
+        private object[] OnEnd题_问答_答案_获取(System.IAsyncResult result) {
+            byte[] retVal = ((QuestionGen.服务.题)(this)).End题_问答_答案_获取(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void On题_问答_答案_获取Completed(object state) {
+            if ((this.题_问答_答案_获取Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.题_问答_答案_获取Completed(this, new 题_问答_答案_获取CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void 题_问答_答案_获取Async(byte[] 查询) {
+            this.题_问答_答案_获取Async(查询, null);
+        }
+        
+        public void 题_问答_答案_获取Async(byte[] 查询, object userState) {
+            if ((this.onBegin题_问答_答案_获取Delegate == null)) {
+                this.onBegin题_问答_答案_获取Delegate = new BeginOperationDelegate(this.OnBegin题_问答_答案_获取);
+            }
+            if ((this.onEnd题_问答_答案_获取Delegate == null)) {
+                this.onEnd题_问答_答案_获取Delegate = new EndOperationDelegate(this.OnEnd题_问答_答案_获取);
+            }
+            if ((this.on题_问答_答案_获取CompletedDelegate == null)) {
+                this.on题_问答_答案_获取CompletedDelegate = new System.Threading.SendOrPostCallback(this.On题_问答_答案_获取Completed);
+            }
+            base.InvokeAsync(this.onBegin题_问答_答案_获取Delegate, new object[] {
+                        查询}, this.onEnd题_问答_答案_获取Delegate, this.on题_问答_答案_获取CompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult QuestionGen.服务.题.Begin类型_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
             return base.Channel.Begin类型_获取(查询, callback, asyncState);
         }
@@ -2448,6 +2604,32 @@ namespace QuestionGen.服务 {
             public byte[] End题_判断_答案_获取(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 byte[] _result = ((byte[])(base.EndInvoke("题_判断_答案_获取", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_填空_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("题_填空_答案_获取", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] End题_填空_答案_获取(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("题_填空_答案_获取", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult Begin题_问答_答案_获取(byte[] 查询, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = 查询;
+                System.IAsyncResult _result = base.BeginInvoke("题_问答_答案_获取", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] End题_问答_答案_获取(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("题_问答_答案_获取", _args, result)));
                 return _result;
             }
             
