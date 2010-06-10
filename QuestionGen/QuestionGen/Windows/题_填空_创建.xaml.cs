@@ -81,7 +81,7 @@ namespace QuestionGen.Windows
 
         private void _重置_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
-            _显示模板_TextBox.Text = @"";
+            _显示模板_TextBox.Text = @"<c>...</c>";
             _预览_RichTextBox.Blocks.Clear();
         }
 
