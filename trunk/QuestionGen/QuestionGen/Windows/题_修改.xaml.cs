@@ -144,6 +144,7 @@ namespace QuestionGen.Windows
                     }
                 case 2:
                     {
+                        _s.题_填空_答案_获取Async(query.题.题_填空_答案.New(a => a.题编号 == _题.题编号).GetBytes());
                         break;
                     }
                 case 3:
