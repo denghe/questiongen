@@ -2,8 +2,8 @@
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=FloatableWindow"
-           Width="841" Height="509" 
-           Title="创建一道题 第二步" ResizeMode="NoResize">
+           Width="841" Height="509" MinWidth="593" MinHeight="387" 
+           Title="创建一道题 第二步" ResizeMode="CanResize">
     <controls:FloatableWindow.Resources>
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Arial, SimSun" />
@@ -55,7 +55,7 @@
         <TextBox x:Name="_显示模板_TextBox" AcceptsReturn="True" TextWrapping="Wrap"  Margin="12,24,13,0" VerticalScrollBarVisibility="Visible" Height="157" VerticalAlignment="Top" Text="&lt;c/&gt;" />
 
 
-        <TextBlock x:Name="_答案_TextBlock" HorizontalAlignment="Left" Margin="12,0,0,241" Text="答案:" VerticalAlignment="Bottom" />
+        <TextBlock x:Name="_答案_TextBlock" HorizontalAlignment="Left" Margin="12,187,0,0" Text="答案:" VerticalAlignment="Top" />
         <TextBox x:Name="_答案_TextBox" AcceptsReturn="True" Margin="12,209,13,2" Text="" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" />
         
         <TextBlock HorizontalAlignment="Left" Margin="0,2,0,0" Text="输出效果预览:" VerticalAlignment="Top" Grid.Column="1" />
