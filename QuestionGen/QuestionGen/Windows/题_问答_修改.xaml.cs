@@ -209,7 +209,7 @@ namespace QuestionGen.Windows
         private void _模板编辑器_Button_Click(object sender, RoutedEventArgs e)
         {
             if (_当前焦点文本框 == null) return;
-            var f = new 模板编辑器(_当前焦点文本框, _当前焦点文本框 == _显示模板_TextBox) { ParentLayoutRoot = this.LayoutRoot };
+            var f = new 模板编辑器(_当前焦点文本框) { ParentLayoutRoot = this.LayoutRoot };
             f.Closed += new EventHandler(f_Closed);
             f.ShowDialog();
         }
@@ -219,10 +219,6 @@ namespace QuestionGen.Windows
             _当前焦点文本框.Focus();
         }
 
-        private void _显示模板_TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            _当前焦点文本框 = (TextBox)sender;
-        }
 
         void tb_GotFocus(object sender, RoutedEventArgs e)
         {
