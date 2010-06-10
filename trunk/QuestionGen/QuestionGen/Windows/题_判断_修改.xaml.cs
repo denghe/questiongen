@@ -209,6 +209,23 @@ namespace QuestionGen.Windows
             // todo: 弹出帮助示例窗口
         }
 
+
+
+
+
+
+
+        private void _模板编辑器_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var f = new 模板编辑器(_显示模板_TextBox) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += new EventHandler(f_Closed);
+            f.ShowDialog();
+        }
+
+        void f_Closed(object sender, EventArgs e)
+        {
+            _显示模板_TextBox.Focus();
+        }
     }
 }
 

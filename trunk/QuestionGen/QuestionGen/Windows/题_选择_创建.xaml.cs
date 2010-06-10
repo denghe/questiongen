@@ -467,11 +467,6 @@ namespace QuestionGen.Windows
             _当前焦点文本框.Focus();
         }
 
-        private void _显示模板_TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            _当前焦点文本框 = (TextBox)sender;
-        }
-
         void tb_GotFocus(object sender, RoutedEventArgs e)
         {
             _当前焦点文本框 = (TextBox)sender;
