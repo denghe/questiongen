@@ -46,6 +46,9 @@ namespace QuestionGen.Windows
             _s.题_选择_选项_获取Completed += new EventHandler<服务.题_选择_选项_获取CompletedEventArgs>(_s_题_选择_选项_获取Completed);
             _s.题_选择_答案_获取Completed += new EventHandler<服务.题_选择_答案_获取CompletedEventArgs>(_s_题_选择_答案_获取Completed);
             _s.题_判断_答案_获取Completed += new EventHandler<服务.题_判断_答案_获取CompletedEventArgs>(_s_题_判断_答案_获取Completed);
+            _s.题_填空_答案_获取Completed += new EventHandler<服务.题_填空_答案_获取CompletedEventArgs>(_s_题_填空_答案_获取Completed);
+            _s.题_问答_答案_获取Completed += new EventHandler<服务.题_问答_答案_获取CompletedEventArgs>(_s_题_问答_答案_获取Completed);
+            // _s.题_连线_.....
 
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
@@ -190,11 +193,8 @@ namespace QuestionGen.Windows
             if (_题_选择_答案 == null || _题_选择_选项 == null) return;
             var data = new 选择题 { 题 = _题, 选项 = _题_选择_选项, 答案 = _题_选择_答案 };
             var f = new 题_选择_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += f_Closed;
             f.ShowDialog();
-            f.Closed += (sender1, ea1) =>
-            {
-                if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
-            };
         }
 
 
@@ -202,13 +202,35 @@ namespace QuestionGen.Windows
         {
             var data = new 判断题 { 题 = _题, 答案 =  e.Result.ToList<题.题_判断_答案>().FirstOrDefault() };
             var f = new 题_判断_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += f_Closed;
             f.ShowDialog();
-            f.Closed += (sender1, ea1) =>
-            {
-                if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
-            };
         }
 
+
+
+        void _s_题_填空_答案_获取Completed(object sender, 服务.题_填空_答案_获取CompletedEventArgs e)
+        {
+            var data = new 填空题 { 题 = _题, 答案 = e.Result.ToList<题.题_填空_答案>() };
+            var f = new 题_填空_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += f_Closed;
+            f.ShowDialog();
+        }
+
+        void _s_题_问答_答案_获取Completed(object sender, 服务.题_问答_答案_获取CompletedEventArgs e)
+        {
+            //var data = new 问答题 { 题 = _题, 答案 = e.Result.ToList<题.题_问答_答案>().FirstOrDefault() };
+            //var f = new 题_问答_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            //f.Closed += f_Closed;
+            //f.ShowDialog();
+        }
+
+
+
+        void f_Closed(object sender, EventArgs e)
+        {
+            var f = sender as FloatableWindow;
+            if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+        }
 
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)

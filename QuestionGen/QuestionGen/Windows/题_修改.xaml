@@ -5,6 +5,10 @@
            Width="648" Height="398" 
            Title="修改一道题 第一步">
     <controls:FloatableWindow.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial, SimSun" />
             <Setter Property="FontSize" Value="12" />

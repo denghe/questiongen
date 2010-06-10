@@ -98,6 +98,8 @@ namespace QuestionGen.Windows
 
         private void _预览_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
+            GetValues();
+
             _预览_RichTextBox.Blocks.Clear();
 
             var s = "<___root___>" + _填空题.题.显示模板 + "</___root___>";

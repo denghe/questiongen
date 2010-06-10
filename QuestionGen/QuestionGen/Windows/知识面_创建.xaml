@@ -5,6 +5,10 @@
            Width="580" Height="220" 
            Title="创建: 知识面">
     <controls:FloatableWindow.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Arial, SimSun" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial, SimSun" />
             <Setter Property="FontSize" Value="12" />
