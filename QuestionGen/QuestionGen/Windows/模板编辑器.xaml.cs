@@ -41,11 +41,12 @@ namespace QuestionGen.Windows
 
         TextBox _文本框 = null;
 
-        public 模板编辑器(TextBox tb)
+        public 模板编辑器(TextBox tb, bool 是否显示_插入格子 = false)
             : this()
         {
             _文本框 = tb;
             _代码_RichTextBox.Selection.Insert(new Run { Text = tb.Text });
+            _插入格子_Button.IsEnabled = 是否显示_插入格子;
         }
 
         private void _插入格子_Button_Click(object sender, RoutedEventArgs e)
