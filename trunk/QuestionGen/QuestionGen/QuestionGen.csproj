@@ -241,6 +241,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\Class.cs" />
+    <Compile Include="Modules\填空题.cs" />
     <Compile Include="Modules\判断题.cs" />
     <Compile Include="Modules\选择题.cs" />
     <Compile Include="Service References\服务\Reference.cs">
