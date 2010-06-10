@@ -102,6 +102,12 @@
   <wsdl:message name="题_题_选择_答案_获取_OutputMessage">
     <wsdl:part name="parameters" element="题_选择_答案_获取Response" />
   </wsdl:message>
+  <wsdl:message name="题_题_判断_答案_获取_InputMessage">
+    <wsdl:part name="parameters" element="题_判断_答案_获取" />
+  </wsdl:message>
+  <wsdl:message name="题_题_判断_答案_获取_OutputMessage">
+    <wsdl:part name="parameters" element="题_判断_答案_获取Response" />
+  </wsdl:message>
   <wsdl:message name="题_类型_获取_InputMessage">
     <wsdl:part name="parameters" element="类型_获取" />
   </wsdl:message>
@@ -220,6 +226,10 @@
     <wsdl:operation name="题_选择_答案_获取">
       <wsdl:input wsaw:Action="urn:题/题_选择_答案_获取" message="题_题_选择_答案_获取_InputMessage" />
       <wsdl:output wsaw:Action="urn:题/题_选择_答案_获取Response" message="题_题_选择_答案_获取_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="题_判断_答案_获取">
+      <wsdl:input wsaw:Action="urn:题/题_判断_答案_获取" message="题_题_判断_答案_获取_InputMessage" />
+      <wsdl:output wsaw:Action="urn:题/题_判断_答案_获取Response" message="题_题_判断_答案_获取_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="类型_获取">
       <wsdl:input wsaw:Action="urn:题/类型_获取" message="题_类型_获取_InputMessage" />
