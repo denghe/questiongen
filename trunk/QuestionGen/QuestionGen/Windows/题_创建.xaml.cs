@@ -102,6 +102,10 @@ namespace QuestionGen.Windows
             else if (_类型_连线_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 5;
+
+                // for test
+                var f = new 模板编辑器 { ParentLayoutRoot = this.LayoutRoot };
+                f.ShowDialog();
             }
 
         }
