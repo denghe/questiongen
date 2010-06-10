@@ -157,6 +157,7 @@ namespace QuestionGen.Windows
                     }
                 case 4:
                     {
+                        _s.题_问答_答案_获取Async(query.题.题_问答_答案.New(a => a.题编号 == _题.题编号).GetBytes());
                         break;
                     }
                 case 5:
@@ -218,10 +219,10 @@ namespace QuestionGen.Windows
 
         void _s_题_问答_答案_获取Completed(object sender, 服务.题_问答_答案_获取CompletedEventArgs e)
         {
-            //var data = new 问答题 { 题 = _题, 答案 = e.Result.ToList<题.题_问答_答案>().FirstOrDefault() };
-            //var f = new 题_问答_修改(data) { ParentLayoutRoot = this.LayoutRoot };
-            //f.Closed += f_Closed;
-            //f.ShowDialog();
+            var data = new 问答题 { 题 = _题, 答案 = e.Result.ToList<题.题_问答_答案>().FirstOrDefault() };
+            var f = new 题_问答_修改(data) { ParentLayoutRoot = this.LayoutRoot };
+            f.Closed += f_Closed;
+            f.ShowDialog();
         }
 
 

@@ -94,6 +94,10 @@ namespace QuestionGen.Windows
             else if (_类型_问答_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 4;
+
+                var f = new 题_问答_创建(o) { ParentLayoutRoot = this.LayoutRoot };
+                f.Closed += f_Closed;
+                f.ShowDialog();
             }
             else if (_类型_连线_RadioButton.IsChecked.Value)
             {
