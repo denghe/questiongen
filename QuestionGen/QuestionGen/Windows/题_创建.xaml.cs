@@ -72,25 +72,23 @@ namespace QuestionGen.Windows
                 o.类型编号 = 1;
 
                 var f = new 题_选择_创建(o) { ParentLayoutRoot = this.LayoutRoot };
-                f.Closed += (sender1, ea1) =>
-                {
-                    if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
-                };
+                f.Closed += f_Closed;
                 f.ShowDialog();
             }
             else if (_类型_填空_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 2;
+
+                var f = new 题_填空_创建(o) { ParentLayoutRoot = this.LayoutRoot };
+                f.Closed += f_Closed;
+                f.ShowDialog();
             }
             else if (_类型_判断_RadioButton.IsChecked.Value)
             {
                 o.类型编号 = 3;
 
                 var f = new 题_判断_创建(o) { ParentLayoutRoot = this.LayoutRoot };
-                f.Closed += (sender1, ea1) =>
-                {
-                    if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
-                };
+                f.Closed += f_Closed;
                 f.ShowDialog();
             }
             else if (_类型_问答_RadioButton.IsChecked.Value)
@@ -102,6 +100,12 @@ namespace QuestionGen.Windows
                 o.类型编号 = 5;
             }
 
+        }
+
+        void f_Closed(object sender, EventArgs e)
+        {
+            var f = sender as FloatableWindow;
+            if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
         }
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)
