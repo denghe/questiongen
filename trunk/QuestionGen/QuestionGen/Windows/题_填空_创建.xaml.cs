@@ -204,7 +204,7 @@ namespace QuestionGen.Windows
 
         private void _模板编辑器_Button_Click(object sender, RoutedEventArgs e)
         {
-            var f = new 模板编辑器(_显示模板_TextBox) { ParentLayoutRoot = this.LayoutRoot };
+            var f = new 模板编辑器(_显示模板_TextBox, false, true) { ParentLayoutRoot = this.LayoutRoot };
             f.Closed += new EventHandler(f_Closed);
             f.ShowDialog();
         }
