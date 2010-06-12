@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
     xmlns:converters="clr-namespace:QuestionGen.Converters"
-    mc:Ignorable="d" d:DesignWidth="595" d:DesignHeight="340"
+    mc:Ignorable="d" d:DesignWidth="915" d:DesignHeight="402"
     Title="题管理"
     Style="{StaticResource PageStyle}">
 
@@ -23,19 +23,65 @@
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="Height" Value="16" />
             </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Arial, SimSun" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Height" Value="18" />
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="FontFamily" Value="Arial, SimSun" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Height" Value="20" />
+            </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="23" />
-            <RowDefinition Height="23" />
+            <RowDefinition Height="69" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" x:Name="HeaderText" Text="题管理" FontSize="14" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="0">
+            <TextBlock x:Name="HeaderText" Text="题管理" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
 
-        <Button Grid.Row="1" Content="刷新" Name="_刷新_Button" Click="_刷新_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Button Grid.Row="1" Content="创建" Name="_创建_Button" Click="_创建_Button_Click" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" />
-        <Button Grid.Row="1" Content="修改" Name="_修改_Button" Click="_修改_Button_Click" IsEnabled="False" HorizontalAlignment="Right" Margin="0,0,75,0"  VerticalAlignment="Top" />
-        <Button Grid.Row="1" Content="删除" Name="_删除_Button" Click="_删除_Button_Click" IsEnabled="False" HorizontalAlignment="Right" VerticalAlignment="Top" />
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="知识面：" />
+                    <ComboBox x:Name="_知识面_ComboBox" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,2">
+                    <TextBlock Text="题面查找："/>
+                    <TextBox Name="_题面查找_TextBox" Width="150" Height="20" Margin="0,-1,0,0" />
+                    <TextBlock Text="题类型：" Margin="10,0,0,0" />
+                    <StackPanel x:Name="_类型_StackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1">
+                        <StackPanel.Resources>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="FontFamily" Value="Arial, SimSun" />
+                                <Setter Property="FontSize" Value="12" />
+                                <Setter Property="Margin" Value="0,0,15,0" />
+                                <Setter Property="GroupName" Value="题类型" />
+                                <Setter Property="Grid.Column" Value="1" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <RadioButton x:Name="_类型_所有_RadioButton" Content="（所有）" IsChecked="True" />
+                        <RadioButton x:Name="_类型_选择_RadioButton" Content="选择" />
+                        <RadioButton x:Name="_类型_填空_RadioButton" Content="填空" />
+                        <RadioButton x:Name="_类型_判断_RadioButton" Content="判断" />
+                        <RadioButton x:Name="_类型_问答_RadioButton" Content="问答" />
+                        <RadioButton x:Name="_类型_连线_RadioButton" Content="连线" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="刷新" Name="_刷新_Button" Click="_刷新_Button_Click" />
+                    <Button Content="创建" Name="_创建_Button" Click="_创建_Button_Click" />
+                    <TextBlock Text="选中行：" Margin="10,0,0,0" />
+                    <Button Content="修改" Name="_修改_Button" Click="_修改_Button_Click" IsEnabled="False" />
+                    <Button Content="删除" Name="_删除_Button" Click="_删除_Button_Click" IsEnabled="False" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
 
         <sdk:DataGrid Grid.Row="2" x:Name="_DataGrid" SelectionChanged="_DataGrid_SelectionChanged" IsReadOnly="True" FontSize="12" FontFamily="Arial, SimSun" SelectionMode="Single" LoadingRow="_DataGrid_LoadingRow"
                        AutoGenerateColumns="False">
@@ -51,6 +97,28 @@
                 <sdk:DataGridCheckBoxColumn Header="是否启用" Binding="{Binding Path=是否启用}" CanUserReorder="True" CanUserResize="True" CanUserSort="True" Width="Auto" />
             </sdk:DataGrid.Columns>
         </sdk:DataGrid>
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="23"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="14" HorizontalAlignment="Left" Name="textBlock111" Text="预览" Height="16" VerticalAlignment="Center" />
+            <RichTextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Name="_预览_RichTextBox"  />
+
+            <TextBox AcceptsReturn="True" Name="_考核意图_TextBox" VerticalScrollBarVisibility="Visible" Grid.Row="1" Height="Auto" />
+            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Name="textBlock3" Text="考核意图" VerticalAlignment="Center" />
+
+            <TextBox AcceptsReturn="True" Name="_备注_TextBox" VerticalScrollBarVisibility="Visible" Grid.Row="3" Height="Auto" />
+            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Name="textBlock4" Text="备注" VerticalAlignment="Center" Grid.Row="2" />
+        </Grid>
     </Grid>
 
 </navigation:Page>
