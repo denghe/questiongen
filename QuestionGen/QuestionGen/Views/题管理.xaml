@@ -36,7 +36,7 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="23" />
-            <RowDefinition Height="69" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -52,9 +52,7 @@
                     <ComboBox x:Name="_知识面_ComboBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,3,0,2">
-                    <TextBlock Text="题面查找："/>
-                    <TextBox Name="_题面查找_TextBox" Width="150" Height="20" Margin="0,-1,0,0" />
-                    <TextBlock Text="题类型：" Margin="10,0,0,0" />
+                    <TextBlock Text="题类型：" />
                     <StackPanel x:Name="_类型_StackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1">
                         <StackPanel.Resources>
                             <Style TargetType="RadioButton">
@@ -74,6 +72,16 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="题面过滤："/>
+                    <TextBox Name="_题面过滤_TextBox" Width="150" Height="19" />
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="意图过滤："/>
+                    <TextBox Name="_意图过滤_TextBox" Width="150" Height="19" />
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="备注过滤："/>
+                    <TextBox Name="_备注过滤_TextBox" Width="150" Height="19" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                     <Button Content="刷新" Name="_刷新_Button" Click="_刷新_Button_Click" />
                     <Button Content="创建" Name="_创建_Button" Click="_创建_Button_Click" />
                     <TextBlock Text="选中行：" Margin="10,0,0,0" />
@@ -114,10 +122,10 @@
             <RichTextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Name="_预览_RichTextBox"  />
 
             <TextBox AcceptsReturn="True" Name="_考核意图_TextBox" VerticalScrollBarVisibility="Visible" Grid.Row="1" Height="Auto" />
-            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Name="textBlock3" Text="考核意图" VerticalAlignment="Center" />
+            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Text="考核意图" VerticalAlignment="Center" />
 
             <TextBox AcceptsReturn="True" Name="_备注_TextBox" VerticalScrollBarVisibility="Visible" Grid.Row="3" Height="Auto" />
-            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Name="textBlock4" Text="备注" VerticalAlignment="Center" Grid.Row="2" />
+            <TextBlock FontSize="14" Height="16" HorizontalAlignment="Left" Text="备注" VerticalAlignment="Center" Grid.Row="2" />
         </Grid>
     </Grid>
 
