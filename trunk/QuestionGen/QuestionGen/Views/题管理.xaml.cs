@@ -174,7 +174,16 @@ namespace QuestionGen.Views
 
         private void _删除_Button_Click(object sender, RoutedEventArgs e)
         {
-            // todo
+            var fw = new 题_删除(_selected_row) { ParentLayoutRoot = this.LayoutRoot };
+            fw.ShowDialog();
+            fw.Closed += (sender1, e1) =>
+            {
+                if (fw.DialogResult != null && fw.DialogResult.Value)
+                {
+                    _selected_row_backup = null;
+                    _刷新_Button_Click();
+                }
+            };
         }
 
         private void _DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
