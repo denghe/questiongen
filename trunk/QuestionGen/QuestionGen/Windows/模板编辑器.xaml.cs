@@ -21,11 +21,11 @@ namespace QuestionGen.Windows
     {
         public static string ToXml(this string s)
         {
-            return s.Replace("<", "&lt;")
+            return s.Replace("&", "&amp;")
                 .Replace(">", "&gt;")
-                .Replace("&", "&amp;")
                 .Replace("'", "&apos")
-                .Replace("\"", "&quot;");
+                .Replace("\"", "&quot;")
+                .Replace("<", "&lt;");
         }
     }
 
