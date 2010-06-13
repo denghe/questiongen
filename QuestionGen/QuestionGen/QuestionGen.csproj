@@ -266,6 +266,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\题_删除.xaml.cs">
+      <DependentUpon>题_删除.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\填空录入.xaml.cs">
       <DependentUpon>填空录入.xaml</DependentUpon>
     </Compile>
@@ -318,6 +321,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\知识面管理.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\题_删除.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
