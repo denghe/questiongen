@@ -75,6 +75,7 @@ namespace QuestionGen.Windows
             _考核意图_TextBox.Text = o.考核意图;
             _备注_TextBox.Text = o.备注;
             _是否启用_CheckBox.IsChecked = o.是否启用;
+            _显示模板_TextBox.Text = o.显示模板;
         }
 
         private void _确认删除_Button_Click(object sender, RoutedEventArgs e)

@@ -87,12 +87,10 @@
         <TextBlock x:Name="_是否启用_TextBlock" HorizontalAlignment="Right" Margin="0,8,6,6" Text="是否启用:" Grid.Row="1" />
         <CheckBox x:Name="_是否启用_CheckBox" Content="" Grid.Column="1" Height="16" HorizontalAlignment="Left" Grid.Row="1" Margin="0,0,0,7" VerticalAlignment="Bottom" IsEnabled="False" />
 
-
-
+        <TextBlock HorizontalAlignment="Left" Margin="0,1,0,0" Text="显示模板:" VerticalAlignment="Top" Grid.Column="2" />
+        <TextBox AcceptsReturn="True" IsEnabled="False" Margin="1,19,0,3" Name="_显示模板_TextBox" VerticalScrollBarVisibility="Visible" Grid.Column="2" />
 
         <Button x:Name="_确认删除_Button" Content="确认删除" Click="_确认删除_Button_Click" HorizontalAlignment="Right" Margin="0,3,81,4" Grid.Row="1"  Grid.Column="2" />
         <Button x:Name="_取消_Button" Content="取消" Click="_取消_Button_Click" HorizontalAlignment="Right" Margin="0,3,0,4" Grid.Row="1" Grid.Column="2" />
-        <RichTextBox Margin="0,19,0,3" Name="_预览_RichTextBox" Grid.Column="2" />
-        <TextBlock HorizontalAlignment="Left" Margin="0,1,0,0" Name="textBlock1" Text="预览:" VerticalAlignment="Top" Grid.Column="2" />
     </Grid>
 </controls:FloatableWindow>
