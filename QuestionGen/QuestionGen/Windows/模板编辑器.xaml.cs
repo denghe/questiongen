@@ -276,25 +276,23 @@ namespace QuestionGen.Windows
 
         private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
         {
+            var 组合键按下 = false;
+
             var keys = Keyboard.Modifiers;
             if (Application.Current.InstallState == InstallState.Installed)
-            {
-                if ((keys & ModifierKeys.Alt) == ModifierKeys.Alt && e.Key == Key.S) _提交_Button_Click();
-                if ((keys & ModifierKeys.Control) == ModifierKeys.Control && e.Key == Key.W) _取消_Button_Click();
-            }
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control) 组合键按下 = true;
             else
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt) 组合键按下 = true;
+            if (组合键按下)
             {
-                if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt)
+                switch (e.Key)
                 {
-                    switch (e.Key)
-                    {
-                        case Key.S:
-                            _提交_Button_Click();
-                            break;
-                        case Key.W:
-                            _取消_Button_Click();
-                            break;
-                    }
+                    case Key.S:
+                        _提交_Button_Click();
+                        break;
+                    case Key.W:
+                        _取消_Button_Click();
+                        break;
                 }
             }
         }
