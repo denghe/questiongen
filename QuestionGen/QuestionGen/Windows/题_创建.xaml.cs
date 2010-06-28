@@ -24,6 +24,8 @@ namespace QuestionGen.Windows
         public 题_创建()
         {
             InitializeComponent();
+            this.KeyDown += FloatableWindow_KeyDown;
+
             _下一步_Button.IsEnabled = false;
             _s.知识面_获取Completed += (sender1, e1) =>
             {
@@ -36,8 +38,31 @@ namespace QuestionGen.Windows
             };
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
+        private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            var 组合键按下 = false;
 
-        private void _下一步_Button_Click(object sender, RoutedEventArgs e)
+            var keys = Keyboard.Modifiers;
+            if (Application.Current.InstallState == InstallState.Installed)
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control) 组合键按下 = true;
+                else
+                    if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt) 组合键按下 = true;
+            if (组合键按下)
+            {
+                switch (e.Key)
+                {
+                    case Key.S:
+                        _下一步_Button_Click();
+                        break;
+                    case Key.W:
+                        _取消_Button_Click();
+                        break;
+                }
+            }
+        }
+
+
+        private void _下一步_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             // 前置判断
             if (!_类型_选择_RadioButton.IsChecked.Value &&
@@ -116,7 +141,7 @@ namespace QuestionGen.Windows
             if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
         }
 
-        private void _取消_Button_Click(object sender, RoutedEventArgs e)
+        private void _取消_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             this.DialogResult = false;
         }

@@ -35,6 +35,7 @@ namespace QuestionGen.Windows
         public 模板编辑器()
         {
             InitializeComponent();
+            this.KeyDown += FloatableWindow_KeyDown;
         }
 
         TextBox _文本框 = null;

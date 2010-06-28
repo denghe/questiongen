@@ -25,6 +25,7 @@ namespace QuestionGen.Windows
         public 知识面_删除()
         {
             InitializeComponent();
+            this.KeyDown += FloatableWindow_KeyDown;
 
             _s.知识面_删除Completed += new EventHandler<服务.知识面_删除CompletedEventArgs>(_s_知识面_删除Completed);
         }
@@ -38,7 +39,32 @@ namespace QuestionGen.Windows
         }
 
 
+        #region 热键支持
 
+        private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            var 组合键按下 = false;
+
+            var keys = Keyboard.Modifiers;
+            if (Application.Current.InstallState == InstallState.Installed)
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control) 组合键按下 = true;
+                else
+                    if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt) 组合键按下 = true;
+            if (组合键按下)
+            {
+                switch (e.Key)
+                {
+                    case Key.S:
+                        _确认删除_Button_Click(null, null);
+                        break;
+                    case Key.W:
+                        _取消_Button_Click(null, null);
+                        break;
+                }
+            }
+        }
+
+        #endregion
 
 
         private void _取消_Button_Click(object sender, RoutedEventArgs e)

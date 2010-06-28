@@ -25,6 +25,7 @@ namespace QuestionGen.Windows
         public 知识面_修改()
         {
             InitializeComponent();
+            this.KeyDown += FloatableWindow_KeyDown;
 
             _s.知识面_更新Completed += new EventHandler<服务.知识面_更新CompletedEventArgs>(_s_知识面_更新Completed);
         }
@@ -39,6 +40,33 @@ namespace QuestionGen.Windows
 
             _还原_Button_Click();
         }
+
+        #region 热键支持
+
+        private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            var 组合键按下 = false;
+
+            var keys = Keyboard.Modifiers;
+            if (Application.Current.InstallState == InstallState.Installed)
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control) 组合键按下 = true;
+                else
+                    if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt) 组合键按下 = true;
+            if (组合键按下)
+            {
+                switch (e.Key)
+                {
+                    case Key.S:
+                        _提交_Button_Click(null, null);
+                        break;
+                    case Key.W:
+                        _取消_Button_Click(null, null);
+                        break;
+                }
+            }
+        }
+
+        #endregion
 
         void _s_知识面_更新Completed(object sender, 服务.知识面_更新CompletedEventArgs e)
         {

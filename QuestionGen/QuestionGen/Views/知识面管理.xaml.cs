@@ -29,6 +29,8 @@ namespace QuestionGen.Views
             InitializeComponent();
 
             _s.知识面_获取Completed += _s_知识面_获取Completed;
+
+            _刷新_Button_Click();
         }
 
         void _s_知识面_获取Completed(object sender, 服务.知识面_获取CompletedEventArgs e)
