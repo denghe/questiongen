@@ -53,7 +53,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientAcessPolicy.xml" />
     <Content Include="ClientBin\QuestionGen.xap" />
+    <Content Include="crossdomain.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Default.html" />
     <Content Include="Global.asax" />
