@@ -122,7 +122,7 @@ namespace QuestionGen.Windows
             _代码_RichTextBox.ContentChanged -= _代码_RichTextBox_ContentChanged;
             _代码_RichTextBox.Blocks.Clear();
 
-            foreach(var tb in _模板_RichTextBox.Blocks)
+            foreach (var tb in _模板_RichTextBox.Blocks)
             {
                 var cp = new Paragraph();
                 _代码_RichTextBox.Blocks.Add(cp);
@@ -249,12 +249,12 @@ namespace QuestionGen.Windows
         }
 
 
-        private void _提交_Button_Click(object sender, RoutedEventArgs e)
+        private void _提交_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             var sb = new StringBuilder();
 
             for (int i = 0; i < _代码_RichTextBox.Blocks.Count; i++)
-			{
+            {
                 if (i > 0) sb.Append(Environment.NewLine);
                 var cb = _代码_RichTextBox.Blocks[i];
                 var cp = cb as Paragraph;
@@ -268,9 +268,27 @@ namespace QuestionGen.Windows
             this.DialogResult = true;
         }
 
-        private void _取消_Button_Click(object sender, RoutedEventArgs e)
+        private void _取消_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
             this.DialogResult = false;
+        }
+
+
+        private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            var keys = Keyboard.Modifiers;
+            if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt)
+            {
+                switch (e.Key)
+                {
+                    case Key.S:
+                        _提交_Button_Click();
+                        break;
+                    case Key.W:
+                        _取消_Button_Click();
+                        break;
+                }
+            }
         }
 
     }

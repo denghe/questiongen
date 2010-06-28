@@ -3,6 +3,7 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=FloatableWindow"
            Width="588" Height="498" 
+           KeyDown="FloatableWindow_KeyDown"
            Title="模板编辑器（编辑完后　粘贴　源代码）" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
     <controls:FloatableWindow.Resources>
         <Style TargetType="Button">
@@ -31,6 +32,6 @@
         <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Name="textBlock1" Text="输出" VerticalAlignment="Top" Margin="12,0,0,0" />
         <TextBlock HorizontalAlignment="Right" Name="textBlock2" Text="源代码" VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,12,0" />
         <Button x:Name="_提交_Button" Content="提交" Click="_提交_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,94,3" Grid.Row="4" />
-        <Button x:Name="_取消_Button" Content="取消" Click="_取消_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,3,12,4" Grid.Row="4" />
+        <Button x:Name="_取消_Button" Content="取消" Click="_取消_Button_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,4,12,3" Grid.Row="4" />
     </Grid>
 </controls:FloatableWindow>
