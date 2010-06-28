@@ -14,6 +14,7 @@ using 题 = DAL.Database.Tables.题;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml;
+using System.IO;
 
 namespace QuestionGen.Windows
 {
@@ -34,9 +35,6 @@ namespace QuestionGen.Windows
         public 模板编辑器()
         {
             InitializeComponent();
-
-            _模板_RichTextBox.ContentChanged += _模板_RichTextBox_ContentChanged;
-            _代码_RichTextBox.ContentChanged += _代码_RichTextBox_ContentChanged;
         }
 
         TextBox _文本框 = null;
@@ -45,9 +43,24 @@ namespace QuestionGen.Windows
             : this()
         {
             _文本框 = tb;
-            _代码_RichTextBox.Selection.Insert(new Run { Text = tb.Text });
+            _代码_RichTextBox.Blocks.Clear();
+            var sr = new StringReader(tb.Text);
+            while (sr.Peek() > 0)
+            {
+                var s = sr.ReadLine();
+                var cp = new Paragraph();
+                _代码_RichTextBox.Blocks.Add(cp);
+                cp.Inlines.Add(new Run { Text = s });
+            }
+
+            //_代码_RichTextBox.Selection.Insert(new Run { Text = tb.Text });
             _插入格子_Button.IsEnabled = 是否显示_插入格子;
             _插入填空_Button.IsEnabled = 是否显示_插入填空;
+
+            _模板_RichTextBox.ContentChanged += _模板_RichTextBox_ContentChanged;
+            _代码_RichTextBox.ContentChanged += _代码_RichTextBox_ContentChanged;
+
+            _代码_RichTextBox_ContentChanged(null, null);
         }
 
         private void _插入格子_Button_Click(object sender, RoutedEventArgs e)
@@ -106,15 +119,13 @@ namespace QuestionGen.Windows
 
         private void _模板_RichTextBox_ContentChanged(object sender, ContentChangedEventArgs e)
         {
-            var tb = _模板_RichTextBox.Blocks.FirstOrDefault();
-            if (tb != null)
-            {
+            _代码_RichTextBox.ContentChanged -= _代码_RichTextBox_ContentChanged;
+            _代码_RichTextBox.Blocks.Clear();
 
-                _代码_RichTextBox.ContentChanged -= _代码_RichTextBox_ContentChanged;
-                _代码_RichTextBox.Blocks.Clear();
+            foreach(var tb in _模板_RichTextBox.Blocks)
+            {
                 var cp = new Paragraph();
                 _代码_RichTextBox.Blocks.Add(cp);
-
 
                 var tp = tb as Paragraph;
                 foreach (var il in tp.Inlines)
@@ -138,17 +149,21 @@ namespace QuestionGen.Windows
                         // todo: is Image ? Movie ?
                     }
                 }
-
-
-                _代码_RichTextBox.ContentChanged += _代码_RichTextBox_ContentChanged;
             }
+
+            _代码_RichTextBox.ContentChanged += _代码_RichTextBox_ContentChanged;
         }
 
         private void _代码_RichTextBox_ContentChanged(object sender, ContentChangedEventArgs e)
         {
-            var cb = _代码_RichTextBox.Blocks.FirstOrDefault();
-            if (cb != null)
+            _模板_RichTextBox.ContentChanged -= _模板_RichTextBox_ContentChanged;
+            _模板_RichTextBox.Blocks.Clear();
+
+            foreach (var cb in _代码_RichTextBox.Blocks)
             {
+                var tp = new Paragraph();
+                _模板_RichTextBox.Blocks.Add(tp);
+
                 var sb = new StringBuilder();
                 var cp = cb as Paragraph;
                 foreach (var il in cp.Inlines)
@@ -168,10 +183,6 @@ namespace QuestionGen.Windows
                     return;
                 }
 
-                _模板_RichTextBox.ContentChanged -= _模板_RichTextBox_ContentChanged;
-                _模板_RichTextBox.Blocks.Clear();
-                var tp = new Paragraph();
-                _模板_RichTextBox.Blocks.Add(tp);
 
                 var xns = xe.Nodes();
                 foreach (var xn in xns)
@@ -221,8 +232,9 @@ namespace QuestionGen.Windows
                     }
                 }
 
-                _模板_RichTextBox.ContentChanged += _模板_RichTextBox_ContentChanged;
             }
+
+            _模板_RichTextBox.ContentChanged += _模板_RichTextBox_ContentChanged;
         }
 
         bool _is_模板_focus = true;
@@ -240,11 +252,16 @@ namespace QuestionGen.Windows
         private void _提交_Button_Click(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
-            var cb = _代码_RichTextBox.Blocks.FirstOrDefault();
-            var cp = cb as Paragraph;
-            foreach (var il in cp.Inlines)
-            {
-                sb.Append(((Run)il).Text);
+
+            for (int i = 0; i < _代码_RichTextBox.Blocks.Count; i++)
+			{
+                if (i > 0) sb.Append(Environment.NewLine);
+                var cb = _代码_RichTextBox.Blocks[i];
+                var cp = cb as Paragraph;
+                foreach (var il in cp.Inlines)
+                {
+                    sb.Append(((Run)il).Text);
+                }
             }
 
             _文本框.Text = sb.ToString();
