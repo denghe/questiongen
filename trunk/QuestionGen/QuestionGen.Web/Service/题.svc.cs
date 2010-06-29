@@ -115,6 +115,9 @@ namespace QuestionGen.Web.Service
                         return -1;
                     }
 
+                    // 预处理
+                    answer.题编号 = question.题编号;
+
                     // 更新 答案
                     affected = answer.Update();
                     if (affected < 1)
@@ -197,6 +200,9 @@ namespace QuestionGen.Web.Service
                         tran.Rollback();
                         return -1;
                     }
+
+                    // 预处理
+                    answer.题编号 = question.题编号;
 
                     // 更新 答案
                     affected = answer.Update();
