@@ -70,10 +70,10 @@ namespace QuestionGen.Windows
                 switch (e.Key)
                 {
                     case Key.S:
-                        if (_下一步_Button.IsEnabled) _下一步_Button_Click();
+                        if (_下一步_Button.IsEnabled) _下一步_Button_Click(null, null);
                         break;
                     case Key.W:
-                        if (_取消_Button.IsEnabled) _取消_Button_Click();
+                        if (_取消_Button.IsEnabled) _取消_Button_Click(null, null);
                         break;
                 }
             }
@@ -228,7 +228,7 @@ namespace QuestionGen.Windows
 
         void _s_题_判断_答案_获取Completed(object sender, 服务.题_判断_答案_获取CompletedEventArgs e)
         {
-            var data = new 判断题 { 题 = _题, 答案 =  e.Result.ToList<题.题_判断_答案>().FirstOrDefault() };
+            var data = new 判断题 { 题 = _题, 答案 = e.Result.ToList<题.题_判断_答案>().FirstOrDefault() };
             var f = new 题_判断_修改(data) { ParentLayoutRoot = this.LayoutRoot };
             f.Closed += f_Closed;
             f.ShowDialog();

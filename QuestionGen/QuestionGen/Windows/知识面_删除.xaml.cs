@@ -55,10 +55,10 @@ namespace QuestionGen.Windows
                 switch (e.Key)
                 {
                     case Key.S:
-                        if (_确认删除_Button.IsEnabled) _确认删除_Button_Click();
+                        if (_确认删除_Button.IsEnabled) _确认删除_Button_Click(null, null);
                         break;
                     case Key.W:
-                        if (_取消_Button.IsEnabled) _取消_Button_Click();
+                        if (_取消_Button.IsEnabled) _取消_Button_Click(null, null);
                         break;
                 }
             }
