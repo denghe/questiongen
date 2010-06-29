@@ -122,9 +122,6 @@ namespace QuestionGen.Windows
 
             _预览_RichTextBox.Blocks.Clear();
 
-            var s = "<___root___>" + _问答题.题.显示模板 + "</___root___>";
-            var xe = XElement.Parse(s);
-            var xns = xe.Nodes();
             var p = new Paragraph { FontSize = 16 };
             p.Inlines.Add(new Run
             {
@@ -136,6 +133,11 @@ namespace QuestionGen.Windows
 
 "
             });
+
+            var s = "<___root___>" + _问答题.题.显示模板 + "</___root___>";
+            var xe = XElement.Parse(s);
+            var xns = xe.Nodes();
+
             foreach (var xn in xns)
             {
                 if (xn.NodeType == XmlNodeType.Text)
@@ -167,14 +169,28 @@ namespace QuestionGen.Windows
 "
             });
 
-            p.Inlines.Add(new Run
+            s = "<___root___>" + _问答题.答案.参考答案 + "</___root___>";
+            xe = XElement.Parse(s);
+            xns = xe.Nodes();
+
+            foreach (var xn in xns)
             {
-                Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0))
-                ,
-                FontWeight = FontWeights.Bold
-                ,
-                Text = _问答题.答案.参考答案
-            });
+                if (xn.NodeType == XmlNodeType.Text)
+                {
+                    p.Inlines.Add(new Run
+                    {
+                        Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0))
+                        ,
+                        FontWeight = FontWeights.Normal
+                        ,
+                        Text = ((XText)xn).Value
+                    });
+                }
+                else
+                {
+                    // todo: 图片处理
+                }
+            }
 
             _预览_RichTextBox.Blocks.Add(p);
         }
