@@ -258,6 +258,7 @@ namespace QuestionGen.Windows
         {
             var f = sender as FloatableWindow;
             if (f.DialogResult != null && f.DialogResult.Value) this.DialogResult = true;
+            else _下一步_Button.IsEnabled = true;
         }
 
 
