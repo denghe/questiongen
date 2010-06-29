@@ -69,10 +69,10 @@ namespace QuestionGen.Windows
                 switch (e.Key)
                 {
                     case Key.S:
-                        _提交_Button_Click(null, null);
+                        if (_提交_Button.IsEnabled) _提交_Button_Click(null, null);
                         break;
                     case Key.W:
-                        _取消_Button_Click(null, null);
+                        if (_取消_Button.IsEnabled) _取消_Button_Click(null, null);
                         break;
                 }
             }

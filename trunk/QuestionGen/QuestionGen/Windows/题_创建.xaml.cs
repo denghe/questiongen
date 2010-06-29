@@ -38,6 +38,9 @@ namespace QuestionGen.Windows
             };
             _s.知识面_获取Async(query.题.知识面.New().GetBytes());
         }
+
+        #region 热键支持
+
         private void FloatableWindow_KeyDown(object sender, KeyEventArgs e)
         {
             var 组合键按下 = false;
@@ -52,15 +55,16 @@ namespace QuestionGen.Windows
                 switch (e.Key)
                 {
                     case Key.S:
-                        _下一步_Button_Click();
+                        if (_下一步_Button.IsEnabled) _下一步_Button_Click();
                         break;
                     case Key.W:
-                        _取消_Button_Click();
+                        if (_取消_Button.IsEnabled) _取消_Button_Click();
                         break;
                 }
             }
         }
 
+        #endregion
 
         private void _下一步_Button_Click(object sender = null, RoutedEventArgs e = null)
         {
