@@ -34,6 +34,7 @@ namespace QuestionGen.Views
         public 题管理()
         {
             InitializeComponent();
+            this.KeyDown += new KeyEventHandler(题管理_KeyDown);
 
             _s.题_获取Completed += new EventHandler<服务.题_获取CompletedEventArgs>(_s_题_获取Completed);
             _s.类型_获取Completed += new EventHandler<服务.类型_获取CompletedEventArgs>(_s_类型_获取Completed);
@@ -50,6 +51,39 @@ namespace QuestionGen.Views
 
             _刷新_Button_Click();
         }
+
+        #region 热键支持
+
+        void 题管理_KeyDown(object sender, KeyEventArgs e)
+        {
+            var 组合键按下 = false;
+
+            var keys = Keyboard.Modifiers;
+            if (Application.Current.InstallState == InstallState.Installed)
+                if ((keys & ModifierKeys.Control) == ModifierKeys.Control) 组合键按下 = true;
+                else
+                    if ((keys & ModifierKeys.Control) == ModifierKeys.Control && (keys & ModifierKeys.Alt) == ModifierKeys.Alt) 组合键按下 = true;
+            if (组合键按下)
+            {
+                switch (e.Key)
+                {
+                    case Key.E:
+                        if (_修改_Button.IsEnabled) _修改_Button_Click(null, null);
+                        break;
+                    case Key.D:
+                        if (_删除_Button.IsEnabled) _删除_Button_Click(null, null);
+                        break;
+                    case Key.F:
+                        if (_刷新_Button.IsEnabled) _刷新_Button_Click(null, null);
+                        break;
+                    case Key.R:
+                        if (_创建_Button.IsEnabled) _创建_Button_Click(null, null);
+                        break;
+                }
+            }
+        }
+
+        #endregion
 
 
         void _s_类型_获取Completed(object sender, 服务.类型_获取CompletedEventArgs e)
