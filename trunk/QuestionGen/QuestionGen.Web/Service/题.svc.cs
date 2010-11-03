@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 
 using SqlLib;
+using DAL;
 using DAL.Database.Tables;
 using db = DAL.Database.Tables;
 using query = DAL.Queries.Tables;
