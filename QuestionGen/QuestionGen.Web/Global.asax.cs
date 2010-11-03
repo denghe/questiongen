@@ -12,7 +12,7 @@ namespace SLClientWebHost
 
         void Application_Start(object sender, EventArgs e)
         {
-            SqlLib.SqlHelper.ConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            DAL.SqlHelper.ConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         }
 
         void Application_End(object sender, EventArgs e)
