@@ -19,6 +19,7 @@ using query = DAL.Queries.Tables;
 using QuestionGen.Modules;
 using System.Xml.Linq;
 using System.Xml;
+using System.Text;
 
 namespace QuestionGen.Views
 {
@@ -249,14 +250,14 @@ namespace QuestionGen.Views
         {
             if (_selected_row == null)
             {
-                _修改_Button.IsEnabled = _删除_Button.IsEnabled = false;
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = _加入试卷_Button.IsEnabled = false;
                 _考核意图_TextBox.Text = "";
                 _备注_TextBox.Text = "";
                 _预览_RichTextBox.Blocks.Clear();
             }
             else
             {
-                _修改_Button.IsEnabled = _删除_Button.IsEnabled = true;
+                _修改_Button.IsEnabled = _删除_Button.IsEnabled = _加入试卷_Button.IsEnabled = true;
                 _考核意图_TextBox.Text = _selected_row.考核意图;
                 _备注_TextBox.Text = _selected_row.备注;
                 _DataGrid.IsEnabled = false;
@@ -709,6 +710,60 @@ namespace QuestionGen.Views
             // 还原控件状态
             _DataGrid.IsEnabled = true;
             _DataGrid.Focus();
+        }
+
+
+        StringBuilder _试卷 = new StringBuilder();
+        private void _加入试卷_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // todo: 判断数据已经填充
+
+            #region 生成预览
+            switch (_selected_row.类型编号)
+            {
+                case 1:
+                    {
+                        _试卷.Append(_选择题.题.显示模板);
+                        for (int i = 0; i < _选择题.选项.Count; i++)
+                        {
+                            _试卷.Append(_选择题.选项[i].显示模板);
+                        }
+                        for (int i = 0; i < _选择题.答案.Count; i++)
+                        {
+                            _试卷.Append(_选择题.答案[i].格子序号);
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        _填空题 = new 填空题 { 题 = _selected_row };
+                    }
+                    break;
+                case 3:
+                    {
+                        _判断题 = new 判断题 { 题 = _selected_row };
+                    }
+                    break;
+                case 4:
+                    {
+                        _问答题 = new 问答题 { 题 = _selected_row };
+                    }
+                    break;
+                case 5:
+                    {
+                    }
+                    break;
+            }
+            #endregion
+        }
+
+        private void _导出试卷_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var fw = new 试题导出器(_试卷.ToString())
+            {
+                ParentLayoutRoot = this.LayoutRoot
+            };
+            fw.ShowDialog();
         }
 
     }
