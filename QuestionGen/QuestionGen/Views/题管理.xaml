@@ -87,6 +87,8 @@
                     <TextBlock Text="选中行：" Margin="10,0,0,0" />
                     <Button Content="修改" Name="_修改_Button" Click="_修改_Button_Click" IsEnabled="False" />
                     <Button Content="删除" Name="_删除_Button" Click="_删除_Button_Click" IsEnabled="False" />
+                    <Button Margin="50,0,0,0" Content="加入试卷" Name="_加入试卷_Button" IsEnabled="False" Click="_加入试卷_Button_Click" />
+                    <Button Margin="100,0,0,0" Content="导出试卷" Name="_导出试卷_Button" IsEnabled="True" Click="_导出试卷_Button_Click" />
                 </StackPanel>
             </StackPanel>
         </Grid>
